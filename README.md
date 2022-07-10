@@ -4,13 +4,21 @@
 
 ## 功能列表
 
--   [x] 支持指定参数 如 robot 默认是 1
--   [x] 支持上传 yarn run upload
--   [x] 支持预览 yarn run preview
--   [x] 支持空跑，不执行
+-   [x] 支持指定参数 如 robot 默认是 1，命令：`yarn run upload --robot 2`
+-   [x] 支持上传 `yarn run upload`
+-   [x] 支持预览 `yarn run preview`
+-   [x] 支持空跑，不执行 `yarn run upload --dry`
 -   [x] 支持指定 git commit hash 和作者
--   [x] 支持单选多个小程序
--   [x] 支持选择多个批量上传 yarn
+-   [x] 支持单选多个小程序 `yarn run upload --useSelect`
+-   [x] 支持选择多个批量上传 `yarn run upload --useMultiSelect`
+
+```bash
+参数可以相互结合。
+--robot 2 [ 可选 1-30 ]
+--dry 空跑
+--useSelect 单选
+--useMultiSelect 多选批量上传
+```
 
 ## 可自行开发
 
