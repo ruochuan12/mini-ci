@@ -1,0 +1,54 @@
+{
+  "name": "mp-cli",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "bin": {
+    "mp-cli": "src/index.js"
+  },
+  "engines": {
+    "node": "^14.16.0 || >=16.0.0"
+  },
+  "repository": "https://github.com/lxchuan12/mp-cli.git",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo test",
+    "lint": "eslint --cache --fix --ext .js",
+    "ci": "node src/index.js",
+    "upload": "npm run ci -- --upload",
+    "preview": "npm run ci -- --preview",
+    "release": "release-it",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^5.0.0",
+    "@types/eslint": "^8.4.5",
+    "@types/eslint-config-prettier": "^6.11.0",
+    "@types/minimist": "^1.2.2",
+    "@types/parse-git-config": "^3.0.1",
+    "@types/prettier": "^2.6.3",
+    "dotenv": "^16.0.1",
+    "enquirer": "^2.3.6",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "kolorist": "^1.5.1",
+    "lint-staged": "^13.0.3",
+    "minimist": "^1.2.6",
+    "miniprogram-ci": "^1.8.25",
+    "parse-git-config": "^3.0.0",
+    "prettier": "^2.7.1",
+    "release-it": "^15.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, ts}": "eslint --cache --fix",
+    "*.{js, ts, json}": "prettier --write"
+  },
+  "dependencies": {
+    "@types/node": "^18.0.3"
+  }
+}
