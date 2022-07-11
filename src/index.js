@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const main = require('./utils/main');
 const { getParams } = require('./utils/getParams');
 const getDesc = require('./utils/getDesc');
