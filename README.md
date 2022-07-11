@@ -1,6 +1,14 @@
 # mp-cli
 
-> 听说你还在用开发者工具手动上传，微信小程序 miniprogram-ci
+> 基于微信小程序 miniprogram-ci 开发的上传小程序的自动化工具
+
+[miniprogram-ci 官方文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
+
+> 密钥及 IP 白名单配置 参考文档。一般来说自己使用，可以关闭 IP 白名单，因为 IP 地址可能变。
+
+上传效果如下图所示：
+
+![上传效果](./images/upload.png)
 
 ## 功能列表
 
