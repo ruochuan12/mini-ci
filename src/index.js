@@ -29,8 +29,9 @@ const {
 		mpConfigList = configResult.map((el) => formatConfig(el));
 	}
 	for (const mpConfigItem of mpConfigList) {
-		const { name, appid, privateKeyPath, projectPath } = mpConfigItem;
-		const { version } = require(`${projectPath}/package.json`);
+		const { name, appid, privateKeyPath, projectPath, packageJsonPath } =
+			mpConfigItem;
+		const { version } = require(`${packageJsonPath}/package.json`);
 		const desc = getDesc(projectPath, version);
 		try {
 			const res = await main({

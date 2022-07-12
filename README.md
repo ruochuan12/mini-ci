@@ -44,6 +44,8 @@ yarn install
 name="若川视野-小程序1"
 # 必填
 projectPath="../tdesign-miniprogram-starter-retail"
+# package.json 文件路径，读取 package.json 文件的版本号
+packageJsonPath="../tdesign-miniprogram-starter-retail"
 # 必填
 appid="wxdd3948dc1c7f95c2"
 # 必填
@@ -62,7 +64,8 @@ configPath="./src/config"
 	"name": "若川视野的小程序-默认",
 	"appid": "wxdd3948dc1c7f95c2",
 	"privateKeyPath": "./src/key/private.wxdd3948dc1c7f95c2.key",
-	"projectPath": "../tdesign-miniprogram-starter-retail"
+	"projectPath": "../tdesign-miniprogram-starter-retail",
+	"packageJsonPath": "../tdesign-miniprogram-starter-retail"
 }
 ```
 

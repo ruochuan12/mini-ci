@@ -1,7 +1,14 @@
 const path = require('path');
 
 const formatConfig = (options) => {
-	let { name, appid, privateKeyPath, projectPath, configPath } = options;
+	let {
+		name,
+		appid,
+		privateKeyPath,
+		projectPath,
+		configPath,
+		packageJsonPath,
+	} = options;
 
 	if (!name) {
 		name = '未设置名称';
@@ -22,6 +29,7 @@ const formatConfig = (options) => {
 	privateKeyPath = path.join(cwd, privateKeyPath);
 	projectPath = path.join(cwd, projectPath);
 	configPath = path.join(cwd, configPath || '');
+	packageJsonPath = path.join(cwd, packageJsonPath || '');
 
 	return {
 		name,
@@ -29,12 +37,11 @@ const formatConfig = (options) => {
 		privateKeyPath,
 		projectPath,
 		configPath,
+		packageJsonPath,
 	};
 };
 
 const parseEnv = () => {
-	// const path = require('path');
-
 	const cwd = process.cwd();
 
 	const { parsed, error } = require('dotenv').config({
@@ -44,8 +51,14 @@ const parseEnv = () => {
 		throw error;
 	}
 
-	let { name, appid, privateKeyPath, projectPath, configPath } =
-		formatConfig(parsed);
+	let {
+		name,
+		appid,
+		privateKeyPath,
+		projectPath,
+		configPath,
+		packageJsonPath,
+	} = formatConfig(parsed);
 
 	return {
 		name,
@@ -53,6 +66,7 @@ const parseEnv = () => {
 		privateKeyPath,
 		projectPath,
 		configPath,
+		packageJsonPath,
 	};
 };
 
