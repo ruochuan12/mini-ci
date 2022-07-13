@@ -37,6 +37,32 @@ yarn install
 # 建议使用 yarn install
 ```
 
+## 支持 wx.config.js 配置（推荐）
+
+在当前的目录下配置`wx.config.js`，这个优先于 `.env`
+
+```js
+module.exports = {
+	// # 可选，未填时 输出【未设置名称】
+	name: '若川视野-小程序1-wx.config.js',
+	// # 必填
+	projectPath: '../tdesign-miniprogram-starter-retail',
+	// # package.json 文件路径，读取 package.json 文件的版本号
+	packageJsonPath: '../tdesign-miniprogram-starter-retail',
+	// # 必填
+	appid: 'wxdd3948dc1c7f95c2',
+	// # 必填
+	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
+	// # 多个小程序配置的路径
+	configPath: './config',
+	// # 版本描述可选，默认会读取版本号和git commit hash 和作者
+	// # 如：v1.0.0 - 4c29ae8 - by@若川
+	desc: '版本描述可选',
+	// # 版本号可选，默认读取 package.json 中的 version
+	version: '1.0.0',
+};
+```
+
 ## .env 默认配置
 
 ```sh
@@ -49,23 +75,30 @@ packageJsonPath="../tdesign-miniprogram-starter-retail"
 # 必填
 appid="wxdd3948dc1c7f95c2"
 # 必填
-privateKeyPath="./src/key/private.wxdd3948dc1c7f95c2.key"
+privateKeyPath="./key/private.wxdd3948dc1c7f95c2.key"
 # 需要支持单选和多选上传预览时 必填
 # 多个小程序配置的路径
-configPath="./src/config"
+configPath="./config"
+# 版本描述可选，默认会读取版本号和git commit hash 和作者
+# 如：v1.0.0 - 4c29ae8 - by@若川
+desc="版本描述可选"
+# 版本号可选，默认读取 package.json 中的 version
+version="1.0.0"
 ```
 
 ## `configPath` `json` 配置
 
-参考 `src/config/example.json`
+参考 `config/example.json`
 
 ```json
 {
 	"name": "若川视野的小程序-默认",
 	"appid": "wxdd3948dc1c7f95c2",
-	"privateKeyPath": "./src/key/private.wxdd3948dc1c7f95c2.key",
+	"privateKeyPath": "./key/private.wxdd3948dc1c7f95c2.key",
 	"projectPath": "../tdesign-miniprogram-starter-retail",
 	"packageJsonPath": "../tdesign-miniprogram-starter-retail"
+	// # 版本号可选，默认读取 package.json 中的 version
+	"version": "1.0.0",
 }
 ```
 

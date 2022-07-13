@@ -8,6 +8,8 @@ const formatConfig = (options) => {
 		projectPath,
 		configPath,
 		packageJsonPath,
+		desc,
+		version,
 	} = options;
 
 	if (!name) {
@@ -25,6 +27,10 @@ const formatConfig = (options) => {
 		throw new Error('projectPath 不能为空');
 	}
 
+	if (!packageJsonPath) {
+		throw new Error('packageJsonPath 不能为空');
+	}
+
 	const cwd = process.cwd();
 	privateKeyPath = path.join(cwd, privateKeyPath);
 	projectPath = path.join(cwd, projectPath);
@@ -38,17 +44,37 @@ const formatConfig = (options) => {
 		projectPath,
 		configPath,
 		packageJsonPath,
+		desc,
+		version,
 	};
+};
+
+const loadWxconfig = (cwd) => {
+	try {
+		return require(path.join(cwd, 'wx.config.js'));
+	} catch (e) {
+		return {
+			error: '未配置 wx.config.js 文件',
+		};
+	}
 };
 
 const parseEnv = () => {
 	const cwd = process.cwd();
 
-	const { parsed, error } = require('dotenv').config({
-		path: path.join(cwd, './.env'),
-	});
-	if (error) {
-		throw error;
+	let parsed = {};
+	let wxconfig = loadWxconfig(cwd);
+	if (wxconfig.error) {
+		let dotenvResult = require('dotenv').config({
+			path: path.join(cwd, './.env'),
+		});
+
+		parsed = dotenvResult.parsed;
+		if (dotenvResult.error) {
+			throw error;
+		}
+	} else {
+		parsed = wxconfig;
 	}
 
 	let {
@@ -58,6 +84,8 @@ const parseEnv = () => {
 		projectPath,
 		configPath,
 		packageJsonPath,
+		desc,
+		version,
 	} = formatConfig(parsed);
 
 	return {
@@ -67,6 +95,8 @@ const parseEnv = () => {
 		projectPath,
 		configPath,
 		packageJsonPath,
+		desc,
+		version,
 	};
 };
 

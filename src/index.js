@@ -4,6 +4,7 @@ const { getParams } = require('./utils/getParams');
 const getDesc = require('./utils/getDesc');
 const { parseEnv, formatConfig } = require('./utils/parseEnv');
 const { getConfig } = require('./utils/getConfig');
+const { getVersion } = require('./utils/getVersion');
 
 const parseEnvResult = parseEnv();
 
@@ -29,22 +30,29 @@ const {
 		mpConfigList = configResult.map((el) => formatConfig(el));
 	}
 	for (const mpConfigItem of mpConfigList) {
-		const { name, appid, privateKeyPath, projectPath, packageJsonPath } =
-			mpConfigItem;
-		const { version } = require(`${packageJsonPath}/package.json`);
-		const desc = getDesc(projectPath, version);
+		const {
+			name,
+			appid,
+			privateKeyPath,
+			projectPath,
+			packageJsonPath,
+			version,
+			desc,
+		} = mpConfigItem;
+		let lastVersion = version || getVersion(packageJsonPath);
+		const lastDesc = desc || getDesc(projectPath, version);
 		try {
 			const res = await main({
 				name,
 				projectPath,
 				appid,
 				privateKeyPath,
-				version,
+				version: lastVersion,
 				robot,
 				upload,
 				preview,
 				isDryRun,
-				desc,
+				desc: lastDesc,
 			});
 			console.log(res);
 		} catch (err) {
