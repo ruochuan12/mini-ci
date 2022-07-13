@@ -1,5 +1,12 @@
 
 
+# [0.4.0](https://github.com/lxchuan12/mp-cli/compare/0.3.0...0.4.0) (2022-07-13)
+
+
+### Features
+
+* 🎸 支持 wx.config.js 配置(更推荐) 、支持可选 version 和可选 desc ([8fda254](https://github.com/lxchuan12/mp-cli/commit/8fda254d38c50979d3222d3a82ed292dedbe9b98))
+
 # [0.3.0](https://github.com/lxchuan12/mp-cli/compare/0.2.0...0.3.0) (2022-07-12)
 
 
