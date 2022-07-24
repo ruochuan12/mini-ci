@@ -17,25 +17,20 @@
     "upload": "npm run ci -- --upload",
     "preview": "npm run ci -- --preview",
     "release": "release-it",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "//preinstall": "npx only-allow yarn",
+    "commit": "git-cz"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/eslint": "^8.4.5",
     "@types/eslint-config-prettier": "^6.11.0",
-    "@types/minimist": "^1.2.2",
-    "@types/parse-git-config": "^3.0.1",
     "@types/prettier": "^2.6.3",
-    "dotenv": "^16.0.1",
-    "enquirer": "^2.3.6",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
+    "git-cz": "^4.9.0",
     "husky": "^8.0.1",
-    "kolorist": "^1.5.1",
     "lint-staged": "^13.0.3",
-    "minimist": "^1.2.6",
-    "miniprogram-ci": "^1.8.25",
-    "parse-git-config": "^3.0.0",
     "prettier": "^2.7.1",
     "release-it": "^15.1.1"
   },
@@ -49,6 +44,15 @@
     "*.{js, ts, json}": "prettier --write"
   },
   "dependencies": {
-    "@types/node": "^18.0.3"
+    "@types/node": "^18.0.3",
+    "@types/minimist": "^1.2.2",
+    "@types/parse-git-config": "^3.0.1",
+    "dotenv": "^16.0.1",
+    "enquirer": "^2.3.6",
+    "minimist": "^1.2.6",
+    "kolorist": "^1.5.1",
+    "miniprogram-ci": "^1.8.25",
+    "parse-git-config": "^3.0.0",
+    "omit.js": "^2.0.2"
   }
 }
