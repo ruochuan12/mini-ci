@@ -1,5 +1,12 @@
 
 
+# [0.5.0](https://github.com/lxchuan12/mp-cli/compare/0.4.0...0.5.0) (2022-07-24)
+
+
+### Features
+
+* 🎸 新增支持自定义 projectOptions uploadOptions previewOptions ([792c2dd](https://github.com/lxchuan12/mp-cli/commit/792c2ddcf336b361694b12a02d964025ee4c545a))
+
 # [0.4.0](https://github.com/lxchuan12/mp-cli/compare/0.3.0...0.4.0) (2022-07-13)
 
 
