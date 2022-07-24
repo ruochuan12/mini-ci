@@ -10,6 +10,9 @@ const formatConfig = (options) => {
 		packageJsonPath,
 		desc,
 		version,
+		projectOptions,
+		uploadOptions,
+		previewOptions,
 	} = options;
 
 	if (!name) {
@@ -46,6 +49,9 @@ const formatConfig = (options) => {
 		packageJsonPath,
 		desc,
 		version,
+		projectOptions,
+		uploadOptions,
+		previewOptions,
 	};
 };
 
@@ -86,6 +92,9 @@ const parseEnv = () => {
 		packageJsonPath,
 		desc,
 		version,
+		projectOptions,
+		uploadOptions,
+		previewOptions,
 	} = formatConfig(parsed);
 
 	return {
@@ -97,6 +106,9 @@ const parseEnv = () => {
 		packageJsonPath,
 		desc,
 		version,
+		projectOptions,
+		uploadOptions,
+		previewOptions,
 	};
 };
 

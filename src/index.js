@@ -38,6 +38,9 @@ const {
 			packageJsonPath,
 			version,
 			desc,
+			projectOptions,
+			uploadOptions,
+			previewOptions,
 		} = mpConfigItem;
 		let lastVersion = version || getVersion(packageJsonPath);
 		const lastDesc = desc || getDesc(projectPath, version);
@@ -53,6 +56,9 @@ const {
 				preview,
 				isDryRun,
 				desc: lastDesc,
+				projectOptions,
+				uploadOptions,
+				previewOptions,
 			});
 			console.log(res);
 		} catch (err) {

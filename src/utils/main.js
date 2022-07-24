@@ -1,5 +1,10 @@
 const { green, bold } = require('kolorist');
 const ci = require('miniprogram-ci');
+const { isObject } = require('./isObject');
+const omit = require('omit.js').default;
+
+// 获取配置
+const getLastOptions = (val) => isObject(val) ? val : {};
 
 const step = (msg) => console.log(bold(green(`[step] ${msg}`)));
 
@@ -15,14 +20,17 @@ async function main(options = {}) {
 		preview,
 		robot,
 		desc,
+		projectOptions,
+		uploadOptions,
+		previewOptions,
 	} = options;
 
 	step(`当前小程序名称为：${name}`);
 
 	step('输出上传相关参数');
-	console.log('上传相关参数', options);
+	console.log('传递的参数', options);
 
-	const project = new ci.Project({
+	const lastProjectOptions = {
 		projectPath,
 		type: 'miniProgram',
 		appid,
@@ -34,7 +42,13 @@ async function main(options = {}) {
 			`${projectPath}/yarn.lock`,
 			`${projectPath}/package-lock.json`,
 		],
-	});
+		...getLastOptions(projectOptions),
+	};
+
+
+	console.log('ci.Project 项目的参数', omit(lastProjectOptions, ['project', 'privateKeyPath']));
+
+	const project = new ci.Project(lastProjectOptions);
 
 	const commonConfig = {
 		version,
@@ -51,28 +65,32 @@ async function main(options = {}) {
 	// 上传
 	if (upload) {
 		step('开始上传小程序...');
-		console.log('上传的配置', commonConfig);
-		if (isDryRun) {
-			return;
-		}
-		const uploadResult = await ci.upload({
+		const lastUploadOptions = {
 			project,
 			...commonConfig,
 			desc,
-		});
+			...getLastOptions(uploadOptions),
+		};
+		console.log('ci.upload 上传的配置', omit(lastUploadOptions, ['project']));
+		if (isDryRun) {
+			return;
+		}
+		const uploadResult = await ci.upload(lastUploadOptions);
 		console.log('uploadResult', uploadResult);
 	}
 	// 预览
 	if (preview) {
 		step('开始生成预览二维码...');
-		console.log('预览的配置', commonConfig);
+		const lastPreviewOptions = {
+			project,
+			...commonConfig,
+			...getLastOptions(previewOptions),
+		};
+		console.log('ci.preview 预览的配置', omit(lastPreviewOptions, ['project']));
 		if (isDryRun) {
 			return;
 		}
-		const previewResult = await ci.preview({
-			project,
-			...commonConfig,
-		});
+		const previewResult = await ci.preview(lastPreviewOptions);
 		console.log('previewResult', previewResult);
 	}
 }
