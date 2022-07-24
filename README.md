@@ -10,15 +10,18 @@
 
 ![上传效果](./images/upload.png)
 
+预览效果就是在控制台显示二维码。
+
 ## 功能列表
 
--   [x] 支持指定参数 如 robot 默认是 1，命令：`yarn run upload --robot 2`
+-   [x] 支持指定参数 如 `robot` 默认是 1，命令：`yarn run upload --robot 2`
 -   [x] 支持上传 `yarn run upload`
 -   [x] 支持预览 `yarn run preview`
 -   [x] 支持空跑，不执行 `yarn run upload --dry`
 -   [x] 支持指定 git commit hash 和作者
 -   [x] 支持单选多个小程序 `yarn run upload --useSelect`
 -   [x] 支持选择多个批量上传 `yarn run upload --useMultiSelect`
+-   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 `wx.config.js` 配置
 
 ```bash
 参数可以相互结合。
@@ -33,6 +36,7 @@
 ```sh
 git clone https://github.com/lxchuan12/mp-cli.git
 cd mp-cli
+# npm i -g yarn
 yarn install
 # 建议使用 yarn install
 ```
@@ -60,6 +64,23 @@ module.exports = {
 	desc: '版本描述可选',
 	// # 版本号可选，默认读取 package.json 中的 version
 	version: '1.0.0',
+	// 参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html
+	// 【可选】 其他项目配置自定义配置，和上面配置合并
+	projectOptions: {},
+	// 【可选】新增上传的自定义配置
+	uploadOptions: {
+		// 程序中默认压缩
+		// setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
+		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
+		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
+	},
+	// 【可选】新增下载的自定义配置
+	previewOptions: {
+		// 程序中默认压缩
+		// setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
+		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
+		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
+	},
 };
 ```
 
