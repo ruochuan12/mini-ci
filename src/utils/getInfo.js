@@ -10,7 +10,7 @@ const getHelpInfo = (show) => {
     if (show) {
         let msg = '';
         msg += '\n  Usage';
-        msg += '\n    $ @ruochuan/mp-cli [options]\n';
+        msg += '\n    $ node src/index.js [options]\n';
         msg += '\n  Options';
         msg += '\n    -u, --upload             上传';
         msg += '\n    -p, --preview            预览';
@@ -21,9 +21,15 @@ const getHelpInfo = (show) => {
         msg += '\n    -v, --version            显示当前版本';
         msg += '\n    -h, --help               显示帮助信息\n';
         msg += '\n  Examples';
-        msg += '\n    $ @ruochuan/mp-cli --upload';
-        msg += '\n    $ @ruochuan/mp-cli --preview';
-        msg += '\n    $ @ruochuan/mp-cli --version';
+        msg += '\n    $ node src/index.js --upload';
+        msg += '\n    $ node src/index.js --upload --dry --robot 2';
+        msg += '\n    $ node src/index.js --preview';
+        msg += '\n    $ node src/index.js --preview --useSelect --dry --robot 2';
+        msg += '\n    $ node src/index.js --version';
+        msg += '\n    $ node src/index.js --help';
+        msg += '\n  Docs';
+        msg += '\n    $ 更多如何使用可查看文档：https://github.com/lxchuan12/mp-cli';
+        msg += '\n    $ 注意：当前未在 npm 发包，建议克隆下来使用，也可以根据要求自行修改';
         return console.log(msg + '\n');
     }
 }
