@@ -1,5 +1,13 @@
 
 
+# [0.6.0](https://github.com/lxchuan12/mp-cli/compare/0.5.0...0.6.0) (2022-07-25)
+
+
+### Features
+
+* 🎸 更新 help 信息 ([37c226b](https://github.com/lxchuan12/mp-cli/commit/37c226b467bb06110b67baa87d0a0bcbe3ae319d))
+* 🎸 添加 version help 和 alias 简写功能 ([23eae37](https://github.com/lxchuan12/mp-cli/commit/23eae37b8d6dab473222699a0c11049c22570b09))
+
 # [0.5.0](https://github.com/lxchuan12/mp-cli/compare/0.4.0...0.5.0) (2022-07-24)
 
 

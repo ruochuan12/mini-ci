@@ -1,6 +1,6 @@
 {
   "name": "@ruochuan/mp-cli",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "main": "src/index.js",
   "bin": {
     "mp-cli": "src/index.js"
