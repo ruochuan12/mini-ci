@@ -5,6 +5,7 @@ const getDesc = require('./utils/getDesc');
 const { parseEnv, formatConfig } = require('./utils/parseEnv');
 const { getConfig } = require('./utils/getConfig');
 const { getVersion } = require('./utils/getVersion');
+const {getHelpInfo, getVersionInfo} = require('./utils/getInfo');
 
 const parseEnvResult = parseEnv();
 
@@ -15,7 +16,15 @@ const {
 	upload,
 	useSelect,
 	useMultiSelect,
+	version,
+	help,
 } = getParams();
+
+if(version || help){
+	getVersionInfo(version);
+	getHelpInfo(help);
+	return;
+}
 
 (async () => {
 	let mpConfigList = [parseEnvResult];
