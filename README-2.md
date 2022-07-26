@@ -3,7 +3,7 @@ highlight: darcula
 theme: smartblue
 ---
 
-# 从尤雨溪发布 Vue 2.7 中，我学会了基于 miniprogram-ci 开发脚手架工具，告别小程序开发者工具上传、预览
+# 听说你还在用开发者工具上传小程序，我从尤雨溪那学会了基于 miniprogram-ci 开发脚手架工具，提效摸鱼
 
 ## 1. 前言
 
