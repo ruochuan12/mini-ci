@@ -18,7 +18,7 @@
     "preview": "npm run ci -- --preview",
     "release": "release-it",
     "prepare": "husky install",
-    "//preinstall": "npx only-allow yarn",
+    "preinstall": "npx only-allow yarn",
     "commit": "git-cz"
   },
   "devDependencies": {
