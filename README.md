@@ -6,11 +6,36 @@
 
 > 密钥及 IP 白名单配置 参考文档。一般来说自己使用，可以关闭 IP 白名单，因为 IP 地址可能变。
 
-上传效果如下图所示：
+支持的功能
+
+![支持的功能](./images/xmind.png)
+
+显示帮助信息
+
+![显示帮助信息](./images/version-and-help.png)
+
+上传效果
 
 ![上传效果](./images/upload.png)
 
 预览效果就是在控制台显示二维码。
+
+```bash
+# 克隆我写的 mp-cli 工具
+git clone https://github.com/lxchuan12/mp-cli.git
+cd mp-cli
+yarn install
+# 没有自己的小程序可以克隆腾讯开源的电商小程序
+git clone https://github.com/lxchuan12/tdesign-miniprogram-starter-retail.git
+# 切到分支 feature/release-it
+git checkout feature/release-it
+```
+
+可以克隆我的项目，到一个目录中，比如 `projects` 中。
+
+再克隆我的另外一个小程序（腾讯开源的电商小程序），到同一个目录中。比如 `projects` 中。
+
+按照[微信小程序文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)配置小程序密钥等，这样就能上传和预览了。如果没有微信小程序，可以自行免费开通个人的[微信小程序](https://mp.weixin.qq.com/)。
 
 ## 功能列表
 
@@ -127,4 +152,8 @@ version="1.0.0"
 
 > 有空再开发
 
-## TODO: 写文章
+## 写文章
+
+文章已完成[README-2](./README-2.md)，也已发布在掘金。
+
+[听说你还在用开发者工具上传小程序，我从尤雨溪那学会了基于 miniprogram-ci 开发脚手架工具，提效摸鱼](https://juejin.cn/post/7124467547163852808)
