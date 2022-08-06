@@ -49,16 +49,13 @@ async function main(options = {}) {
 	console.log('ci.Project 项目的参数', omit(lastProjectOptions, ['project', 'privateKeyPath']));
 
 	const project = new ci.Project(lastProjectOptions);
+	const setting = 
+	require(`${projectPath}/project.config.json`);
 
 	const commonConfig = {
 		version,
 		robot,
-		setting: {
-			es6: true,
-			es7: true,
-			minify: true,
-			ignoreUploadUnusedFiles: true,
-		},
+		setting,
 		// onProgressUpdate: console.log,
 	};
 

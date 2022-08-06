@@ -94,15 +94,15 @@ module.exports = {
 	projectOptions: {},
 	// 【可选】新增上传的自定义配置
 	uploadOptions: {
-		// 程序中默认压缩
-		// setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
+		// 程序中默认读取项目路径下的 project.config.json setting 配置
+		setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
 		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
 		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
 	},
 	// 【可选】新增下载的自定义配置
 	previewOptions: {
-		// 程序中默认压缩
-		// setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
+		// 程序中默认读取项目路径下的 project.config.json setting 配置
+		setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
 		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
 		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
 	},
@@ -148,9 +148,10 @@ version="1.0.0"
 }
 ```
 
-## 支持可视化操作 TODO
+## TODOs
 
-> 有空再开发
+- [ ] 使用 TS ES Module 开发
+- [ ] 支持可视化操作
 
 ## 写文章
 
