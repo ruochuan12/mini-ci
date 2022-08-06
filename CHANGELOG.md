@@ -1,5 +1,12 @@
 
 
+# [0.7.0](https://github.com/lxchuan12/mp-cli/compare/0.6.0...0.7.0) (2022-08-06)
+
+
+### Features
+
+* 🎸 添加上传、预览配置 setting 读取 项目路径下的 project.config.json setting ([6816390](https://github.com/lxchuan12/mp-cli/commit/6816390be34805595e9957796d03b67a7ec9be6f))
+
 # [0.6.0](https://github.com/lxchuan12/mp-cli/compare/0.5.0...0.6.0) (2022-07-25)
 
 
