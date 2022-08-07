@@ -1,5 +1,17 @@
 
 
+# [0.8.0](https://github.com/lxchuan12/mp-cli/compare/0.7.0...0.8.0) (2022-08-07)
+
+
+### Bug Fixes
+
+* 🐛 修复 --version 版本号显示错误 ([0fa0ae8](https://github.com/lxchuan12/mp-cli/commit/0fa0ae8ec75b35f9a962f7909e1f24552fdd0494))
+
+
+### Features
+
+* 🎸 整体更新优化成 ES Module ([6ece4b7](https://github.com/lxchuan12/mp-cli/commit/6ece4b710eef6bee59a53fbc735d63342b74879c))
+
 # [0.7.0](https://github.com/lxchuan12/mp-cli/compare/0.6.0...0.7.0) (2022-08-06)
 
 
