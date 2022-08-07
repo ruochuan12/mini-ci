@@ -1,9 +1,10 @@
 // import pkg from '../../package.json' assert { type: 'json' };
 import { loadJsonFileSync } from 'load-json-file';
+import path from 'node:path';
 
 export const getVersionInfo = (show) => {
 	if (show) {
-		let { version } = loadJsonFileSync('../../package.json');
+		let { version } = loadJsonFileSync(path.resolve('package.json'));
 		return console.log('@ruochuan/mp-cli, v' + version);
 	}
 };
