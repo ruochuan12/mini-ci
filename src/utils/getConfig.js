@@ -1,6 +1,8 @@
-const fs = require('fs');
+import fs from 'node:fs';
+import enquirer from 'enquirer';
+import { loadJsonFileSync } from 'load-json-file';
 
-const getConfig = async (options = {}) => {
+export const getConfig = async (options = {}) => {
 	let { configPath, useSelect = true, useMultiSelect = false } = options;
 
 	console.log('根据单选或者多选选择小程序参数', options);
@@ -25,11 +27,11 @@ const getConfig = async (options = {}) => {
 		useSelect = false;
 	}
 
-	const { prompt, MultiSelect } = require('enquirer');
+	const { prompt, MultiSelect } = enquirer;
 
 	// console.log(configPathList, 'configPathList');
 	const configPathListJson = configPathList.map((el) => {
-		return require(`${configPath}/${el}`);
+		return loadJsonFileSync(`${configPath}/${el}`);
 	});
 
 	// console.log('configPathListJson', configPathListJson);
@@ -78,8 +80,4 @@ const getConfig = async (options = {}) => {
 	if (!yes) {
 		return;
 	}
-};
-
-module.exports = {
-	getConfig,
 };

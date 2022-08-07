@@ -1,4 +1,7 @@
-const path = require('path');
+import path from 'node:path';
+import dotenv from 'dotenv';
+import { cwd } from 'node:process';
+const cwdPath = cwd();
 
 const formatConfig = (options) => {
 	let {
@@ -34,11 +37,10 @@ const formatConfig = (options) => {
 		throw new Error('packageJsonPath 不能为空');
 	}
 
-	const cwd = process.cwd();
-	privateKeyPath = path.join(cwd, privateKeyPath);
-	projectPath = path.join(cwd, projectPath);
-	configPath = path.join(cwd, configPath || '');
-	packageJsonPath = path.join(cwd, packageJsonPath || '');
+	privateKeyPath = path.resolve(cwdPath, privateKeyPath);
+	projectPath = path.resolve(cwdPath, projectPath);
+	configPath = path.resolve(cwdPath, configPath || '');
+	packageJsonPath = path.resolve(cwdPath, packageJsonPath || '');
 
 	return {
 		name,
@@ -55,24 +57,24 @@ const formatConfig = (options) => {
 	};
 };
 
-const loadWxconfig = (cwd) => {
+const loadWxconfig = async (cwd) => {
 	try {
-		return require(path.join(cwd, 'wx.config.js'));
+		const res = await import(path.join(cwd, 'wx.config.js'));
+		return res.default;
 	} catch (e) {
+		console.log('加载 wx.config.js 失败', e);
 		return {
 			error: '未配置 wx.config.js 文件',
 		};
 	}
 };
 
-const parseEnv = () => {
-	const cwd = process.cwd();
-
+const parseEnv = async () => {
 	let parsed = {};
-	let wxconfig = loadWxconfig(cwd);
+	let wxconfig = await loadWxconfig(cwdPath);
 	if (wxconfig.error) {
-		let dotenvResult = require('dotenv').config({
-			path: path.join(cwd, './.env'),
+		let dotenvResult = dotenv.config({
+			path: path.resolve(cwdPath, './.env'),
 		});
 
 		parsed = dotenvResult.parsed;
@@ -112,7 +114,4 @@ const parseEnv = () => {
 	};
 };
 
-module.exports = {
-	parseEnv,
-	formatConfig,
-};
+export { parseEnv, formatConfig };

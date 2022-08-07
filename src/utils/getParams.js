@@ -1,4 +1,6 @@
-const getParams = () => {
+import minimist from 'minimist';
+
+export const getParams = () => {
 	const params = process.argv.slice(2);
 	const paramsDefault = {
 		default: {
@@ -22,11 +24,7 @@ const getParams = () => {
 			m: 'useMultiSelect',
 			p: 'preview',
 			h: 'help',
-		}
+		},
 	};
-	return require('minimist')(params, paramsDefault);
-};
-
-module.exports = {
-	getParams,
+	return minimist(params, paramsDefault);
 };

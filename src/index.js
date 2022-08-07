@@ -1,13 +1,11 @@
 #!/usr/bin/env node
-const main = require('./utils/main');
-const { getParams } = require('./utils/getParams');
-const getDesc = require('./utils/getDesc');
-const { parseEnv, formatConfig } = require('./utils/parseEnv');
-const { getConfig } = require('./utils/getConfig');
-const { getVersion } = require('./utils/getVersion');
-const {getHelpInfo, getVersionInfo} = require('./utils/getInfo');
-
-const parseEnvResult = parseEnv();
+import main from './utils/main.js';
+import { getParams } from './utils/getParams.js';
+import { getDesc } from './utils/getDesc.js';
+import { parseEnv, formatConfig } from './utils/parseEnv.js';
+import { getConfig } from './utils/getConfig.js';
+import { getVersion } from './utils/getVersion.js';
+import { getHelpInfo, getVersionInfo } from './utils/getInfo.js';
 
 const {
 	robot,
@@ -20,13 +18,14 @@ const {
 	help,
 } = getParams();
 
-if(version || help){
-	getVersionInfo(version);
-	getHelpInfo(help);
-	return;
-}
+const init = async () => {
+	if (version || help) {
+		getVersionInfo(version);
+		getHelpInfo(help);
+		return;
+	}
 
-(async () => {
+	const parseEnvResult = await parseEnv();
 	let mpConfigList = [parseEnvResult];
 
 	// 根据配置，单选还是多选来上传小程序
@@ -52,7 +51,7 @@ if(version || help){
 			previewOptions,
 		} = mpConfigItem;
 		let lastVersion = version || getVersion(packageJsonPath);
-		const lastDesc = desc || getDesc(projectPath, version);
+		const lastDesc = desc || getDesc(projectPath, lastVersion);
 		try {
 			const res = await main({
 				name,
@@ -74,4 +73,8 @@ if(version || help){
 			console.log('执行失败', err);
 		}
 	}
-})();
+};
+
+init().catch((e) => {
+	console.log('init 执行异常', e);
+});

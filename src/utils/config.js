@@ -1,9 +1,8 @@
-const { getConfig } = require('./getConfig');
-const parseEnv = require('./parseEnv');
-
-const { configPath } = parseEnv();
+import { getConfig } from './getConfig.js';
+import parseEnv from './parseEnv.js';
 
 (async () => {
+	const { configPath } = await parseEnv();
 	const result = await getConfig({
 		configPath,
 		useSelect: true,

@@ -2,11 +2,12 @@
   "name": "@ruochuan/mp-cli",
   "version": "0.7.0",
   "main": "src/index.js",
+  "type": "module",
   "bin": {
     "mp-cli": "src/index.js"
   },
   "engines": {
-    "node": "^14.16.0 || >=16.0.0"
+    "node": "^14.18.0 || >=16.0.0"
   },
   "repository": "https://github.com/lxchuan12/mp-cli.git",
   "license": "MIT",
@@ -44,15 +45,17 @@
     "*.{js, ts, json}": "prettier --write"
   },
   "dependencies": {
-    "@types/node": "^18.0.3",
+    "@types/load-json-file": "^5.1.0",
     "@types/minimist": "^1.2.2",
+    "@types/node": "^18.0.3",
     "@types/parse-git-config": "^3.0.1",
     "dotenv": "^16.0.1",
     "enquirer": "^2.3.6",
-    "minimist": "^1.2.6",
     "kolorist": "^1.5.1",
+    "load-json-file": "^7.0.1",
+    "minimist": "^1.2.6",
     "miniprogram-ci": "^1.8.25",
-    "parse-git-config": "^3.0.0",
-    "omit.js": "^2.0.2"
+    "omit.js": "^2.0.2",
+    "parse-git-config": "^3.0.0"
   }
 }

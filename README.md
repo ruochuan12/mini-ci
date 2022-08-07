@@ -39,6 +39,15 @@ git checkout feature/release-it
 
 ## 功能列表
 
+```sh
+# 查看帮助
+node src/index --help
+node src/index -h
+# 查看版本号
+node src/index -v
+node src/index --version
+```
+
 -   [x] 支持指定参数 如 `robot` 默认是 1，命令：`yarn run upload --robot 2`
 -   [x] 支持上传 `yarn run upload`
 -   [x] 支持预览 `yarn run preview`
@@ -70,91 +79,26 @@ yarn install
 
 在当前的目录下配置`wx.config.js`，这个优先于 `.env`
 
-```js
-module.exports = {
-	// # 可选，未填时 输出【未设置名称】
-	name: '若川视野-小程序1-wx.config.js',
-	// # 必填
-	projectPath: '../tdesign-miniprogram-starter-retail',
-	// # package.json 文件路径，读取 package.json 文件的版本号
-	packageJsonPath: '../tdesign-miniprogram-starter-retail',
-	// # 必填
-	appid: 'wxdd3948dc1c7f95c2',
-	// # 必填
-	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
-	// # 多个小程序配置的路径
-	configPath: './config',
-	// # 版本描述可选，默认会读取版本号和git commit hash 和作者
-	// # 如：v1.0.0 - 4c29ae8 - by@若川
-	desc: '版本描述可选',
-	// # 版本号可选，默认读取 package.json 中的 version
-	version: '1.0.0',
-	// 参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html
-	// 【可选】 其他项目配置自定义配置，和上面配置合并
-	projectOptions: {},
-	// 【可选】新增上传的自定义配置
-	uploadOptions: {
-		// 程序中默认读取项目路径下的 project.config.json setting 配置
-		setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
-		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
-		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
-	},
-	// 【可选】新增下载的自定义配置
-	previewOptions: {
-		// 程序中默认读取项目路径下的 project.config.json setting 配置
-		setting: { es6: true, es7: true, minify: true, ignoreUploadUnusedFiles: true }
-		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
-		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
-	},
-};
-```
+参考[当前项目中的 `wx.config.js`](https://github.com/lxchuan12/mp-cli/blob/main/wx.config.js)
 
 ## .env 默认配置
 
-```sh
-# 可选，未填时 输出【未设置名称】
-name="若川视野-小程序1"
-# 必填
-projectPath="../tdesign-miniprogram-starter-retail"
-# package.json 文件路径，读取 package.json 文件的版本号
-packageJsonPath="../tdesign-miniprogram-starter-retail"
-# 必填
-appid="wxdd3948dc1c7f95c2"
-# 必填
-privateKeyPath="./key/private.wxdd3948dc1c7f95c2.key"
-# 需要支持单选和多选上传预览时 必填
-# 多个小程序配置的路径
-configPath="./config"
-# 版本描述可选，默认会读取版本号和git commit hash 和作者
-# 如：v1.0.0 - 4c29ae8 - by@若川
-desc="版本描述可选"
-# 版本号可选，默认读取 package.json 中的 version
-version="1.0.0"
-```
+参考[当前项目中的 `.env`](https://github.com/lxchuan12/mp-cli/blob/main/.env)
 
 ## `configPath` `json` 配置
 
-参考 `config/example.json`
-
-```json
-{
-	"name": "若川视野的小程序-默认",
-	"appid": "wxdd3948dc1c7f95c2",
-	"privateKeyPath": "./key/private.wxdd3948dc1c7f95c2.key",
-	"projectPath": "../tdesign-miniprogram-starter-retail",
-	"packageJsonPath": "../tdesign-miniprogram-starter-retail"
-	// # 版本号可选，默认读取 package.json 中的 version
-	"version": "1.0.0",
-}
-```
+参考 [当前项目中的 `config/example.json`](https://github.com/lxchuan12/mp-cli/blob/main/config/example.json)
 
 ## TODOs
 
-- [ ] 使用 TS ES Module 开发
-- [ ] 支持可视化操作
+-   [x] 使用 `ES Module` 开发
+-   [ ] 引入 `TS`
+-   [ ] 支持可视化操作
 
 ## 写文章
 
 文章已完成[README-2](./README-2.md)，也已发布在掘金。
 
 [听说你还在用开发者工具上传小程序，我从尤雨溪那学会了基于 miniprogram-ci 开发脚手架工具，提效摸鱼](https://juejin.cn/post/7124467547163852808)
+
+**注意**：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mp-cli/tree/0.7.0) 撰写。后续 `mp-cli` 会持续更新，文章可能不会更新。

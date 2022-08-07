@@ -1,10 +1,14 @@
-const { green, bold } = require('kolorist');
-const ci = require('miniprogram-ci');
-const { isObject } = require('./isObject');
-const omit = require('omit.js').default;
+import omits from 'omit.js';
+import ci from 'miniprogram-ci';
+import { green, bold } from 'kolorist';
+import { loadJsonFileSync } from 'load-json-file';
+import { isObject } from './isObject.js';
+
+const omit = omits.default;
+// console.log('omit', omits.default);
 
 // 获取配置
-const getLastOptions = (val) => isObject(val) ? val : {};
+const getLastOptions = (val) => (isObject(val) ? val : {});
 
 const step = (msg) => console.log(bold(green(`[step] ${msg}`)));
 
@@ -45,12 +49,13 @@ async function main(options = {}) {
 		...getLastOptions(projectOptions),
 	};
 
-
-	console.log('ci.Project 项目的参数', omit(lastProjectOptions, ['project', 'privateKeyPath']));
+	console.log(
+		'ci.Project 项目的参数',
+		omit(lastProjectOptions, ['project', 'privateKeyPath']),
+	);
 
 	const project = new ci.Project(lastProjectOptions);
-	const setting = 
-	require(`${projectPath}/project.config.json`);
+	const setting = loadJsonFileSync(`${projectPath}/project.config.json`);
 
 	const commonConfig = {
 		version,
@@ -68,7 +73,10 @@ async function main(options = {}) {
 			desc,
 			...getLastOptions(uploadOptions),
 		};
-		console.log('ci.upload 上传的配置', omit(lastUploadOptions, ['project']));
+		console.log(
+			'ci.upload 上传的配置',
+			omit(lastUploadOptions, ['project']),
+		);
 		if (isDryRun) {
 			return;
 		}
@@ -83,7 +91,10 @@ async function main(options = {}) {
 			...commonConfig,
 			...getLastOptions(previewOptions),
 		};
-		console.log('ci.preview 预览的配置', omit(lastPreviewOptions, ['project']));
+		console.log(
+			'ci.preview 预览的配置',
+			omit(lastPreviewOptions, ['project']),
+		);
 		if (isDryRun) {
 			return;
 		}
@@ -92,4 +103,4 @@ async function main(options = {}) {
 	}
 }
 
-module.exports = main;
+export default main;

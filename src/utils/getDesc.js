@@ -1,7 +1,7 @@
-// const path = require('path');
-const { execSync } = require('child_process');
-const parseGitConfig = require('parse-git-config');
-const getDesc = (projectPath, version) => {
+import { execSync } from 'node:child_process';
+import parseGitConfig from 'parse-git-config';
+
+export const getDesc = (projectPath, version) => {
 	// 获取最新 git 记录 7位的 commit hash
 	let gitCommitHash = 'git commit hash 为空';
 	try {
@@ -33,5 +33,3 @@ const getDesc = (projectPath, version) => {
 	const desc = `v${version} - ${gitCommitHash} - by@${userName}`;
 	return desc;
 };
-
-module.exports = getDesc;

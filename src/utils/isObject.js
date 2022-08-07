@@ -1,5 +1,1 @@
-const isObject = (val) => typeof val === 'object' && val !== null;
-
-module.exports = {
-    isObject,
-}
+export const isObject = (val) => typeof val === 'object' && val !== null;

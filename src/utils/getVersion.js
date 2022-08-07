@@ -1,8 +1,10 @@
-const { red, bold } = require('kolorist');
-const getVersion = () => {
+import { red, bold } from 'kolorist';
+import { loadJsonFileSync } from 'load-json-file';
+
+export const getVersion = (packageJsonPath) => {
 	let version;
 	try {
-		version = require(`${packageJsonPath}/package.json`).version;
+		version = loadJsonFileSync(`${packageJsonPath}/package.json`).version;
 	} catch (e) {
 		console.log(e);
 		console.log(
@@ -14,8 +16,4 @@ const getVersion = () => {
 		);
 	}
 	return version;
-};
-
-module.exports = {
-	getVersion,
 };
