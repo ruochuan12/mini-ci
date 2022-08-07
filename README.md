@@ -41,11 +41,11 @@ git checkout feature/release-it
 
 ```sh
 # 查看帮助
-node src/index --help
-node src/index -h
+node src/index.js --help
+node src/index.js -h
 # 查看版本号
-node src/index -v
-node src/index --version
+node src/index.js -v
+node src/index.js --version
 ```
 
 -   [x] 支持指定参数 如 `robot` 默认是 1，命令：`yarn run upload --robot 2`
@@ -93,6 +93,7 @@ yarn install
 
 -   [x] 使用 `ES Module` 开发
 -   [ ] 引入 `TS`
+-   [ ] 加入测试
 -   [ ] 支持可视化操作
 
 ## 写文章
