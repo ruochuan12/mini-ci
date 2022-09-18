@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import main from './utils/main';
 import { getParams } from './utils/getParams';
 import { getDesc } from './utils/getDesc';

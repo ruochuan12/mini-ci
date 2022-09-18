@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 'use strict';
 
 const omits = require('omit.js');
@@ -383,7 +382,7 @@ const getVersion = (packageJsonPath) => {
   return version;
 };
 
-const version$1 = "0.9.1";
+const version$1 = "0.10.1";
 
 const getVersionInfo = (show) => {
   if (show) {

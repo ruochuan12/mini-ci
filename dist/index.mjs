@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import omits from 'omit.js';
 import ci from 'miniprogram-ci';
 import { bold, green, red } from 'kolorist';
@@ -370,7 +369,7 @@ const getVersion = (packageJsonPath) => {
   return version;
 };
 
-const version$1 = "0.9.1";
+const version$1 = "0.10.1";
 
 const getVersionInfo = (show) => {
   if (show) {
