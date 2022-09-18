@@ -1,0 +1,10 @@
+node_modules
+.DS_Store
+key/private.wxdd3948dc1c7f95c2.key
+.vscode
+images
+config
+packages
+pnpm-lock.yaml
+pnpm-workspace.yaml
+.husky
