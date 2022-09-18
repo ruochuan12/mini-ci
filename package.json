@@ -3,6 +3,15 @@
   "version": "0.9.1",
   "main": "src/index.js",
   "type": "module",
+  "keywords": [
+    "nodejs",
+    "node",
+    "miniprogram-ci",
+    "miniprogram",
+    "ci",
+    "cli",
+    "mp-cli"
+  ],
   "bin": {
     "mp-cli": "src/index.js",
     "rmc": "src/index.js",
