@@ -19,6 +19,7 @@ const {
 } = getParams();
 
 const init = async () => {
+	process.title = '@ruochuan/mp-cli，作者@若川';
 	if (version || help) {
 		getVersionInfo(version);
 		getHelpInfo(help);
