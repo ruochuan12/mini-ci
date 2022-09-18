@@ -6,7 +6,8 @@
     "commitMessage": "release: v${version}"
   },
   "npm": {
-    "publish": true
+    "publish": true,
+    "access": "public"
   },
   "hooks": {
     "after:bump": "echo 更新版本成功"
