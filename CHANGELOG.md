@@ -1,5 +1,12 @@
 
 
+# [0.10.0](https://github.com/lxchuan12/mp-cli/compare/0.9.1...0.10.0) (2022-09-18)
+
+
+### Features
+
+* 🎸 修改为 ts，引入 unbuild、esno 等优化、打包构建 ([6d451db](https://github.com/lxchuan12/mp-cli/commit/6d451dbcdae603f4fe819e854285f7734b7d32d5))
+
 ## [0.9.1](https://github.com/lxchuan12/mp-cli/compare/0.9.0...0.9.1) (2022-09-18)
 
 # [0.9.0](https://github.com/lxchuan12/mp-cli/compare/0.8.0...0.9.0) (2022-09-18)
