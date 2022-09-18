@@ -1,5 +1,7 @@
 
 
+## [0.9.1](https://github.com/lxchuan12/mp-cli/compare/0.9.0...0.9.1) (2022-09-18)
+
 # [0.9.0](https://github.com/lxchuan12/mp-cli/compare/0.8.0...0.9.0) (2022-09-18)
 
 
