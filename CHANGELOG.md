@@ -1,5 +1,17 @@
 
 
+# [0.9.0](https://github.com/lxchuan12/mp-cli/compare/0.8.0...0.9.0) (2022-09-18)
+
+
+### Features
+
+* 🎸 支持 commonjs 中的 wx.config.js，临时创建 wx.config.mjs 读取 ([3490f3e](https://github.com/lxchuan12/mp-cli/commit/3490f3e432d686a1fdaebbce56be21be5405d546))
+
+
+### Reverts
+
+* Revert "chore: 🤖 添加 npm.access public" ([bf92fcc](https://github.com/lxchuan12/mp-cli/commit/bf92fcc0a65e6ba9434f26b986edb951b8139cce))
+
 # [0.8.0](https://github.com/lxchuan12/mp-cli/compare/0.7.0...0.8.0) (2022-08-07)
 
 
