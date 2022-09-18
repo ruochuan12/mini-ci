@@ -2,7 +2,7 @@ import omits from 'omit.js';
 import ci from 'miniprogram-ci';
 import { green, bold } from 'kolorist';
 import { loadJsonFileSync } from 'load-json-file';
-import { isObject } from './isObject.js';
+import { isObject } from './isObject';
 
 const omit = omits.default;
 // console.log('omit', omits.default);

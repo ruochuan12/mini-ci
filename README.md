@@ -103,8 +103,8 @@ git checkout feature/release-it
 ## TODOs
 
 -   [x] 使用 `ES Module` 开发
+-   [x] 初步引入 `TS`
 -   [ ] 校验 nodejs 版本
--   [ ] 引入 `TS`
 -   [ ] 加入测试
 -   [ ] 支持可视化操作
 

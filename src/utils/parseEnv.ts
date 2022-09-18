@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 import { pathToFileURL } from 'node:url';
 import { cwd } from 'node:process';
 // import { loadJsonFileSync } from 'load-json-file';
-import { isObject } from './isObject.js';
-import { DEFAULT_CONFIG_FILES } from '../const/index.js';
+import { isObject } from './isObject';
+import { DEFAULT_CONFIG_FILES } from '../const/index';
 
 const cwdPath = cwd();
 
@@ -91,9 +91,12 @@ const loadWxconfig = async (cwd) => {
 		const res = await import(fileUrl);
 		return res.default;
 	} catch (e) {
-		console.log(`加载 ${resolvedPath} 失败，将使用 .env 中的配置`, e);
+		console.log(
+			`加载 ${resolvedPath || 'wx.config.js'} 失败，将使用 .env 中的配置`,
+			e,
+		);
 		return {
-			error: `未配置 ${resolvedPath} 文件`,
+			error: `未配置 ${resolvedPath || 'wx.config.js'} 文件`,
 		};
 	} finally {
 		try {

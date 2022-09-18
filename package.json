@@ -1,7 +1,6 @@
 {
   "name": "@ruochuan/mp-cli",
   "version": "0.9.1",
-  "main": "src/index.js",
   "type": "module",
   "keywords": [
     "nodejs",
@@ -12,10 +11,22 @@
     "cli",
     "mp-cli"
   ],
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "bin": {
-    "mp-cli": "src/index.js",
-    "rmc": "src/index.js",
-    "ruochuan-mp-cli": "src/index.js"
+    "mp-cli": "dist/index.mjs",
+    "rmc": "dist/index.mjs",
+    "ruochuan-mp-cli": "dist/index.mjs"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
@@ -24,14 +35,16 @@
   "license": "MIT",
   "scripts": {
     "test": "echo test",
-    "lint": "eslint --cache --fix --ext .js",
-    "ci": "node src/index.js",
+    "lint": "eslint --cache --fix --ext .ts",
+    "ci": "esno src/index.ts",
     "upload": "npm run ci -- --upload",
     "preview": "npm run ci -- --preview",
     "release": "release-it",
     "prepare": "husky install",
     "preinstall": "npx only-allow yarn",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "build": "unbuild",
+    "stub": "unbuild --stub"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.0.0",
@@ -40,11 +53,13 @@
     "@types/prettier": "^2.6.3",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
+    "esno": "^0.16.3",
     "git-cz": "^4.9.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "release-it": "^15.1.1"
+    "release-it": "^15.1.1",
+    "unbuild": "^0.8.11"
   },
   "husky": {
     "hooks": {

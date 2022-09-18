@@ -1,15 +1,16 @@
 // import pkg from '../../package.json' assert { type: 'json' };
-import { loadJsonFileSync } from 'load-json-file';
-import path from 'node:path';
+import { version } from '../../package.json';
 
-export const getVersionInfo = (show) => {
+// import { loadJsonFileSync } from 'load-json-file';
+
+export const getVersionInfo = (show: boolean) => {
 	if (show) {
-		let { version } = loadJsonFileSync(path.resolve('package.json'));
+		// let { version } = loadJsonFileSync('./package.json');
 		return console.log('@ruochuan/mp-cli, v' + version);
 	}
 };
 
-export const getHelpInfo = (show) => {
+export const getHelpInfo = (show: boolean) => {
 	if (show) {
 		let msg = '';
 		msg += '\n  Usage';

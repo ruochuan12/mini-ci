@@ -1,5 +1,5 @@
-import { getConfig } from './getConfig.js';
-import parseEnv from './parseEnv.js';
+import { getConfig } from './getConfig';
+import { parseEnv } from './parseEnv';
 
 (async () => {
 	const { configPath } = await parseEnv();

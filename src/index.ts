@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-import main from './utils/main.js';
-import { getParams } from './utils/getParams.js';
-import { getDesc } from './utils/getDesc.js';
-import { parseEnv, formatConfig } from './utils/parseEnv.js';
-import { getConfig } from './utils/getConfig.js';
-import { getVersion } from './utils/getVersion.js';
-import { getHelpInfo, getVersionInfo } from './utils/getInfo.js';
+import main from './utils/main';
+import { getParams } from './utils/getParams';
+import { getDesc } from './utils/getDesc';
+import { parseEnv, formatConfig } from './utils/parseEnv';
+import { getConfig } from './utils/getConfig';
+import { getVersion } from './utils/getVersion';
+import { getHelpInfo, getVersionInfo } from './utils/getInfo';
 
 const {
 	robot,
@@ -36,7 +36,9 @@ const init = async () => {
 			useSelect,
 			useMultiSelect,
 		});
-		mpConfigList = configResult.map((el) => formatConfig(el));
+		mpConfigList = !Array.isArray(configResult)
+			? []
+			: configResult.map((el) => formatConfig(el));
 	}
 	for (const mpConfigItem of mpConfigList) {
 		const {
