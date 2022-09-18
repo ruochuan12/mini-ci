@@ -4,7 +4,9 @@
   "main": "src/index.js",
   "type": "module",
   "bin": {
-    "mp-cli": "src/index.js"
+    "mp-cli": "src/index.js",
+    "rmc": "src/index.js",
+    "ruochuan-mp-cli": "src/index.js"
   },
   "engines": {
     "node": "^14.18.0 || >=16.0.0"
