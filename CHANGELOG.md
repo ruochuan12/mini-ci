@@ -1,5 +1,12 @@
 
 
+## [0.10.1](https://github.com/lxchuan12/mp-cli/compare/0.10.0...0.10.1) (2022-09-19)
+
+
+### Bug Fixes
+
+* 🐛 修复 mp-cli not find 和目录调整等 ([36412b0](https://github.com/lxchuan12/mp-cli/commit/36412b0ca06d80bdc2be21d2463e2980fed9baa1))
+
 # [0.10.0](https://github.com/lxchuan12/mp-cli/compare/0.9.1...0.10.0) (2022-09-18)
 
 
