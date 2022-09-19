@@ -22,18 +22,19 @@
   },
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "bin": {
     "mp-cli": "bin/mp-cli.mjs",
     "rmc": "bin/mp-cli.mjs",
     "ruochuan-mp-cli": "bin/mp-cli.mjs"
   },
-  "engines": {
+  "//engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
   "repository": "https://github.com/lxchuan12/mp-cli.git",
   "license": "MIT",
   "scripts": {
+    "prepublishOnly": "npm run build",
     "test": "echo test",
     "lint": "eslint --cache --fix --ext .ts",
     "ci": "esno src/index.ts",
@@ -41,7 +42,7 @@
     "preview": "npm run ci -- --preview",
     "release": "release-it",
     "prepare": "husky install",
-    "preinstall": "npx only-allow yarn",
+    "//preinstall": "npx only-allow yarn",
     "commit": "git-cz",
     "build": "unbuild",
     "stub": "unbuild --stub"
