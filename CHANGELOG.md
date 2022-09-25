@@ -1,5 +1,14 @@
 
 
+## [0.10.3](https://github.com/lxchuan12/mp-cli/compare/0.10.2...0.10.3) (2022-09-25)
+
+
+### Bug Fixes
+
+* 🐛 修复 project.config.json setting 自动获取不对的问题 ([158074a](https://github.com/lxchuan12/mp-cli/commit/158074a131facd4dc6662851accb6ad1303046d3))
+* 🐛 修复 wx.config.js 不存在，则获取 .env 配置问题 ([c13189d](https://github.com/lxchuan12/mp-cli/commit/c13189dca9d809d5cfc11a82b3b64e5997419923))
+* 🐛 移除 parse-git-config 改用 git config user.name 修复路径不对获取不到问题 ([129d911](https://github.com/lxchuan12/mp-cli/commit/129d911945b2bd9f24d1c08af4fee7d1b02b0b72))
+
 ## [0.10.2](https://github.com/lxchuan12/mp-cli/compare/0.10.1...0.10.2) (2022-09-19)
 
 ## [0.10.1](https://github.com/lxchuan12/mp-cli/compare/0.10.0...0.10.1) (2022-09-19)
