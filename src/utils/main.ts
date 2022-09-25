@@ -8,9 +8,9 @@ const omit = omits.default;
 // console.log('omit', omits.default);
 
 // 获取配置
-const getLastOptions = (val) => (isObject(val) ? val : {});
+const getLastOptions = (val: any) => (isObject(val) ? val : {});
 
-const step = (msg) => console.log(bold(green(`[step] ${msg}`)));
+const step = (msg: string) => console.log(bold(green(`[step] ${msg}`)));
 
 async function main(options = {}) {
 	const {
@@ -55,7 +55,7 @@ async function main(options = {}) {
 	);
 
 	const project = new ci.Project(lastProjectOptions);
-	const setting = loadJsonFileSync(`${projectPath}/project.config.json`);
+	const { setting } = loadJsonFileSync(`${projectPath}/project.config.json`);
 
 	const commonConfig = {
 		version,
