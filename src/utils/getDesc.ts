@@ -1,5 +1,4 @@
 import { execSync } from 'node:child_process';
-import parseGitConfig from 'parse-git-config';
 
 export const getDesc = (projectPath, version) => {
 	// 获取最新 git 记录 7位的 commit hash
@@ -18,15 +17,13 @@ export const getDesc = (projectPath, version) => {
 	// 获取项目的git仓库的 user.name
 	let userName = '默认';
 	try {
-		const {
-			user: { name = '默认' },
-		} = parseGitConfig.sync({
+		userName = execSync('git config user.name', {
 			cwd: projectPath,
-			path: '.git/config',
-		});
-		userName = name;
+		})
+			.toString()
+			.trim();
 	} catch (e) {
-		console.warn('获取 .git/config user.name 失败');
+		console.warn('git config user.name 获取失败');
 		console.warn(e);
 	}
 
