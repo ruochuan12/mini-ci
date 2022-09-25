@@ -3,13 +3,13 @@
   "version": "0.10.2",
   "type": "module",
   "keywords": [
-    "nodejs",
-    "node",
     "miniprogram-ci",
     "miniprogram",
-    "ci",
     "cli",
-    "mp-cli"
+    "ci",
+    "mp-cli",
+    "node",
+    "nodejs"
   ],
   "files": [
     "dist"
@@ -74,16 +74,13 @@
   "dependencies": {
     "@types/load-json-file": "^5.1.0",
     "@types/minimist": "^1.2.2",
-    "@types/node": "^18.0.3",
-    "@types/parse-git-config": "^3.0.1",
     "dotenv": "^16.0.1",
     "enquirer": "^2.3.6",
     "kolorist": "^1.5.1",
     "load-json-file": "^7.0.1",
     "minimist": "^1.2.6",
     "miniprogram-ci": "^1.8.25",
-    "omit.js": "^2.0.2",
-    "parse-git-config": "^3.0.0"
+    "omit.js": "^2.0.2"
   },
   "publishConfig": {
     "access": "public"
