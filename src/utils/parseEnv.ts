@@ -63,9 +63,9 @@ const formatConfig = (options) => {
 	};
 };
 
-const loadWxconfig = async (cwd) => {
+const loadWxconfig = async (cwd: string) => {
 	// 判断路径
-	let resolvedPath;
+	let resolvedPath: string = '';
 	for (const filename of DEFAULT_CONFIG_FILES) {
 		const filePath = path.join(cwd, filename);
 		if (!fs.existsSync(filePath)) continue;
@@ -73,9 +73,16 @@ const loadWxconfig = async (cwd) => {
 		resolvedPath = filePath;
 		break;
 	}
-	let fileNameTmp;
+
+	if (!resolvedPath) {
+		return {
+			error: '未配置 wx.config.js 文件',
+		};
+	}
+	let fileNameTmp: string = '';
 	try {
 		let fileUrl = resolvedPath;
+		// 统一用 esm 处理
 		// 不是 mjs 结尾，生成临时的 mjs 来读取，读取完后删除
 		if (!/\.mjs$/.test(resolvedPath)) {
 			const fileBase = `${resolvedPath}.timestamp-${Date.now()}`;
@@ -84,19 +91,13 @@ const loadWxconfig = async (cwd) => {
 			const code = fs.readFileSync(resolvedPath, 'utf8');
 			fs.writeFileSync(fileNameTmp, code, 'utf8');
 		}
-		// 统一用 esm 处理
-		// 不是 esm 路径重命名 mjs
-		// fs.renameSync(resolvedPath, resolvedPath)
 
 		const res = await import(fileUrl);
 		return res.default;
 	} catch (e) {
-		console.log(
-			`加载 ${resolvedPath || 'wx.config.js'} 失败，将使用 .env 中的配置`,
-			e,
-		);
+		console.log('加载 wx.config.js 失败，将使用 .env 中的配置', e);
 		return {
-			error: `未配置 ${resolvedPath || 'wx.config.js'} 文件`,
+			error: '未配置 wx.config.js 文件',
 		};
 	} finally {
 		try {
@@ -110,9 +111,7 @@ const loadWxconfig = async (cwd) => {
 const parseEnv = async () => {
 	let parsed = {};
 	let wxconfig = await loadWxconfig(cwdPath);
-	if (!isObject(wxconfig)) {
-		throw new Error(`wx.config 必须导出一个对象`);
-	}
+
 	if (wxconfig.error) {
 		let dotenvResult = dotenv.config({
 			path: path.resolve(cwdPath, './.env'),
@@ -120,10 +119,13 @@ const parseEnv = async () => {
 
 		parsed = dotenvResult.parsed;
 		if (dotenvResult.error) {
-			throw error;
+			throw dotenvResult.error;
 		}
 	} else {
 		parsed = wxconfig;
+	}
+	if (!isObject(parsed)) {
+		throw new Error(`配置必须导出一个对象`);
 	}
 
 	let {
