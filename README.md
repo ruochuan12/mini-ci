@@ -1,13 +1,13 @@
 # mp-cli
 
+基于微信小程序 `miniprogram-ci` 开发的上传小程序的自动化工具
+
 ![npm version](https://img.shields.io/npm/v/@ruochuan/mp-cli)
 ![npm download](https://img.shields.io/npm/dm/mp-cli)
 ![github forks](https://img.shields.io/github/forks/lxchuan12/mp-cli?style=social)
 ![github stars](https://img.shields.io/github/stars/lxchuan12/mp-cli?style=social)
 ![github watchers](https://img.shields.io/github/watchers/lxchuan12/mp-cli?style=social)
 ![github license](https://img.shields.io/github/license/lxchuan12/mp-cli)
-
-> 基于微信小程序 `miniprogram-ci` 开发的上传小程序的自动化工具
 
 [miniprogram-ci 官方文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
@@ -30,7 +30,14 @@
 ## 使用及功能列表
 
 ```bash
+# 推荐不全局安装
+npx @ruochuan/mp-cli -h
+
+# 或者全局安装
 npm i @ruochuan/mp-cli -g
+# 安装到项目中
+# npm i @ruochuan/mp-cli -D
+
 # 查看帮助
 mp-cli -h
 mp-cli --help
@@ -42,8 +49,6 @@ mp-cli --version
 # 或者别名 ruochuan-mp-cli 、rmc
 ruochuan-mp-cli --help
 rmc --help
-
-# 或者不全局安装 npx @ruochuan/mp-cli --help
 ```
 
 -   [x] 支持上传 `mp-cli --upload`
