@@ -1,6 +1,6 @@
 # mini-ci
 
-基于微信小程序 `miniprogram-ci` 开发的上传小程序的自动化工具
+基于微信小程序 [`miniprogram-ci`](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html) 开发的**更快速、更方便且支持多选等功能**的小程序上传、预览自动化工具
 
 ![npm version](https://img.shields.io/npm/v/@ruochuan/mini-ci)
 ![npm download](https://img.shields.io/npm/dm/mini-ci)
