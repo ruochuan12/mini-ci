@@ -1,13 +1,22 @@
 import fs from 'node:fs';
 import enquirer from 'enquirer';
-import { loadJsonFileSync } from 'load-json-file';
+import logger from './logger';
+import { InlineConfig, UserConfig } from './types';
+import { readJSON } from './utils';
+import { resolveFileConfig } from './config';
 
-export const getConfig = async (options = {}) => {
-	let { configPath, useSelect = true, useMultiSelect = false } = options;
+interface SelectOptions {
+	configPath: string;
+	useSelect?: InlineConfig['useSelect'];
+	useMultiSelect?: InlineConfig['useMultiSelect'];
+}
 
-	console.log('根据单选或者多选选择小程序参数', options);
+export const select = async (options: SelectOptions = {}) => {
+	let { configPath, useSelect = false, useMultiSelect = false } = options;
 
-	let configPathList = [];
+	logger.log('根据单选或者多选选择小程序参数', options);
+
+	let configPathList: string[] = [];
 	if (useSelect || useMultiSelect) {
 		try {
 			configPathList = fs.readdirSync(configPath);
@@ -29,14 +38,14 @@ export const getConfig = async (options = {}) => {
 
 	const { prompt, MultiSelect } = enquirer;
 
-	// console.log(configPathList, 'configPathList');
-	const configPathListJson = configPathList.map((el) => {
-		return loadJsonFileSync(`${configPath}/${el}`);
+	// logger.log(configPathList, 'configPathList');
+	const configPathListJson: string[] = configPathList.map((el) => {
+		return resolveFileConfig(`${configPath}/${el}`);
 	});
 
-	// console.log('configPathListJson', configPathListJson);
+	// logger.log('configPathListJson', configPathListJson);
 
-	let result = [];
+	let result: UserConfig[] = [];
 
 	if (useSelect) {
 		const { name } = await prompt({
@@ -59,25 +68,27 @@ export const getConfig = async (options = {}) => {
 
 		try {
 			const answer = await multiSelectPrompt.run();
-			console.log('Answer:', answer);
+			logger.log('Answer:', answer);
 			result = configPathListJson.filter((el) =>
 				answer.includes(el.name),
 			);
 			return result;
 		} catch (err) {
-			console.log('您已经取消');
-			console.log(err);
+			logger.log('您已经取消');
+			logger.log(err);
 			process.exit(1);
 		}
 	}
 
-	const { yes } = await prompt({
-		type: 'confirm',
-		name: 'yes',
-		message: `确认选择这(几)个小程序？`,
-	});
+	return result;
 
-	if (!yes) {
-		return;
-	}
+	// const { yes } = await prompt({
+	// 	type: 'confirm',
+	// 	name: 'yes',
+	// 	message: `确认选择这(几)个小程序？`,
+	// });
+
+	// if (!yes) {
+	// 	return;
+	// }
 };

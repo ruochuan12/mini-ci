@@ -7,6 +7,7 @@ specifiers:
   '@types/load-json-file': ^5.1.0
   '@types/minimist': ^1.2.2
   '@types/prettier': ^2.6.3
+  cac: ^6.7.14
   dotenv: ^16.0.1
   enquirer: ^2.3.6
   eslint: ^8.19.0
@@ -16,10 +17,7 @@ specifiers:
   husky: ^8.0.1
   kolorist: ^1.5.1
   lint-staged: ^13.0.3
-  load-json-file: ^7.0.1
-  minimist: ^1.2.6
   miniprogram-ci: ^1.8.25
-  omit.js: ^2.0.2
   prettier: ^2.7.1
   release-it: ^15.1.1
   unbuild: ^0.8.11
@@ -27,13 +25,11 @@ specifiers:
 dependencies:
   '@types/load-json-file': 5.1.0
   '@types/minimist': 1.2.2
+  cac: 6.7.14
   dotenv: 16.0.2
   enquirer: 2.3.6
   kolorist: 1.6.0
-  load-json-file: 7.0.1
-  minimist: 1.2.6
   miniprogram-ci: 1.8.35
-  omit.js: 2.0.2
 
 devDependencies:
   '@release-it/conventional-changelog': 5.1.0_release-it@15.4.2
@@ -3281,6 +3277,11 @@ packages:
     resolution: {integrity: sha512-/Nf7TyzTx6S3yRJObOAV7956r8cr2+Oj8AC5dt8wSP3BQAoeX58NoHyCU8P8zGkNXStjTSi6fzO6F0pBdcYbEg==}
     engines: {node: '>= 0.8'}
     dev: true
+
+  /cac/6.7.14:
+    resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
+    engines: {node: '>=8'}
+    dev: false
 
   /cacheable-lookup/6.1.0:
     resolution: {integrity: sha512-KJ/Dmo1lDDhmW2XDPMo+9oiy/CeqosPguPCrgcVzKyZrL6pM1gU2GmPY/xo6OQPTUaA/c0kwHuywB4E6nmT9ww==}
@@ -6847,10 +6848,6 @@ packages:
 
   /omggif/1.0.10:
     resolution: {integrity: sha512-LMJTtvgc/nugXj0Vcrrs68Mn2D1r0zf630VNtqtpI1FEO7e+O9FP4gqs9AcnBaSEeoHIPm28u6qgPR0oyEpGSw==}
-    dev: false
-
-  /omit.js/2.0.2:
-    resolution: {integrity: sha512-hJmu9D+bNB40YpL9jYebQl4lsTW6yEHRTroJzNLqQJYHm7c+NQnJGfZmIWh8S3q3KoaxV1aLhV6B3+0N0/kyJg==}
     dev: false
 
   /once/1.4.0:

@@ -5,10 +5,10 @@ export default {
 	appid: 'wxdd3948dc1c7f95c2',
 	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
 	// # 多个小程序配置的路径
-	configPath: './config',
+	configPath: './miniConfigList',
 	// # 版本描述可选，默认会读取版本号和git commit hash 和作者
 	// # 如：v1.0.0 - 4c29ae8 - by@若川
-	desc: '版本描述可选',
+	// desc: '版本描述可选',
 	// # 版本号可选，默认读取 package.json 中的 version
 	// version: '1.0.0',
 	// 参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html

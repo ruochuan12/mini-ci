@@ -1,13 +1,13 @@
 {
-  "name": "@ruochuan/mp-cli",
+  "name": "@ruochuan/mini-ci",
   "version": "0.10.3",
   "type": "module",
   "keywords": [
     "miniprogram-ci",
     "miniprogram",
-    "cli",
     "ci",
-    "mp-cli",
+    "cli",
+    "mini-ci",
     "node",
     "nodejs"
   ],
@@ -24,25 +24,26 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
-    "mp-cli": "bin/mp-cli.mjs",
-    "rmc": "bin/mp-cli.mjs",
-    "ruochuan-mp-cli": "bin/mp-cli.mjs"
+    "mini-ci": "bin/mini-ci.mjs",
+    "rmc": "bin/mini-ci.mjs",
+    "ruochuan-mini-ci": "bin/mini-ci.mjs",
+    "mp-cli": "bin/mini-ci.mjs"
   },
   "//engines": {
     "node": "^14.18.0 || >=16.0.0"
   },
-  "repository": "https://github.com/lxchuan12/mp-cli.git",
+  "repository": "https://github.com/lxchuan12/mini-ci.git",
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
     "test": "echo test",
     "lint": "eslint --cache --fix --ext .ts",
-    "ci": "esno src/index.ts",
-    "upload": "npm run ci -- --upload",
-    "preview": "npm run ci -- --preview",
+    "ci": "esno src/cli.ts",
+    "upload": "npm run ci -- upload",
+    "preview": "npm run ci -- preview",
     "release": "release-it",
     "prepare": "husky install",
-    "//preinstall": "npx only-allow yarn",
+    "//preinstall": "npx only-allow pnpm",
     "commit": "git-cz",
     "build": "unbuild",
     "stub": "unbuild --stub"
@@ -72,15 +73,11 @@
     "*.{js, ts, json}": "prettier --write"
   },
   "dependencies": {
-    "@types/load-json-file": "^5.1.0",
-    "@types/minimist": "^1.2.2",
+    "cac": "^6.7.14",
     "dotenv": "^16.0.1",
     "enquirer": "^2.3.6",
     "kolorist": "^1.5.1",
-    "load-json-file": "^7.0.1",
-    "minimist": "^1.2.6",
-    "miniprogram-ci": "^1.8.25",
-    "omit.js": "^2.0.2"
+    "miniprogram-ci": "^1.8.25"
   },
   "publishConfig": {
     "access": "public"

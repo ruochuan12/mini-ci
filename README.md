@@ -1,13 +1,13 @@
-# mp-cli
+# mini-ci
 
 基于微信小程序 `miniprogram-ci` 开发的上传小程序的自动化工具
 
-![npm version](https://img.shields.io/npm/v/@ruochuan/mp-cli)
-![npm download](https://img.shields.io/npm/dm/mp-cli)
-![github forks](https://img.shields.io/github/forks/lxchuan12/mp-cli?style=social)
-![github stars](https://img.shields.io/github/stars/lxchuan12/mp-cli?style=social)
-![github watchers](https://img.shields.io/github/watchers/lxchuan12/mp-cli?style=social)
-![github license](https://img.shields.io/github/license/lxchuan12/mp-cli)
+![npm version](https://img.shields.io/npm/v/@ruochuan/mini-ci)
+![npm download](https://img.shields.io/npm/dm/mini-ci)
+![github forks](https://img.shields.io/github/forks/lxchuan12/mini-ci?style=social)
+![github stars](https://img.shields.io/github/stars/lxchuan12/mini-ci?style=social)
+![github watchers](https://img.shields.io/github/watchers/lxchuan12/mini-ci?style=social)
+![github license](https://img.shields.io/github/license/lxchuan12/mini-ci)
 
 [miniprogram-ci 官方文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
@@ -30,35 +30,41 @@
 ## 使用及功能列表
 
 ```bash
-# 推荐不全局安装
-npx @ruochuan/mp-cli -h
+# 全局安装
+npm i @ruochuan/mini-ci -g
+# 或者安装到项目中
+# npm i @ruochuan/mini-ci -D
 
-# 或者全局安装
-npm i @ruochuan/mp-cli -g
-# 安装到项目中
-# npm i @ruochuan/mp-cli -D
+# 首次使用时，可以先在小程序项目中，快速初始化配置项
+mini-ci init
+会把 `src/miniConfig`(https://github.com/lxchuan12/mini-ci/tree/main/src/miniConfig) 的配置拷贝生成到当前小程序项目中。
 
 # 查看帮助
-mp-cli -h
-mp-cli --help
+mini-ci -h
+mini-ci --help
 
 # 查看版本号
-mp-cli -v
-mp-cli --version
+mini-ci -v
+mini-ci --version
 
-# 或者别名 ruochuan-mp-cli 、rmc
-ruochuan-mp-cli --help
+# 或者别名 ruochuan-mini-ci 、rmc
+ruochuan-mini-ci --help
 rmc --help
+
+# 或者不全局安装
+npx @ruochuan/mini-ci -h
+# 注意版本，版本不同功能也不同
 ```
 
--   [x] 支持上传 `mp-cli --upload`
--   [x] 支持预览 `mp-cli --preview`
--   [x] 支持指定参数 如 `robot` 默认是 1，命令：`mp-cli --upload --robot 2`
--   [x] 支持空跑，不执行 `mp-cli --upload --dry`
+-   [x] 支持快速初始化配置 `mini-ci init`
+-   [x] 支持上传 `mini-ci upload`
+-   [x] 支持预览 `mini-ci preview`
+-   [x] 支持指定参数 如 `robot` 默认是 1，命令：`mini-ci upload --robot 2`
+-   [x] 支持空跑，不执行 `mini-ci upload --dry`
 -   [x] 支持指定 `git commit hash` 和作者
--   [x] 支持单选多个小程序 `mp-cli --upload --useSelect`
--   [x] 支持选择多个批量上传 `mp-cli --upload --useMultiSelect`
--   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 `wx.config.js` 配置
+-   [x] 支持单选多个小程序 `mini-ci upload --useSelect`
+-   [x] 支持选择多个批量上传 `mini-ci upload --useMultiSelect`
+-   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/mini.config.js) 配置
 
 ```bash
 参数可以相互结合。
@@ -68,11 +74,11 @@ rmc --help
 --useMultiSelect 多选批量上传
 ```
 
-## 使用前需先配置 `wx.config.js` 配置（更推荐）
+## 使用前需先配置 `mini.config.js` 配置（更推荐）
 
-在当前小程序项目的目录下配置 `wx.config.js`，这个优先于 `.env`
+在当前小程序项目的目录下配置 `mini.config.js`，这个优先于 `.env`
 
-参考[当前项目中的 `wx.config.js`](https://github.com/lxchuan12/mp-cli/blob/main/wx.config.js)
+参考[当前项目中的 `mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/mini.config.js)
 
 按照[微信小程序文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)配置小程序密钥等，这样就能上传和预览了。如果没有微信小程序，可以自行免费开通个人的[微信小程序](https://mp.weixin.qq.com/)。
 
@@ -80,20 +86,20 @@ rmc --help
 
 在当前小程序项目的目录下配置 `.env`
 
-参考[当前项目中的 `.env`](https://github.com/lxchuan12/mp-cli/blob/main/.env)
+参考[当前项目中的 `.env`](https://github.com/lxchuan12/mini-ci/blob/main/.env)
 
 ## `configPath` `json` 配置
 
 如果需要多选时，需配置 `configPath`。
 
-参考 [当前项目中的 `config/example.json`](https://github.com/lxchuan12/mp-cli/blob/main/config/example.json)
+参考 [当前项目中的 `config/example.json`](https://github.com/lxchuan12/mini-ci/blob/main/config/example.json)
 
 ## 可自行开发
 
 ```bash
-# 克隆我写的 mp-cli 工具
-git clone https://github.com/lxchuan12/mp-cli.git
-cd mp-cli
+# 克隆我写的 mini-ci 工具
+git clone https://github.com/lxchuan12/mini-ci.git
+cd mini-ci
 yarn install
 # 没有自己的小程序可以克隆腾讯开源的电商小程序
 git clone https://github.com/lxchuan12/tdesign-miniprogram-starter-retail.git
@@ -120,4 +126,4 @@ git checkout feature/release-it
 
 [听说你还在用开发者工具上传小程序，我从尤雨溪那学会了基于 miniprogram-ci 开发脚手架工具，提效摸鱼](https://juejin.cn/post/7124467547163852808)
 
-**注意**：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mp-cli/tree/0.7.0) 撰写。后续 `mp-cli` 会持续更新，文章可能不会更新。
+**注意**：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mini-ci/tree/0.7.0) 撰写。后续 `mini-ci` 会持续更新，文章可能不会更新。
