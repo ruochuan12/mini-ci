@@ -12,7 +12,8 @@
     "nodejs"
   ],
   "files": [
-    "dist"
+    "dist",
+    "src/miniConfig/**"
   ],
   "exports": {
     ".": {
