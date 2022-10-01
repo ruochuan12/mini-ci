@@ -37,7 +37,7 @@ npm i @ruochuan/mini-ci -g
 
 # 首次使用时，可以先在小程序项目中，快速初始化配置项
 mini-ci init
-会把 `src/miniConfig`(https://github.com/lxchuan12/mini-ci/tree/main/src/miniConfig) 的配置拷贝生成到当前小程序项目中。
+会把 [`src/miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/src/miniConfig) 的配置拷贝生成到当前小程序项目中。
 
 # 查看帮助
 mini-ci -h
@@ -88,11 +88,11 @@ npx @ruochuan/mini-ci -h
 
 参考[当前项目中的 `.env`](https://github.com/lxchuan12/mini-ci/blob/main/.env)
 
-## `configPath` `json` 配置
+## `configPath` 配置
 
-如果需要多选时，需配置 `configPath`。
+如果需要单选或者多选时，需配置 `configPath`。
 
-参考 [当前项目中的 `config/example.json`](https://github.com/lxchuan12/mini-ci/blob/main/config/example.json)
+参考 [当前项目中的 `miniConfigList/example.js`](https://github.com/lxchuan12/mini-ci/blob/main/miniConfigList/example.js)
 
 ## 可自行开发
 
