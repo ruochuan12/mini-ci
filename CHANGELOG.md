@@ -1,5 +1,13 @@
 
 
+# [0.11.0](https://github.com/lxchuan12/mini-ci/compare/0.10.3...0.11.0) (2022-10-02)
+
+
+### Features
+
+* 🎸 使用 cac 等重构优化，更名 mini-ci ([f80a62a](https://github.com/lxchuan12/mini-ci/commit/f80a62a4b329f94f494aa68168e5db91af05f6e2))
+* 🎸 支持快速初始化配置、支持 js 或 json 配置、支持插件、支持上传预览前后替换文件等功能 ([c685203](https://github.com/lxchuan12/mini-ci/commit/c685203dca4fa1fac0181edf5020c9dee6ef4136))
+
 ## [0.10.3](https://github.com/lxchuan12/mp-cli/compare/0.10.2...0.10.3) (2022-09-25)
 
 
