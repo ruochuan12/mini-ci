@@ -4,6 +4,7 @@ import { resolveConfig } from './config';
 import { VERSION } from './const';
 import logger from './logger';
 import { miniCi } from './miniCi';
+import { getSortedPlugins, invokePluginsFns } from './plugins';
 import { InlineConfig } from './types';
 
 const cli = cac('mini-ci');
@@ -24,30 +25,36 @@ const cliCommonOption = (intance: any) => {
 		.option('-m, --useMultiSelect', '需配置 configPath 选择多个配置操作');
 };
 
-cliCommonOption(cli.command('upload [root]', '上传小程序')).action(
-	async (root: string, options: InlineConfig) => {
-		logger.log('上传', root, options);
+const fn = ({ text = '上传', action = 'upload' } = {}) => {
+	const func = async (root: string, options: InlineConfig) => {
 		const configList = await resolveConfig({ root, ...options });
-		for (let item of configList) {
-			logger.log('config', item);
+		for (const config of configList) {
 			if (!options.dry) {
-				miniCi(item).upload();
+				const { pre, normal, post } = getSortedPlugins(config.plugins);
+				try {
+					await invokePluginsFns(pre, config);
+					await invokePluginsFns(normal, config);
+					await miniCi(config)[action]();
+				} catch (e) {
+					logger.error(`小程序${text}失败`, e);
+				} finally {
+					await invokePluginsFns(post, config);
+					logger.log('config', text, root, options, config);
+				}
+			} else {
+				logger.log('config', text, root, options, config);
 			}
 		}
-	},
+	};
+	return func;
+};
+
+cliCommonOption(cli.command('upload [root]', '上传小程序').alias('u')).action(
+	fn({ text: '上传', action: 'upload' }),
 );
 
-cliCommonOption(cli.command('preview [root]', '预览小程序')).action(
-	async (root: string, options: InlineConfig) => {
-		logger.log('预览', root, options);
-		const configList = await resolveConfig({ root, ...options });
-		for (let item of configList) {
-			logger.log('config', item);
-			if (!options.dry) {
-				miniCi(item).preview();
-			}
-		}
-	},
+cliCommonOption(cli.command('preview [root]', '预览小程序').alias('p')).action(
+	fn({ text: '预览', action: 'preview' }),
 );
 
 cli.help(() => {

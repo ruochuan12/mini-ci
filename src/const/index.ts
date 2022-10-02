@@ -16,4 +16,4 @@ export const DEFAULT_CONFIG_FILES = [
 	// 'wx.config.cts',
 ];
 
-export const DEFAULT_CONFIG_PATH = 'src/miniConfig';
+export const DEFAULT_CONFIG_PATH = 'miniConfig';

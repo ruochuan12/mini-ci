@@ -17,7 +17,7 @@ class Logger {
 	}
 
 	error(...args: any[]) {
-		console.error(red('ERROR'), ...args);
+		console.error(red('@ruochuan/mini-ci'), red('ERROR'), ...args);
 	}
 
 	info(...args: any[]) {

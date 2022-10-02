@@ -6,7 +6,8 @@ export { default as copy } from './copy';
 
 export const isObject = (val: any) => typeof val === 'object' && val !== null;
 
-export const readJSON = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
+export const readJSON = (file: fs.PathOrFileDescriptor) =>
+	JSON.parse(fs.readFileSync(file, 'utf8'));
 
 export function slash(p: string): string {
 	return p.replace(/\\/g, '/');
@@ -23,4 +24,13 @@ export const getResolvedRoot = (config: InlineConfig) => {
 	return normalizePath(
 		config.root ? path.resolve(config.root) : process.cwd(),
 	);
+};
+
+// 简单的转数组的函数
+export const arrify = (arr: any) => {
+	if (Array.isArray(arr)) {
+		return arr;
+	} else {
+		return [];
+	}
 };

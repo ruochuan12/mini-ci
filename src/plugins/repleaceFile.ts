@@ -1,7 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { ReplaceRuleItem, ReplaceRules } from '../types';
+import { arrify } from '../utils';
 
-function replace(file, rules) {
+function replace(file: ReplaceRules['file'], rules: ReplaceRules['rules']) {
 	const src = path.resolve(file);
 	let template = fs.readFileSync(src, 'utf8');
 
@@ -9,9 +11,9 @@ function replace(file, rules) {
 		(template, rule) =>
 			template.replace(
 				rule.search,
-				typeof rule.replace === 'string'
-					? rule.replace
-					: rule.replace.bind(global),
+				typeof rule.replace === 'function'
+					? rule.replace()
+					: rule.replace,
 			),
 		template,
 	);
@@ -19,55 +21,21 @@ function replace(file, rules) {
 	fs.writeFileSync(src, template);
 }
 
-export default class Replace {
-	constructor(config) {
-		// this.replaceRules = [];
-		this.getRules(config);
-	}
-	getRules(config) {
-		// production.config
-		const originalConfig =
-			require('../config/customize/production.config.json').config;
-		this.replaceRules = [
-			{
-				file: './dist/build/mp-weixin/common/vendor.js',
-				rules: [
-					{
-						search: originalConfig.appid,
-						replace: config.appid,
-					},
-					{
-						search: originalConfig.url,
-						replace: config.url,
-					},
-				],
-			},
-			{
-				file: './dist/build/mp-weixin/project.config.json',
-				rules: [
-					{
-						search: originalConfig.appid,
-						replace: config.appid,
-					},
-				],
-			},
-		];
-	}
-	modify() {
-		// 修改文件
-		this.replaceRules.forEach((item) => {
-			replace(item.file, item.rules);
-		});
-	}
-	renew() {
-		// 修改文件还原
-		this.replaceRules.forEach((item) => {
-			replace(
-				item.file,
-				item.rules.map((el) => {
-					return { search: el.replace, replace: el.search };
-				}),
-			);
-		});
-	}
-}
+// 修改文件
+export const replaceModify = (replaceRules: ReplaceRules[]) => {
+	arrify(replaceRules).forEach((item: ReplaceRules) => {
+		replace(item.file, item.rules);
+	});
+};
+
+// 修改文件还原
+export const replaceRenew = (replaceRules: ReplaceRules[]) => {
+	arrify(replaceRules).forEach((item: ReplaceRules) => {
+		replace(
+			item.file,
+			item.rules.map((el: ReplaceRuleItem) => {
+				return { search: el.replace, replace: el.search };
+			}),
+		);
+	});
+};

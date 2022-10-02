@@ -1,7 +1,7 @@
 export default {
 	name: '若川视野-小程序1-wx.config.js',
-	projectPath: '../tdesign-miniprogram-starter-retail',
-	packageJsonPath: '../tdesign-miniprogram-starter-retail/package.json',
+	projectPath: '../../../projects/xmall-mini-v2/dist/build/mp-weixin',
+	packageJsonPath: '../../../projects/xmall-mini-v2/package.json',
 	appid: 'wxdd3948dc1c7f95c2',
 	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
 	// # 多个小程序配置的路径
@@ -38,9 +38,8 @@ export default {
 		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
 		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
 	},
-	// 可选配置替换 url 等
+	// 替换 url 等
 	replaceRules: [
-		/**
 		{
 			file: '../../../projects/xmall-mini-v2/dist/build/mp-weixin/common/vendor.js',
 			rules: [
@@ -54,32 +53,14 @@ export default {
 				},
 			],
 		},
-		 */
-	],
-	// 插件机制 可选
-	plugins: [
-		/**
-		{
-			name: '操作前',
-			// 操作前
-			enforce: 'pre',
-			handler: (config) => {
-				console.log('准备操作...', config);
-			},
-		},
-		{
-			name: '操作中',
-			handler: (config) => {
-				console.log('操作中...', config);
-			},
-		},
-		{
-			name: '操作后',
-			enforce: 'post',
-			handler: (config) => {
-				console.log('操作完成...', config);
-			},
-		},
-		 */
+		// {
+		// 	file: './dist/build/mp-weixin/project.config.json',
+		// 	rules: [
+		// 		{
+		// 			search: originalConfig.appid,
+		// 			replace: config.appid,
+		// 		},
+		// 	],
+		// },
 	],
 };

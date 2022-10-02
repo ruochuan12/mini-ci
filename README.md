@@ -37,7 +37,7 @@ npm i @ruochuan/mini-ci -g
 
 # 首次使用时，可以先在小程序项目中，快速初始化配置项
 mini-ci init
-会把 [`src/miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/src/miniConfig) 的配置拷贝生成到当前小程序项目中。
+会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
 
 # 查看帮助
 mini-ci -h
@@ -57,6 +57,7 @@ npx @ruochuan/mini-ci -h
 ```
 
 -   [x] 支持快速初始化配置 `mini-ci init`
+-   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件
 -   [x] 支持上传 `mini-ci upload`
 -   [x] 支持预览 `mini-ci preview`
 -   [x] 支持指定参数 如 `robot` 默认是 1，命令：`mini-ci upload --robot 2`
@@ -74,9 +75,11 @@ npx @ruochuan/mini-ci -h
 --useMultiSelect 多选批量上传
 ```
 
-## 使用前需先配置 `mini.config.js` 配置（更推荐）
+## 首次使用前需先执行 `mini-ci init` 配置 `mini.config.js` 配置（更推荐）
 
-在当前小程序项目的目录下配置 `mini.config.js`，这个优先于 `.env`
+执行 `mini-ci init` 会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
+
+在当前小程序项目（或者新项目）的目录下配置 `mini.config.js`，这个优先于 `.env`
 
 参考[当前项目中的 `mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/mini.config.js)
 
@@ -84,7 +87,7 @@ npx @ruochuan/mini-ci -h
 
 ## 或者配置 `.env`
 
-在当前小程序项目的目录下配置 `.env`
+在当前小程序项目（或者新项目）的目录下配置 `.env`
 
 参考[当前项目中的 `.env`](https://github.com/lxchuan12/mini-ci/blob/main/.env)
 
@@ -96,11 +99,13 @@ npx @ruochuan/mini-ci -h
 
 ## 可自行开发
 
+一般不需要自行开发，欢迎提 `PR`，或者加我微信 `ruochuan12` 交流反馈。
+
 ```bash
 # 克隆我写的 mini-ci 工具
 git clone https://github.com/lxchuan12/mini-ci.git
 cd mini-ci
-yarn install
+pnpm install
 # 没有自己的小程序可以克隆腾讯开源的电商小程序
 git clone https://github.com/lxchuan12/tdesign-miniprogram-starter-retail.git
 # 切到分支 feature/release-it
@@ -115,6 +120,10 @@ git checkout feature/release-it
 
 -   [x] 使用 `ES Module` 开发
 -   [x] 初步引入 `TS`
+-   [x] 支持 init 快速初始化配置
+-   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件
+-   [x] 支持替换功能，比如替换 url 等
+-   [x] 支持插件 plugin
 -   [ ] cwd
 -   [ ] 校验 nodejs 版本
 -   [ ] 加入测试

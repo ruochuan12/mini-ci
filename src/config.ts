@@ -1,6 +1,6 @@
 import path from 'node:path';
 import fs from 'node:fs';
-import { execSync } from 'node:child_process';
+import { execaCommandSync } from 'execa';
 import { pathToFileURL } from 'node:url';
 
 import { getResolvedRoot, isObject, readJSON } from './utils/index';
@@ -12,12 +12,12 @@ import { InlineConfig, UserConfig } from './types';
 
 // 获取 package.json 版本号
 export const getVersion = (packageJsonPath: string) => {
-	let version;
+	let version = '1.0.0';
 	try {
-		version = readJSON(`${packageJsonPath}/package.json`).version;
+		version = readJSON(`${packageJsonPath}`).version;
 	} catch (e) {
-		logger.error(
-			'未设置 version , 并且未设置 package.json 路径，无法读取 version',
+		logger.warn(
+			'未设置 version , 并且未设置 package.json 路径，无法读取 version，默认使用 1.0.0',
 			e,
 		);
 	}
@@ -32,27 +32,21 @@ export const getDesc = (
 	// 获取最新 git 记录 7位的 commit hash
 	let gitCommitHash = 'git commit hash 为空';
 	try {
-		gitCommitHash = execSync('git rev-parse --short HEAD', {
-			cwd: projectPath,
-		})
-			.toString()
-			.trim();
+		gitCommitHash = execaCommandSync('git rev-parse --short HEAD', {
+			stdio: 'pipe',
+		}).stdout;
 	} catch (e) {
-		console.warn('获取 git commit hash 失败');
-		console.warn(e);
+		logger.warn('获取 git commit hash 失败', e);
 	}
 
 	// 获取项目的git仓库的 user.name
 	let userName = '默认';
 	try {
-		userName = execSync('git config user.name', {
-			cwd: projectPath,
-		})
-			.toString()
-			.trim();
+		userName = execaCommandSync('git config user.name', {
+			stdio: 'pipe',
+		}).stdout;
 	} catch (e) {
-		console.warn('git config user.name 获取失败');
-		console.warn(e);
+		logger.warn('git config user.name 获取失败', e);
 	}
 
 	const desc = `v${version} - ${gitCommitHash} - by@${userName}`;
@@ -112,7 +106,6 @@ const loadConfigFromFile = async (
 	configDir: string,
 ): Promise<UserConfig | {}> => {
 	const resolvedPath = getDefaultConfigFilePath(configDir);
-	console.log('resolvedPath', resolvedPath);
 	if (!resolvedPath) {
 		return {};
 	}
@@ -149,7 +142,7 @@ export const mergeConfig = (
 		);
 		setting = projectConfig?.setting;
 	} catch (e) {
-		logger.error(
+		logger.warn(
 			`加载项目中的 ${config.projectPath}/project.config.json 失败`,
 		);
 	}
@@ -177,6 +170,8 @@ export const mergeConfig = (
 		projectOptions,
 		uploadOptions,
 		previewOptions,
+		plugins: config.plugins,
+		replaceRules: config.replaceRules,
 	};
 };
 

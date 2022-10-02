@@ -1,5 +1,21 @@
 import { IInnerUploadOptions } from 'miniprogram-ci/dist/@types/ci/upload';
 
+export interface ReplaceRuleItem {
+	search: string | Function;
+	replace: string | Function;
+}
+
+export interface ReplaceRules {
+	file: string;
+	rules: ReplaceRuleItem[];
+}
+
+export interface Plugin {
+	enforce?: 'pre' | 'post';
+	handler: Function;
+	name: string;
+}
+
 export interface UserConfig {
 	robot?: number;
 	root?: string;
@@ -15,6 +31,7 @@ export interface UserConfig {
 	desc?: string;
 	// # 版本号可选，默认读取 package.json 中的 version
 	version?: string;
+	replaceRules?: ReplaceRules[];
 	// 参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html
 	// 其他项目配置自定义配置，和上面配置合并
 	projectOptions?: {};

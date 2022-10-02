@@ -13,7 +13,7 @@
   ],
   "files": [
     "dist",
-    "src/miniConfig/**"
+    "miniConfig/*"
   ],
   "exports": {
     ".": {
@@ -77,6 +77,7 @@
     "cac": "^6.7.14",
     "dotenv": "^16.0.1",
     "enquirer": "^2.3.6",
+    "execa": "^6.1.0",
     "kolorist": "^1.5.1",
     "miniprogram-ci": "^1.8.25"
   },

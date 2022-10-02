@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import enquirer from 'enquirer';
 import logger from './logger';
 import { InlineConfig, UserConfig } from './types';
-import { readJSON } from './utils';
 import { resolveFileConfig } from './config';
 
 interface SelectOptions {
@@ -11,10 +10,14 @@ interface SelectOptions {
 	useMultiSelect?: InlineConfig['useMultiSelect'];
 }
 
-export const select = async (options: SelectOptions = {}) => {
-	let { configPath, useSelect = false, useMultiSelect = false } = options;
+export const select = async (options: SelectOptions) => {
+	let {
+		configPath,
+		useSelect = false,
+		useMultiSelect = false,
+	} = options || {};
 
-	logger.log('根据单选或者多选选择小程序参数', options);
+	// logger.log('根据单选或者多选选择小程序参数', options);
 
 	let configPathList: string[] = [];
 	if (useSelect || useMultiSelect) {

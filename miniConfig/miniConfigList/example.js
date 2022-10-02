@@ -3,7 +3,7 @@ export default {
 	appid: 'wxdd3948dc1c7f95c2',
 	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
 	projectPath: '../tdesign-miniprogram-starter-retail',
-	packageJsonPath: '../tdesign-miniprogram-starter-retail',
+	packageJsonPath: '../tdesign-miniprogram-starter-retail/package.json',
 	'//desc': '版本描述可选',
 	'//version': '1.0.0',
 	projectOptions: {},
