@@ -2,3 +2,4 @@ node_modules
 .DS_Store
 key/private.wxdd3948dc1c7f95c2.key
 dist
+coverage
