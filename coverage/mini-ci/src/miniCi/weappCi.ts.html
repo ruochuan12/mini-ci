@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for mini-ci/src/utils/copy.ts</title>
+    <title>Code coverage report for mini-ci/src/miniCi/weappCi.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">mini-ci/src/utils</a> copy.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">mini-ci/src/miniCi</a> weappCi.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.03% </span>
+                <span class="strong">40.9% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/29</span>
+                <span class='fraction'>9/22</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.03% </span>
+                <span class="strong">40.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/29</span>
+                <span class='fraction'>9/22</span>
             </div>
         
             
@@ -85,15 +85,7 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a>
-<a name='L25'></a><a href='#L25'>25</a>
-<a name='L26'></a><a href='#L26'>26</a>
-<a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -102,54 +94,41 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import fs from 'node:fs';
-import path from 'node:path';
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import BaseCi from './baseCi';
+import ci, { Project } from 'miniprogram-ci';
 &nbsp;
-/**
- * 拷贝路径
- * @param {string} src source filename to copy
- * @param {string} dest destination filename of the copy operation
- */
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >function copy(src: string, dest: string) {</span></span>
-<span class="cstat-no" title="statement not covered" >	const stats = fs.statSync(src);</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	if (stats.isDirectory()) {</span>
-<span class="cstat-no" title="statement not covered" >		// skip node_module</span>
-<span class="cstat-no" title="statement not covered" >		if (path.basename(src) === 'node_modules') {</span>
-<span class="cstat-no" title="statement not covered" >			return;</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >		// if it's a directory, render its subdirectories and files recursively</span>
-<span class="cstat-no" title="statement not covered" >		fs.mkdirSync(dest, { recursive: true });</span>
-<span class="cstat-no" title="statement not covered" >		for (const file of fs.readdirSync(src)) {</span>
-<span class="cstat-no" title="statement not covered" >			copy(path.resolve(src, file), path.resolve(dest, file));</span>
-<span class="cstat-no" title="statement not covered" >		}</span>
-<span class="cstat-no" title="statement not covered" >		return;</span>
+export default class WeappCI extends BaseCi {
+	private <span class="fstat-no" title="function not covered" >instance: Project;</span>
+	// constructor() {}
+<span class="fstat-no" title="function not covered" >	_init() {</span>
+<span class="cstat-no" title="statement not covered" >		this.instance = new ci.Project(this.options.projectOptions);</span>
 <span class="cstat-no" title="statement not covered" >	}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >	fs.copyFileSync(src, dest);</span>
+<span class="fstat-no" title="function not covered" >	async upload() {</span>
+<span class="cstat-no" title="statement not covered" >		await ci.upload({</span>
+<span class="cstat-no" title="statement not covered" >			project: this.instance,</span>
+<span class="cstat-no" title="statement not covered" >			...this.options.uploadOptions,</span>
+<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
+<span class="fstat-no" title="function not covered" >	async preview() {</span>
+<span class="cstat-no" title="statement not covered" >		await ci.preview({</span>
+<span class="cstat-no" title="statement not covered" >			project: this.instance,</span>
+<span class="cstat-no" title="statement not covered" >			...this.options.uploadOptions,</span>
+<span class="cstat-no" title="statement not covered" >		});</span>
+<span class="cstat-no" title="statement not covered" >	}</span>
 <span class="cstat-no" title="statement not covered" >}</span>
-<span class="cstat-no" title="statement not covered" ></span>
-export default copy;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
