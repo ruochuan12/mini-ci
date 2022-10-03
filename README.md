@@ -4,12 +4,12 @@
 
 > [npm @ruochuan/mini-ci](https://www.npmjs.com/package/@ruochuan/mini-ci)
 
-![npm version](https://img.shields.io/npm/v/@ruochuan/mini-ci)
-![npm download](https://img.shields.io/npm/dm/mini-ci)
-![github forks](https://img.shields.io/github/forks/lxchuan12/mini-ci?style=social)
-![github stars](https://img.shields.io/github/stars/lxchuan12/mini-ci?style=social)
-![github watchers](https://img.shields.io/github/watchers/lxchuan12/mini-ci?style=social)
-![github license](https://img.shields.io/github/license/lxchuan12/mini-ci)
+[![npm version](https://img.shields.io/npm/v/@ruochuan/mini-ci)](https://www.npmjs.com/package/@ruochuan/mini-ci)
+[![npm download](https://img.shields.io/npm/dm/mini-ci)](https://npmcharts.com/compare/@ruochuan/mini-ci?minimal=true)
+[![github forks](https://img.shields.io/github/forks/lxchuan12/mini-ci?style=social)](https://github.com/lxchuan12/mini-ci/network/members)
+[![github stars](https://img.shields.io/github/stars/lxchuan12/mini-ci?style=social)](https://github.com/lxchuan12/mini-ci/stargazers)
+[![github watchers](https://img.shields.io/github/watchers/lxchuan12/mini-ci?style=social)](https://github.com/lxchuan12/mini-ci/watchers)
+[![github license](https://img.shields.io/github/license/lxchuan12/mini-ci)](https://github.com/lxchuan12/mini-ci/blob/main/LICENSE)
 
 [miniprogram-ci 官方文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
