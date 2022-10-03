@@ -132,6 +132,6 @@ git checkout feature/release-it
 
 文章已完成[README-2](./README-2.md)，也已发布在掘金。
 
-[听说你还在用开发者工具上传小程序，我从尤雨溪那学会了基于 miniprogram-ci 开发脚手架工具，提效摸鱼](https://juejin.cn/post/7124467547163852808)
+[还在用开发者工具上传小程序? 快来试试 miniprogram-ci 提效摸鱼](https://juejin.cn/post/7124467547163852808)
 
 **注意**：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mini-ci/tree/0.7.0) 撰写。后续 `mini-ci` 会持续更新，文章可能不会更新。
