@@ -34,6 +34,7 @@ export const getDesc = (
 	try {
 		gitCommitHash = execaCommandSync('git rev-parse --short HEAD', {
 			stdio: 'pipe',
+			cwd: projectPath,
 		}).stdout;
 	} catch (e) {
 		logger.warn('获取 git commit hash 失败', e);
@@ -44,6 +45,7 @@ export const getDesc = (
 	try {
 		userName = execaCommandSync('git config user.name', {
 			stdio: 'pipe',
+			cwd: projectPath,
 		}).stdout;
 	} catch (e) {
 		logger.warn('git config user.name 获取失败', e);
@@ -155,9 +157,7 @@ export const mergeConfig = (
 
 	const uploadOptions = {
 		...commonConfig,
-		desc:
-			config.desc ||
-			getDesc(config.packageJsonPath, commonConfig.version),
+		desc: config.desc || getDesc(config.projectPath, commonConfig.version),
 		...getLastOptions(config.uploadOptions),
 	};
 
