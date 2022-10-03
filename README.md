@@ -5,6 +5,7 @@
 > [npm @ruochuan/mini-ci](https://www.npmjs.com/package/@ruochuan/mini-ci)
 
 [![npm version](https://img.shields.io/npm/v/@ruochuan/mini-ci)](https://www.npmjs.com/package/@ruochuan/mini-ci)
+[![codecov](https://codecov.io/gh/lxchuan12/mini-ci/branch/main/graph/badge.svg?token=WYOYSGLKVN)](https://codecov.io/gh/lxchuan12/mini-ci)
 [![npm download](https://img.shields.io/npm/dm/mini-ci)](https://npmcharts.com/compare/@ruochuan/mini-ci?minimal=true)
 [![github forks](https://img.shields.io/github/forks/lxchuan12/mini-ci?style=social)](https://github.com/lxchuan12/mini-ci/network/members)
 [![github stars](https://img.shields.io/github/stars/lxchuan12/mini-ci?style=social)](https://github.com/lxchuan12/mini-ci/stargazers)
