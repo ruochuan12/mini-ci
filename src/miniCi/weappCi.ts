@@ -5,7 +5,6 @@ export default class WeappCI extends BaseCi {
 	private instance: Project;
 	// constructor() {}
 	_init() {
-		console.log('WeappCI-init');
 		this.instance = new ci.Project(this.options.projectOptions);
 	}
 	async upload() {
@@ -15,7 +14,6 @@ export default class WeappCI extends BaseCi {
 		});
 	}
 	async preview() {
-		console.log('预览');
 		await ci.preview({
 			project: this.instance,
 			...this.options.uploadOptions,
