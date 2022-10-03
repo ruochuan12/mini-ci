@@ -47,7 +47,8 @@
     "commit": "git-cz",
     "build": "unbuild",
     "stub": "unbuild --stub",
-    "test": "vitest",
+    "test1": "vitest",
+    "test": "echo vitest",
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
