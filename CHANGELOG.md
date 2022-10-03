@@ -1,5 +1,12 @@
 
 
+## [0.11.1](https://github.com/lxchuan12/mini-ci/compare/0.11.0...0.11.1) (2022-10-03)
+
+
+### Bug Fixes
+
+* 🐛 修复 获取 projectPath 路径下的 git commit hash、git user.name ([4b8d38e](https://github.com/lxchuan12/mini-ci/commit/4b8d38e8b812886e8b9d0531a701c389fa0dfa5f))
+
 # [0.11.0](https://github.com/lxchuan12/mini-ci/compare/0.10.3...0.11.0) (2022-10-02)
 
 
