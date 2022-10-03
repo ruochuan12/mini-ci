@@ -59,7 +59,7 @@ cliCommonOption(cli.command('preview [root]', '预览小程序').alias('p')).act
 
 cli.help(() => {
 	logger.info(
-		'首次使用时，先执行 mini-ci init 命令，设置好相关配置\n更多查看文档: https://github.com/lxchuan12/mini-ci\n',
+		'首次使用时，推荐先执行 mini-ci init 命令快速初始化配置，设置好相关配置\n更多查看 npm 文档: https://www.npmjs.com/package/@ruochuan/mini-ci \n或者查看 github 仓库 README: https://github.com/lxchuan12/mini-ci\n',
 	);
 });
 
