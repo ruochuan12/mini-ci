@@ -37,7 +37,6 @@
   "license": "MIT",
   "scripts": {
     "prepublishOnly": "npm run build",
-    "test": "echo test",
     "lint": "eslint --cache --fix --ext .ts",
     "ci": "esno src/cli.ts",
     "upload": "npm run ci -- upload",
@@ -47,13 +46,16 @@
     "//preinstall": "npx only-allow pnpm",
     "commit": "git-cz",
     "build": "unbuild",
-    "stub": "unbuild --stub"
+    "stub": "unbuild --stub",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.0.0",
     "@types/eslint": "^8.4.5",
     "@types/eslint-config-prettier": "^6.11.0",
     "@types/prettier": "^2.6.3",
+    "@vitest/coverage-c8": "^0.23.4",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "esno": "^0.16.3",
@@ -62,7 +64,8 @@
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "release-it": "^15.1.1",
-    "unbuild": "^0.8.11"
+    "unbuild": "^0.8.11",
+    "vitest": "^0.23.4"
   },
   "husky": {
     "hooks": {
