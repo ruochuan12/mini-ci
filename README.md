@@ -2,6 +2,8 @@
 
 基于微信小程序 [`miniprogram-ci`](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html) 开发的**更快速、更方便且支持多选等功能**的小程序上传、预览自动化工具
 
+> [npm @ruochuan/mini-ci](https://www.npmjs.com/package/@ruochuan/mini-ci)
+
 ![npm version](https://img.shields.io/npm/v/@ruochuan/mini-ci)
 ![npm download](https://img.shields.io/npm/dm/mini-ci)
 ![github forks](https://img.shields.io/github/forks/lxchuan12/mini-ci?style=social)
@@ -13,13 +15,11 @@
 
 > 密钥及 IP 白名单配置 参考文档。一般来说自己使用，可以关闭 IP 白名单，因为 IP 地址可能变。
 
-## 支持的功能
-
-![支持的功能](./images/xmind.png)
+## 帮助信息 && 上传效果
 
 显示帮助信息
 
-![显示帮助信息](./images/version-and-help-v0.9.0.png)
+![显示帮助信息](./images/help-v0.11.1.png)
 
 上传效果
 
@@ -124,9 +124,8 @@ git checkout feature/release-it
 -   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件
 -   [x] 支持替换功能，比如替换 url 等
 -   [x] 支持插件 plugin
--   [ ] cwd
+-   [x] 初步加入测试
 -   [ ] 校验 nodejs 版本
--   [ ] 加入测试
 -   [ ] 支持可视化操作
 
 ## 原理文章
