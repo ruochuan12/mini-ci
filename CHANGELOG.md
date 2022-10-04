@@ -1,5 +1,7 @@
 
 
+## [0.11.4](https://github.com/lxchuan12/mini-ci/compare/0.11.3...0.11.4) (2022-10-04)
+
 ## [0.11.3](https://github.com/lxchuan12/mini-ci/compare/0.11.2...0.11.3) (2022-10-04)
 
 
