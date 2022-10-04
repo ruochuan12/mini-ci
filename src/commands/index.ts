@@ -23,14 +23,25 @@ export const generatorActions = ({
 					await invokePluginsFns(pre, config);
 					await invokePluginsFns(normal, config);
 					await miniCi(config)[action]();
+					logger.success(`小程序${text}成功`);
 				} catch (e) {
 					logger.error(`小程序${text}失败`, e);
 				} finally {
 					await invokePluginsFns(post, config);
-					logger.log('小程序配置等信息', text, root, options, config);
+					logger.log(
+						'小程序配置等信息',
+						text,
+						{ root, ...options },
+						config,
+					);
 				}
 			} else {
-				logger.log('小程序配置等信息', text, root, options, config);
+				logger.log(
+					'小程序配置等信息',
+					text,
+					{ root, ...options },
+					config,
+				);
 			}
 		}
 	};

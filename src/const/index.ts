@@ -17,3 +17,5 @@ export const DEFAULT_CONFIG_FILES = [
 ];
 
 export const DEFAULT_CONFIG_PATH = 'miniConfig';
+
+export const DEFAULT_CONFIG_LIST = 'miniConfigList';
