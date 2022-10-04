@@ -1,7 +1,7 @@
 export default {
-	name: '若川视野-小程序1-wx.config.js',
-	projectPath: '../../../projects/xmall-mini-v2/dist/build/mp-weixin',
-	packageJsonPath: '../../../projects/xmall-mini-v2',
+	name: '若川视野-小程序1-mini.config.js',
+	projectPath: './dist/build/mp-weixin',
+	packageJsonPath: './package.json',
 	appid: 'wxdd3948dc1c7f95c2',
 	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
 	// # 多个小程序配置的路径
@@ -38,52 +38,22 @@ export default {
 		// uniapp taro 等压缩后的小程序一般采用以下不压缩配置
 		// setting: { es6: false, es7: false, minify: false, ignoreUploadUnusedFiles: false }
 	},
-	// 可选配置替换 url 等
+	// 替换 url 等
 	replaceRules: [
+		/**
 		{
-			file: '../../../projects/xmall-mini-v2/dist/build/mp-weixin/common/vendor.js',
+			file: './dist/build/mp-weixin/common/vendor.js',
 			rules: [
 				{
-					search: 'wxe3a8dd93b020eb62',
+					search: 'wxdd3948dc1c7f95c2',
 					replace: 'wxdd3948dc1c7f95c2',
 				},
 				{
-					search: 'https://smartretail.comteck.cn/',
-					replace: 'https://cluster.smartretail.comteck.cn/',
+					search: 'https://lxchuan12.gitee.io/',
+					replace: 'https://lxchuan12.gitee.io/',
 				},
 			],
 		},
-		// {
-		// 	file: './dist/build/mp-weixin/project.config.json',
-		// 	rules: [
-		// 		{
-		// 			search: originalConfig.appid,
-		// 			replace: config.appid,
-		// 		},
-		// 	],
-		// },
-	],
-	// 插件机制 可选
-	plugins: [
-		{
-			name: '准备',
-			enforce: 'pre',
-			handler: (config) => {
-				console.log('准备操作...', config);
-			},
-		},
-		{
-			name: '中间',
-			handler: (config) => {
-				console.log('操作中...', config);
-			},
-		},
-		{
-			name: '操作后',
-			enforce: 'post',
-			handler: (config) => {
-				console.log('操作完成...', config);
-			},
-		},
+		 */
 	],
 };

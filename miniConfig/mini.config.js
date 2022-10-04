@@ -1,5 +1,5 @@
 export default {
-	name: '若川视野-小程序1-wx.config.js',
+	name: '若川视野-小程序1-mini.config.js',
 	projectPath: '../tdesign-miniprogram-starter-retail',
 	packageJsonPath: '../tdesign-miniprogram-starter-retail/package.json',
 	appid: 'wxdd3948dc1c7f95c2',
@@ -42,15 +42,15 @@ export default {
 	replaceRules: [
 		/**
 		{
-			file: '../../../projects/xmall-mini-v2/dist/build/mp-weixin/common/vendor.js',
+			file: './dist/build/mp-weixin/common/vendor.js',
 			rules: [
 				{
-					search: 'wxe3a8dd93b020eb62',
+					search: 'wxdd3948dc1c7f95c2',
 					replace: 'wxdd3948dc1c7f95c2',
 				},
 				{
-					search: 'https://smartretail.comteck.cn/',
-					replace: 'https://cluster.smartretail.comteck.cn/',
+					search: 'https://lxchuan12.gitee.io/',
+					replace: 'https://lxchuan12.gitee.io/',
 				},
 			],
 		},
