@@ -14,7 +14,7 @@
 
 [miniprogram-ci 官方文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
-> 密钥及 IP 白名单配置 参考文档。一般来说自己使用，可以关闭 IP 白名单，因为 IP 地址可能变。
+> 使用 `miniprogram-ci` 前应访问"[微信公众平台](https://mp.weixin.qq.com/wxamp/devprofile/get_profile?token=1680774150&lang=zh_CN) - 开发管理 - 开发设置 - 小程序代码上传"后下载代码上传密钥，一般来说自己使用，可以关闭 IP 白名单，因为 IP 地址可能变。
 
 ## 帮助信息 && 上传效果
 
@@ -36,6 +36,10 @@ npm i @ruochuan/mini-ci -g
 # 或者安装到项目中
 # npm i @ruochuan/mini-ci -D
 
+# 如果希望实时使用最新版，则可以使用 npx 不全局安装
+npx @ruochuan/mini-ci -h
+# 注意：版本不同功能可能也不同
+
 # 首次使用时，可以先在小程序项目中，快速初始化配置项
 mini-ci init
 会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
@@ -51,10 +55,6 @@ mini-ci --version
 # 或者别名 ruochuan-mini-ci 、rmc
 ruochuan-mini-ci --help
 rmc --help
-
-# 或者不全局安装
-npx @ruochuan/mini-ci -h
-# 注意版本，版本不同功能也不同
 ```
 
 -   [x] 支持快速初始化配置 `mini-ci init`
@@ -97,6 +97,10 @@ npx @ruochuan/mini-ci -h
 如果需要单选或者多选时，需配置 `configPath`。
 
 参考 [当前项目中的 `miniConfigList/example.js`](https://github.com/lxchuan12/mini-ci/blob/main/miniConfigList/example.js)
+
+## 关于小程序自动提升版本、打 tag、生成 changelog 等
+
+推荐使用 `release-it`，具体使用方法可以参考 [release-it 官方仓库](https://github.com/release-it/release-it) 或者我的文章 [release-it 自动提升版本、打 tag、生成 changelog 等](https://juejin.cn/post/7124467547163852808#heading-8)。
 
 ## 可自行开发
 
