@@ -1,5 +1,12 @@
 
 
+## [0.11.3](https://github.com/lxchuan12/mini-ci/compare/0.11.2...0.11.3) (2022-10-04)
+
+
+### Bug Fixes
+
+* 🐛 修复 init 初始化路径错误、优化帮助信息等 ([677ea65](https://github.com/lxchuan12/mini-ci/commit/677ea65ec6128d457b67ac2d4c015faa632180eb))
+
 ## [0.11.2](https://github.com/lxchuan12/mini-ci/compare/0.11.1...0.11.2) (2022-10-04)
 
 
