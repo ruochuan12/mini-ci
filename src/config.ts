@@ -93,7 +93,7 @@ export const resolveFileConfig = async (filePath: string) => {
 		return res.default;
 	} catch (e) {
 		logger.log(`加载配置文件 ${filePath} 失败`, e);
-		return {};
+		return;
 	} finally {
 		try {
 			fs.unlinkSync(fileNameTmp);
@@ -106,10 +106,10 @@ export const resolveFileConfig = async (filePath: string) => {
 // 加载配置
 const loadConfigFromFile = async (
 	configDir: string,
-): Promise<UserConfig | {}> => {
+): Promise<UserConfig | undefined> => {
 	const resolvedPath = getDefaultConfigFilePath(configDir);
 	if (!resolvedPath) {
-		return {};
+		return;
 	}
 	return resolveFileConfig(resolvedPath);
 };
@@ -181,16 +181,21 @@ export const resolveConfig = async (config: InlineConfig) => {
 	const resolvedRoot = getResolvedRoot(config);
 
 	let loadResult = await loadConfigFromFile(resolvedRoot);
-	if (Object.keys(loadResult).length === 0) {
+	if (!isObject(loadResult)) {
 		logger.log(
 			'加载 mini.config.(js|json) 失败，将使用 .env 中的配置',
 			loadResult,
 		);
 		loadResult = loadEnv(resolvedRoot);
 	}
+	if (!isObject(loadResult)) {
+		throw new Error(
+			'未发现配置项，请检查 mini-ci 的 mini.config.js 或者 .env 相关配置',
+		);
+	}
 
 	const selectResult = await select({
-		configPath: loadResult.configPath,
+		configPath: loadResult?.configPath!,
 		useSelect: config.useSelect,
 		useMultiSelect: config.useMultiSelect,
 	});
@@ -199,7 +204,7 @@ export const resolveConfig = async (config: InlineConfig) => {
 		selectResult.length === 0 ? [loadResult] : selectResult;
 
 	const lastConfigList = loadResultList.map((item) => {
-		return mergeConfig(config, item);
+		return mergeConfig(config, item!);
 	});
 
 	return lastConfigList;
