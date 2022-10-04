@@ -1,5 +1,12 @@
 
 
+## [0.11.2](https://github.com/lxchuan12/mini-ci/compare/0.11.1...0.11.2) (2022-10-04)
+
+
+### Bug Fixes
+
+* 🐛 配置项容错 修复 ts 异常 ([415d7ba](https://github.com/lxchuan12/mini-ci/commit/415d7bada60c145f31e83b0d4be9c63ac5589177))
+
 ## [0.11.1](https://github.com/lxchuan12/mini-ci/compare/0.11.0...0.11.1) (2022-10-03)
 
 
