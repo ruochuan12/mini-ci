@@ -8,7 +8,8 @@ import { fileURLToPath } from 'node:url';
 
 import { copy, getResolvedRoot } from '../utils/index';
 
-export const render = function render(config: InlineConfig) {
+// 初始化
+export const init = function render(config: InlineConfig) {
 	// resolve root
 	const resolvedRoot = getResolvedRoot(config);
 	const templateRoot = path.resolve(
@@ -16,7 +17,8 @@ export const render = function render(config: InlineConfig) {
 		'../../',
 		DEFAULT_CONFIG_PATH,
 	);
-	logger.info(templateRoot, resolvedRoot);
+
+	logger.info('初始化配置项：模板路径和目标路径', templateRoot, resolvedRoot);
 
 	if (config.dry) {
 		return;
