@@ -20,11 +20,11 @@
 
 显示帮助信息
 
-![显示帮助信息](./images/help-v0.11.1.png)
+![显示帮助信息](./packages/mini-ci/images/help-v0.11.1.png)
 
 上传效果
 
-![上传效果](./images/upload.png)
+![上传效果](./packages/mini-ci/images/upload.png)
 
 预览效果就是在控制台显示二维码。
 
@@ -42,7 +42,7 @@ npx @ruochuan/mini-ci -h
 
 # 首次使用时，可以先在小程序项目中，快速初始化配置项
 mini-ci init
-会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
+会把 [miniConfig](https://github.com/lxchuan12/mini-ci/tree/main/packages/mini-ci/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
 
 # 查看帮助
 mini-ci -h
@@ -66,7 +66,7 @@ rmc --help
 -   [x] 支持指定 `git commit hash` 和作者
 -   [x] 支持单选多个小程序 `mini-ci upload --useSelect`
 -   [x] 支持选择多个批量上传 `mini-ci upload --useMultiSelect`
--   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/mini.config.js) 配置
+-   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/mini.config.js) 配置
 
 ```bash
 参数可以相互结合。
@@ -78,11 +78,11 @@ rmc --help
 
 ## 首次使用前需先执行 `mini-ci init` 配置 `mini.config.js` 配置（更推荐）
 
-执行 `mini-ci init` 会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
+执行 `mini-ci init` 会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/packages/mini-ci/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
 
 在当前小程序项目（或者新项目）的目录下配置 `mini.config.js`，这个优先于 `.env`
 
-参考[当前项目中的 `mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/mini.config.js)
+参考[当前项目中的 `mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/mini.config.js)
 
 按照[微信小程序文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)配置小程序密钥等，这样就能上传和预览了。如果没有微信小程序，可以自行免费开通个人的[微信小程序](https://mp.weixin.qq.com/)。
 
@@ -90,13 +90,13 @@ rmc --help
 
 在当前小程序项目（或者新项目）的目录下配置 `.env`
 
-参考[当前项目中的 `.env`](https://github.com/lxchuan12/mini-ci/blob/main/.env)
+参考[当前项目中的 `.env`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/.env)
 
 ## `configPath` 配置
 
 如果需要单选或者多选时，需配置 `configPath`。
 
-参考 [当前项目中的 `miniConfigList/example.js`](https://github.com/lxchuan12/mini-ci/blob/main/miniConfigList/example.js)
+参考 [当前项目中的 `miniConfigList/example.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/miniConfigList/example.js)
 
 ## 关于小程序自动提升版本、打 tag、生成 changelog 等
 
