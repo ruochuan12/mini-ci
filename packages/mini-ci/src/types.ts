@@ -48,4 +48,5 @@ export interface InlineConfig {
 	useSelect?: boolean;
 	robot?: number;
 	dry?: boolean;
+	useAllConfig?: boolean;
 }

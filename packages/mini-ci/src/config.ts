@@ -172,7 +172,31 @@ export const mergeConfig = (
 		previewOptions,
 		plugins: config.plugins,
 		replaceRules: config.replaceRules,
+		name: config.name,
 	};
+};
+
+// 获取配置的列表
+export const getConfigList = async (configPath: string) => {
+	let configPathList: string[] = [];
+	try {
+		configPathList = fs.readdirSync(configPath);
+	} catch (error) {
+		logger.error(error);
+		throw new Error('请设置小程序配置路径 configPath');
+	}
+	if (configPathList.length === 0) {
+		throw new Error('请设置小程序配置路径 configPath');
+	}
+
+	// logger.log(configPathList, 'configPathList');
+	const configList: any[] = [];
+	for (let el of configPathList) {
+		let config = await resolveFileConfig(`${configPath}/${el}`);
+		configList.push(config);
+	}
+
+	return configList;
 };
 
 // 解析配置
@@ -186,6 +210,7 @@ export const resolveConfig = async (config: InlineConfig) => {
 			'加载 mini.config.(js|json) 失败，将使用 .env 中的配置',
 			loadResult,
 		);
+		// @ts-ignore
 		loadResult = loadEnv(resolvedRoot);
 	}
 	if (!isObject(loadResult)) {
@@ -194,14 +219,26 @@ export const resolveConfig = async (config: InlineConfig) => {
 		);
 	}
 
-	const selectResult = await select({
-		configPath: loadResult?.configPath!,
-		useSelect: config.useSelect,
-		useMultiSelect: config.useMultiSelect,
-	});
-
-	const loadResultList =
-		selectResult.length === 0 ? [loadResult] : selectResult;
+	let loadResultList: any[] = [];
+	// 单选或者多选
+	if (config.useSelect || config.useMultiSelect || config.useAllConfig) {
+		const configList = await getConfigList(
+			path.resolve(resolvedRoot, loadResult?.configPath!),
+		);
+		const allConfigList = [...configList, loadResult];
+		// 批量操作所有
+		if (config.useAllConfig) {
+			loadResultList = allConfigList;
+		} else {
+			loadResultList = await select({
+				configList: allConfigList,
+				useSelect: config.useSelect,
+				useMultiSelect: config.useMultiSelect,
+			});
+		}
+	} else {
+		loadResultList = [loadResult];
+	}
 
 	const lastConfigList = loadResultList.map((item) => {
 		return mergeConfig(config, item!);

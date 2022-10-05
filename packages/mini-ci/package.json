@@ -43,6 +43,7 @@
     "upload": "pnpm run dev -- upload",
     "preview": "pnpm run dev -- preview",
     "release": "release-it",
+    "mini-ci": "node ./bin/mini-ci.mjs",
     "//preinstall": "npx only-allow pnpm",
     "build": "unbuild",
     "stub": "unbuild --stub",

@@ -45,6 +45,7 @@
         "commit": "git-cz",
         "ci:dev": "pnpm -C packages/mini-ci run dev",
         "ci:upload": "pnpm -C packages/mini-ci run upload",
+        "ci:preview": "pnpm -C packages/mini-ci run preview",
         "ci:build": "pnpm -C packages/mini-ci run build",
         "ci:stub": "pnpm -C packages/mini-ci run stub",
         "ci:test1": "pnpm -C packages/mini-ci run test1",
@@ -55,6 +56,7 @@
     "devDependencies": {
         "@release-it-plugins/workspaces": "^3.2.0",
         "@release-it/conventional-changelog": "^5.0.0",
+        "@ruochuan/mini-ci": "workspace:0.11.4",
         "@types/eslint": "^8.4.5",
         "@types/eslint-config-prettier": "^6.11.0",
         "@types/prettier": "^2.6.3",

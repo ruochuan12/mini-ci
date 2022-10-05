@@ -3,6 +3,7 @@
 exports[`resolveConfig toMatchSnapshot 1`] = `
 [
   {
+    "name": "若川视野-小程序1-mini.config.js",
     "plugins": [],
     "previewOptions": {
       "robot": undefined,
