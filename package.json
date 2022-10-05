@@ -1,91 +1,88 @@
 {
-  "name": "@ruochuan/mini-ci",
-  "version": "0.11.4",
-  "type": "module",
-  "keywords": [
-    "miniprogram-ci",
-    "miniprogram",
-    "ci",
-    "cli",
-    "mini-ci",
-    "node",
-    "nodejs"
-  ],
-  "files": [
-    "dist",
-    "miniConfig/*"
-  ],
-  "exports": {
-    ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+    "name": "@ruochuan/monorepo",
+    "version": "0.11.4",
+    "private": true,
+    "type": "module",
+    "keywords": [
+        "miniprogram-ci",
+        "miniprogram",
+        "ci",
+        "cli",
+        "mini-ci",
+        "node",
+        "nodejs"
+    ],
+    "files": [
+        "dist",
+        "miniConfig/*"
+    ],
+    "exports": {
+        ".": {
+            "require": "./dist/index.cjs",
+            "import": "./dist/index.mjs"
+        }
+    },
+    "main": "dist/index.cjs",
+    "module": "dist/index.mjs",
+    "types": "dist/index.d.ts",
+    "bin": {
+        "mini-ci": "bin/mini-ci.mjs",
+        "rmc": "bin/mini-ci.mjs",
+        "ruochuan-mini-ci": "bin/mini-ci.mjs",
+        "mp-cli": "bin/mini-ci.mjs"
+    },
+    "//engines": {
+        "node": "^14.18.0 || >=16.0.0"
+    },
+    "repository": "https://github.com/lxchuan12/mini-ci.git",
+    "license": "MIT",
+    "scripts": {
+        "prepublishOnly": "npm run build",
+        "lint": "eslint --cache --fix --ext .ts",
+        "release": "release-it",
+        "prepare": "husky install",
+        "//preinstall": "npx only-allow pnpm",
+        "commit": "git-cz",
+        "ci:dev": "pnpm -C packages/mini-ci run dev",
+        "ci:upload": "pnpm -C packages/mini-ci run upload",
+        "ci:build": "pnpm -C packages/mini-ci run build",
+        "ci:stub": "pnpm -C packages/mini-ci run stub",
+        "ci:test1": "pnpm -C packages/mini-ci run test1",
+        "ci:test": "pnpm -C packages/mini-ci run test",
+        "test": "echo test",
+        "ci:coverage": "pnpm -C packages/mini-ci run coverage"
+    },
+    "devDependencies": {
+        "@release-it-plugins/workspaces": "^3.2.0",
+        "@release-it/conventional-changelog": "^5.0.0",
+        "@types/eslint": "^8.4.5",
+        "@types/eslint-config-prettier": "^6.11.0",
+        "@types/prettier": "^2.6.3",
+        "@vitest/coverage-c8": "^0.23.4",
+        "eslint": "^8.19.0",
+        "eslint-config-prettier": "^8.5.0",
+        "esno": "^0.16.3",
+        "git-cz": "^4.9.0",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "prettier": "^2.7.1",
+        "release-it": "^15.1.1",
+        "unbuild": "^0.8.11",
+        "vitest": "^0.23.4"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{js, ts}": "eslint --cache --fix",
+        "*.{js, ts, json}": "prettier --write"
+    },
+    "dependencies": {
+        "execa": "^6.1.0"
+    },
+    "publishConfig": {
+        "access": "public"
     }
-  },
-  "main": "dist/index.cjs",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "bin": {
-    "mini-ci": "bin/mini-ci.mjs",
-    "rmc": "bin/mini-ci.mjs",
-    "ruochuan-mini-ci": "bin/mini-ci.mjs",
-    "mp-cli": "bin/mini-ci.mjs"
-  },
-  "//engines": {
-    "node": "^14.18.0 || >=16.0.0"
-  },
-  "repository": "https://github.com/lxchuan12/mini-ci.git",
-  "license": "MIT",
-  "scripts": {
-    "prepublishOnly": "npm run build",
-    "lint": "eslint --cache --fix --ext .ts",
-    "ci": "esno src/cli.ts",
-    "upload": "npm run ci -- upload",
-    "preview": "npm run ci -- preview",
-    "release": "release-it",
-    "prepare": "husky install",
-    "//preinstall": "npx only-allow pnpm",
-    "commit": "git-cz",
-    "build": "unbuild",
-    "stub": "unbuild --stub",
-    "test1": "vitest",
-    "test": "echo vitest",
-    "coverage": "vitest run --coverage"
-  },
-  "devDependencies": {
-    "@release-it/conventional-changelog": "^5.0.0",
-    "@types/eslint": "^8.4.5",
-    "@types/eslint-config-prettier": "^6.11.0",
-    "@types/prettier": "^2.6.3",
-    "@vitest/coverage-c8": "^0.23.4",
-    "eslint": "^8.19.0",
-    "eslint-config-prettier": "^8.5.0",
-    "esno": "^0.16.3",
-    "git-cz": "^4.9.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1",
-    "release-it": "^15.1.1",
-    "unbuild": "^0.8.11",
-    "vitest": "^0.23.4"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.{js, ts}": "eslint --cache --fix",
-    "*.{js, ts, json}": "prettier --write"
-  },
-  "dependencies": {
-    "cac": "^6.7.14",
-    "dotenv": "^16.0.1",
-    "enquirer": "^2.3.6",
-    "execa": "^6.1.0",
-    "kolorist": "^1.5.1",
-    "miniprogram-ci": "^1.8.25"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
 }

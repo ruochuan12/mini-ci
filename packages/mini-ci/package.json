@@ -1,0 +1,80 @@
+{
+  "name": "@ruochuan/mini-ci",
+  "version": "0.11.4",
+  "private": true,
+  "type": "module",
+  "keywords": [
+    "miniprogram-ci",
+    "miniprogram",
+    "ci",
+    "cli",
+    "mini-ci",
+    "node",
+    "nodejs"
+  ],
+  "files": [
+    "dist",
+    "miniConfig/*"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "mini-ci": "bin/mini-ci.mjs",
+    "rmc": "bin/mini-ci.mjs",
+    "ruochuan-mini-ci": "bin/mini-ci.mjs",
+    "mp-cli": "bin/mini-ci.mjs"
+  },
+  "//engines": {
+    "node": "^14.18.0 || >=16.0.0"
+  },
+  "repository": "https://github.com/lxchuan12/mini-ci.git",
+  "license": "MIT",
+  "scripts": {
+    "prepublishOnly": "pnpm run build",
+    "lint": "eslint --cache --fix --ext .ts",
+    "dev": "esno src/cli.ts",
+    "upload": "pnpm run dev -- upload",
+    "preview": "pnpm run dev -- preview",
+    "release": "release-it",
+    "//preinstall": "npx only-allow pnpm",
+    "build": "unbuild",
+    "stub": "unbuild --stub",
+    "test1": "vitest",
+    "test": "echo vitest",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.23.4",
+    "esno": "^0.16.3",
+    "release-it": "^15.1.1",
+    "unbuild": "^0.8.11",
+    "vitest": "^0.23.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, ts}": "eslint --cache --fix",
+    "*.{js, ts, json}": "prettier --write"
+  },
+  "dependencies": {
+    "cac": "^6.7.14",
+    "dotenv": "^16.0.1",
+    "enquirer": "^2.3.6",
+    "execa": "^6.1.0",
+    "kolorist": "^1.5.1",
+    "miniprogram-ci": "^1.8.25"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
