@@ -1,6 +1,6 @@
 {
   "name": "@ruochuan/mini-ci-ui",
-  "version": "0.1.0",
+  "version": "0.11.5",
   "description": "",
   "main": "index.js",
   "type": "module",
