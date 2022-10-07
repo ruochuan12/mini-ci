@@ -34,3 +34,13 @@ export const arrify = (arr: any) => {
 		return [];
 	}
 };
+
+const camelizeRE = /_(\w)/g;
+/**
+ * @private
+ */
+export const camelize = (str: string): string => {
+	return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''));
+};
+
+export const isString = (val: any) => typeof val === 'string';

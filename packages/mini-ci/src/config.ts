@@ -215,12 +215,13 @@ export const resolveConfig = async (config: InlineConfig) => {
 	}
 
 	if (!isObject(loadResult)) {
+		const envFile = config.mode ? `.env.${config.mode}` : '.env';
 		logger.log(
-			'加载 mini.config.(js|json) 失败，或未指定可用的配置文件，将使用 .env 中的配置',
+			`加载 mini.config.(js|json) 失败，或未指定可用的配置文件，将使用 ${envFile} 中的配置`,
 			loadResult,
 		);
 		// @ts-ignore
-		loadResult = loadEnv(resolvedRoot);
+		loadResult = loadEnv(config.mode, resolvedRoot);
 	}
 	if (!isObject(loadResult)) {
 		throw new Error(

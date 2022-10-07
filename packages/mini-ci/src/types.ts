@@ -49,4 +49,7 @@ export interface InlineConfig {
 	robot?: number;
 	dry?: boolean;
 	useAllConfig?: boolean;
+	// 指定配置文件
+	config?: string;
+	mode?: string;
 }
