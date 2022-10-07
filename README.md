@@ -58,25 +58,38 @@ rmc --help
 ```
 
 -   [x] 支持快速初始化配置 `mini-ci init`
--   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件
 -   [x] 支持上传 `mini-ci upload`
 -   [x] 支持预览 `mini-ci preview`
--   [x] 支持指定参数 如 `robot` 默认是 1，命令：`mini-ci upload --robot 2`
 -   [x] 支持空跑，不执行 `mini-ci upload --dry`
--   [x] 支持指定 `git commit hash` 和作者
+-   [x] 支持指定配置文件 `mini-ci --config (xxxx/xxx.js|json)`
+-   [x] 支持指定参数 如 `robot` 默认是 1，命令：`mini-ci upload --robot 2`
+-   [x] 支持指定模式读取 `.env` 文件（默认）`mini-ci --mode xxx` 若指定了则是 `.env.[mode]`
 -   [x] 支持单选多个小程序 `mini-ci upload --useSelect`
 -   [x] 支持选择多个批量上传 `mini-ci upload --useMultiSelect`
--   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/mini.config.js) 配置
+-   [x] 支持选择全部的批量上传 `mini-ci upload --useAllConfig`
+-   [x] `js、json、.env` 配置文件
+    -   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件，也支持 `.env`，优先级 `.env` 最低
+    -   [x] 支持默认读取配置的 json 路径的版本
+    -   [x] 支持插件 plugins，支持上传、预览前后替换文件 replaceRules
+    -   [x] 支持默认的版本描述 `desc` 为 `v${version}` - git commit hash - by@${作者}`
+    -   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/mini.config.js) 配置
 
 ```bash
 参数可以相互结合。
---robot 2 [ 可选 1-30 ]
---dry 空跑
---useSelect 单选
---useMultiSelect 多选批量上传
+--dry 空跑 (alias：-d)
+--robot 2 [ 可选 1-30 ] (alias：-r)
+--config (xxxx/xxx.js|json) 指定配置文件  (alias：-c)
+# 简单场景 指定模式  默认读取 .env  若指定了则是 .env.[mode]
+--mode xxx 指定 .env.[mode]
+
+--useSelect 单选 (alias：-s)
+--useMultiSelect 多选批量上传 (alias：-m)
+--useAllConfig 选择所有配置批量操作 (alias：-a)
 ```
 
-## 首次使用前需先执行 `mini-ci init` 配置 `mini.config.js` 配置（更推荐）
+## 配置文件
+
+### 首次使用前需先执行 `mini-ci init` 配置 `mini.config.js` 配置（更推荐）
 
 执行 `mini-ci init` 会把 [`miniConfig`](https://github.com/lxchuan12/mini-ci/tree/main/packages/mini-ci/miniConfig) 的配置拷贝生成到当前小程序项目（或者新项目）中。
 
@@ -86,13 +99,13 @@ rmc --help
 
 按照[微信小程序文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)配置小程序密钥等，这样就能上传和预览了。如果没有微信小程序，可以自行免费开通个人的[微信小程序](https://mp.weixin.qq.com/)。
 
-## 或者配置 `.env`
+### 或者配置 `.env`
 
 在当前小程序项目（或者新项目）的目录下配置 `.env`
 
 参考[当前项目中的 `.env`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/.env)
 
-## `configPath` 配置
+### `configPath` 配置
 
 如果需要单选或者多选时，需配置 `configPath`。
 
@@ -104,7 +117,7 @@ rmc --help
 
 ## 可自行开发
 
-一般不需要自行开发，欢迎提 `PR`，或者加我微信 `ruochuan12` 交流反馈。
+一般不需要自行开发，欢迎 `fork` 提 `PR`，或者加我微信 `ruochuan12` 交流反馈。
 
 ```bash
 # 克隆我写的 mini-ci 工具
@@ -139,4 +152,25 @@ git checkout feature/release-it
 
 [还在用开发者工具上传小程序? 快来试试 miniprogram-ci 提效摸鱼](https://juejin.cn/post/7124467547163852808)
 
-**注意**：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mini-ci/tree/0.7.0) 撰写。后续 `mini-ci` 会持续更新，文章可能不会更新。
+**注意**：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mini-ci/tree/0.7.0) 撰写。后续 `mini-ci` 会持续更新，文章暂时不会更新。
+
+## 与社区已有的工具对比
+
+### Taro 小程序插件 `@tarojs/plugin-mini-ci`
+
+如果使用 `Taro` 开发的小程序，可以直接使用。
+
+具体如何使用参考文档，我在本文中就不赘述了。
+
+[小程序持续集成 @tarojs/plugin-mini-ci](https://taro-docs.jd.com/taro/docs/plugin-mini-ci/)
+
+我体验下来的感觉有以下几点可以优化。
+
+-   不支持指定机器人
+-   不支持不打包时上传
+-   不支持官方提供的更多配置
+-   不支持选择多个小程序批量上传等等
+
+### uni-app 好像没有提供类似的插件
+
+### 原生 miniprogram-ci 多配置时很麻烦，需要自己开发

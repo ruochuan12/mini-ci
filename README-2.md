@@ -3,25 +3,25 @@ highlight: darcula
 theme: smartblue
 ---
 
-# 听说你还在用开发者工具上传小程序，我从尤雨溪那学会了基于 miniprogram-ci 开发脚手架工具，提效摸鱼
+# 还在用开发者工具上传小程序? 快来试试 miniprogram-ci 提效摸鱼
 
 ## 1. 前言
 
->大家好，我是[若川](https://lxchuan12.gitee.io)。**为了能帮助到更多对源码感兴趣、想学会看源码、提升自己前端技术能力的同学**。我倾力持续组织了一年[每周大家一起学习200行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以点此扫码加我微信 [ruochuan12](https://juejin.cn/pin/7005372623400435725) 参与。
+> 大家好，我是[若川](https://lxchuan12.gitee.io)。**为了能帮助到更多对源码感兴趣、想学会看源码、提升自己前端技术能力的同学**。我倾力持续组织了一年[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以点此扫码加我微信 [ruochuan12](https://juejin.cn/pin/7005372623400435725) 参与。
 
-想学源码，极力推荐关注我写的专栏（目前3K+人关注）[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093) 包含`jQuery`、`underscore`、`lodash`、`vuex`、`sentry`、`axios`、`redux`、`koa`、`vue-devtools`、`vuex4`、`koa-compose`、`vue 3.2 发布`、`vue-this`、`create-vue`、`玩具vite`等20余篇源码文章。
+想学源码，极力推荐关注我写的专栏（目前 3K+人关注）[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093) 包含`jQuery`、`underscore`、`lodash`、`vuex`、`sentry`、`axios`、`redux`、`koa`、`vue-devtools`、`vuex4`、`koa-compose`、`vue 3.2 发布`、`vue-this`、`create-vue`、`玩具vite`等 20 余篇源码文章。
 
 ## 2. 前情回顾
 
-[本文提到的工具已开源，可以直接克隆拿去用，也可以自行修改使用，https://github.com/lxchuan12/mp-cli.git，求个star^_^](https://github.com/lxchuan12/mp-cli.git)
+[本文提到的工具已开源，可以直接克隆拿去用，也可以自行修改使用，https://github.com/lxchuan12/mp-cli.git，求个 star^\_^](https://github.com/lxchuan12/mp-cli.git)
 
 估计有很多开发小程序的同学，还在使用微信开发者工具上传小程序。如果你是，那么这篇文章非常适合你。如果不是，同样也很适合你。
 
-早在 2021年08月，我写过一篇文章 [Vue 3.2 发布了，那尤雨溪是怎么发布 Vue.js 的？](https://juejin.cn/post/6997943192851054606)
+早在 2021 年 08 月，我写过一篇文章 [Vue 3.2 发布了，那尤雨溪是怎么发布 Vue.js 的？](https://juejin.cn/post/6997943192851054606)
 
 `Vue 2.7` 如何发布跟`Vue 3.2`这篇文章类似，所以就不赘述了。
 
->`vuejs`发布的文件很多代码我们可以直接复制粘贴修改，优化我们自己发布的流程。比如写小程序，相对可能发布频繁，完全可以使用这套代码，配合[miniprogram-ci](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html "miniprogram-ci")，再加上一些自定义，加以优化。
+> `vuejs`发布的文件很多代码我们可以直接复制粘贴修改，优化我们自己发布的流程。比如写小程序，相对可能发布频繁，完全可以使用这套代码，配合[miniprogram-ci](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html 'miniprogram-ci')，再加上一些自定义，加以优化。
 
 于是今天我们来开发这样的脚手架工具。
 
@@ -52,11 +52,11 @@ theme: smartblue
 
 ## 3. 关于为啥要开发这样的工具
 
->关于小程序 `ci` 上传，再分享两篇文章。
+> 关于小程序 `ci` 上传，再分享两篇文章。
 
->[基于 CI 实现微信小程序的持续构建](https://help.coding.net/docs/best-practices/ci/1minute/wechat-mini-program.html)
+> [基于 CI 实现微信小程序的持续构建](https://help.coding.net/docs/best-practices/ci/1minute/wechat-mini-program.html)
 
->[小打卡小程序自动化构建及发布的工程化实践](https://www.yuque.com/jinxuanzheng/gvhmm5/uy4qu9#8yQ8M) 虽然文章里不是最新的 `miniprogram-ci`，但这篇场景写得比较全面。
+> [小打卡小程序自动化构建及发布的工程化实践](https://www.yuque.com/jinxuanzheng/gvhmm5/uy4qu9#8yQ8M) 虽然文章里不是最新的 `miniprogram-ci`，但这篇场景写得比较全面。
 
 接着，我们先来看看 miniprogram-ci 官方文档。
 
@@ -67,54 +67,54 @@ theme: smartblue
 ### 4.1 上传
 
 ```js
-const ci = require('miniprogram-ci')
-;(async () => {
-  const project = new ci.Project({
-    appid: 'wxsomeappid',
-    type: 'miniProgram',
-    projectPath: 'the/project/path',
-    privateKeyPath: 'the/path/to/privatekey',
-    ignores: ['node_modules/**/*'],
-  })
-  const uploadResult = await ci.upload({
-    project,
-    version: '1.1.1',
-    desc: 'hello',
-    setting: {
-      es6: true,
-    },
-    onProgressUpdate: console.log,
-  })
-  console.log(uploadResult)
-})()
+const ci = require('miniprogram-ci');
+(async () => {
+	const project = new ci.Project({
+		appid: 'wxsomeappid',
+		type: 'miniProgram',
+		projectPath: 'the/project/path',
+		privateKeyPath: 'the/path/to/privatekey',
+		ignores: ['node_modules/**/*'],
+	});
+	const uploadResult = await ci.upload({
+		project,
+		version: '1.1.1',
+		desc: 'hello',
+		setting: {
+			es6: true,
+		},
+		onProgressUpdate: console.log,
+	});
+	console.log(uploadResult);
+})();
 ```
 
 ### 4.2 预览
 
 ```js
-const ci = require('miniprogram-ci')
-;(async () => {
-  const project = new ci.Project({
-    appid: 'wxsomeappid',
-    type: 'miniProgram',
-    projectPath: 'the/project/path',
-    privateKeyPath: 'the/path/to/privatekey',
-    ignores: ['node_modules/**/*'],
-  })
-  const previewResult = await ci.preview({
-    project,
-    desc: 'hello', // 此备注将显示在“小程序助手”开发版列表中
-    setting: {
-      es6: true,
-    },
-    qrcodeFormat: 'image',
-    qrcodeOutputDest: '/path/to/qrcode/file/destination.jpg',
-    onProgressUpdate: console.log,
-    // pagePath: 'pages/index/index', // 预览页面
-    // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
-  })
-  console.log(previewResult)
-})()
+const ci = require('miniprogram-ci');
+(async () => {
+	const project = new ci.Project({
+		appid: 'wxsomeappid',
+		type: 'miniProgram',
+		projectPath: 'the/project/path',
+		privateKeyPath: 'the/path/to/privatekey',
+		ignores: ['node_modules/**/*'],
+	});
+	const previewResult = await ci.preview({
+		project,
+		desc: 'hello', // 此备注将显示在“小程序助手”开发版列表中
+		setting: {
+			es6: true,
+		},
+		qrcodeFormat: 'image',
+		qrcodeOutputDest: '/path/to/qrcode/file/destination.jpg',
+		onProgressUpdate: console.log,
+		// pagePath: 'pages/index/index', // 预览页面
+		// searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
+	});
+	console.log(previewResult);
+})();
 ```
 
 ## 5. Taro 小程序插件 @tarojs/plugin-mini-ci
@@ -125,14 +125,14 @@ const ci = require('miniprogram-ci')
 
 [小程序持续集成 @tarojs/plugin-mini-ci](https://taro-docs.jd.com/taro/docs/plugin-mini-ci/)
 
-我组织的[源码共读第30期](https://juejin.cn/post/7082662027143053342)读的就是这个插件，非常值得学习。[@tarojs/plugin-mini-ci 源码解读可以参考 @NewName 的源码文章](https://juejin.cn/post/7089819849257385997)
+我组织的[源码共读第 30 期](https://juejin.cn/post/7082662027143053342)读的就是这个插件，非常值得学习。[@tarojs/plugin-mini-ci 源码解读可以参考 @NewName 的源码文章](https://juejin.cn/post/7089819849257385997)
 
 我体验下来的感觉有以下几点可以优化。
 
-- 不支持指定机器人
-- 不支持不打包时上传
-- 不支持官方提供的更多配置
-- 不支持选择多个小程序批量上传等等
+-   不支持指定机器人
+-   不支持不打包时上传
+-   不支持官方提供的更多配置
+-   不支持选择多个小程序批量上传等等
 
 如果有时间我可能给 `Taro` 提 `PR`，当然不一定会被合并。
 
@@ -174,24 +174,24 @@ npm i @release-it/conventional-changelog -D
 
 ```json
 {
-  "github": {
-    "release": false
-  },
-  "git": {
-    "commitMessage": "release: v${version}"
-  },
-  "npm": {
-    "publish": false
-  },
-  "hooks": {
-    "after:bump": "echo 更新版本成功"
-  },
-  "plugins": {
-    "@release-it/conventional-changelog": {
-      "preset": "angular",
-      "infile": "CHANGELOG.md"
-    }
-  }
+	"github": {
+		"release": false
+	},
+	"git": {
+		"commitMessage": "release: v${version}"
+	},
+	"npm": {
+		"publish": false
+	},
+	"hooks": {
+		"after:bump": "echo 更新版本成功"
+	},
+	"plugins": {
+		"@release-it/conventional-changelog": {
+			"preset": "angular",
+			"infile": "CHANGELOG.md"
+		}
+	}
 }
 ```
 
@@ -226,16 +226,16 @@ npm init @usr -> npx @usr/create
 
 [create-release-it](https://github.com/release-it/create-release-it)
 
-`npm init release-it` 原理其实就是 `npx create-release-it` 
+`npm init release-it` 原理其实就是 `npx create-release-it`
 选择一些配置，生成 `.release-it.json` 或者 `package.json` 的 `release-it` 配置。
 
 再写入命令`release` 配置到 `package.json`。
 
 ```json
 {
-  "scripts": {
-    "release": "release-it"
-  }
+	"scripts": {
+		"release": "release-it"
+	}
 }
 ```
 
@@ -254,8 +254,7 @@ npm init @usr -> npx @usr/create
 	for (const mpConfigItem of mpConfigList) {
 		try {
 			const res = await main({});
-		}
-		catch(err){
+		} catch (err) {
 			console.log('执行失败', err);
 		}
 	}
@@ -311,7 +310,7 @@ const getParams = () => {
 			m: 'useMultiSelect',
 			p: 'preview',
 			h: 'help',
-		}
+		},
 	};
 	return require('minimist')(params, paramsDefault);
 };
@@ -397,7 +396,7 @@ module.exports = getDesc;
 
 ### 8.4 读取配置 wx.config.js 配置（更推荐）
 
-当前也支持读取 `.env` 配置。读取 `.env` 配置，可以采用 [`dotenv`](https://github.com/motdotla/dotenv)。关于 dotenv的原理，可以看我之前写过的文章[面试官：项目中常用的 .env 文件原理是什么？如何实现？](https://juejin.cn/post/7045057475845816357)
+当前也支持读取 `.env` 配置。读取 `.env` 配置，可以采用 [`dotenv`](https://github.com/motdotla/dotenv)。关于 dotenv 的原理，可以看我之前写过的文章[面试官：项目中常用的 .env 文件原理是什么？如何实现？](https://juejin.cn/post/7045057475845816357)
 
 但 `wx.config.js` 可以配置更多东西而且更灵活。所以更推荐。
 
@@ -432,8 +431,8 @@ const parseEnv = () => {
 	} else {
 		parsed = wxconfig;
 	}
-  // 代码有省略
-}
+	// 代码有省略
+};
 ```
 
 ### 8.5 支持选择多个小程序
@@ -477,9 +476,7 @@ const multiSelectPrompt = new MultiSelect({
 try {
 	const answer = await multiSelectPrompt.run();
 	console.log('Answer:', answer);
-	result = configPathListJson.filter((el) =>
-		answer.includes(el.name),
-	);
+	result = configPathListJson.filter((el) => answer.includes(el.name));
 	return result;
 } catch (err) {
 	console.log('您已经取消');
@@ -524,4 +521,4 @@ git checkout feature/release-it
 
 ---
 
-最后可以持续关注我@若川。欢迎点此扫码加我微信 [ruochuan12](https://juejin.cn/pin/7005372623400435725) 交流，参加[每周大家一起学习200行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，共同进步。
+最后可以持续关注我@若川。欢迎点此扫码加我微信 [ruochuan12](https://juejin.cn/pin/7005372623400435725) 交流，参加[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，共同进步。
