@@ -39,7 +39,7 @@
   "scripts": {
     "prepublishOnly": "pnpm run build",
     "lint": "eslint --cache --fix --ext .ts",
-    "dev": "esno src/cli.ts",
+    "dev": "tsx src/cli.ts",
     "upload": "pnpm run dev -- upload",
     "preview": "pnpm run dev -- preview",
     "release": "release-it",
@@ -53,8 +53,9 @@
   },
   "devDependencies": {
     "@vitest/coverage-c8": "^0.23.4",
-    "esno": "^0.16.3",
+    "dotenv-expand": "^9.0.0",
     "release-it": "^15.1.1",
+    "tsx": "^3.10.0",
     "unbuild": "^0.8.11",
     "vitest": "^0.23.4"
   },

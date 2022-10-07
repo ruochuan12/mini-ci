@@ -17,7 +17,7 @@
       "preset": "angular",
       "infile": "CHANGELOG.md"
     },
-    "@release-it-plugins/workspaces": {
+    "//@release-it-plugins/workspaces": {
       "workspaces": [
         "packages/*"
       ]
