@@ -55,22 +55,16 @@
         "ci:coverage": "pnpm -C packages/mini-ci run coverage"
     },
     "devDependencies": {
-        "@release-it-plugins/workspaces": "^3.2.0",
-        "@release-it/conventional-changelog": "^5.0.0",
         "@ruochuan/mini-ci": "workspace:0.11.4",
         "@types/eslint": "^8.4.5",
         "@types/eslint-config-prettier": "^6.11.0",
         "@types/prettier": "^2.6.3",
-        "@vitest/coverage-c8": "^0.23.4",
         "eslint": "^8.19.0",
         "eslint-config-prettier": "^8.5.0",
         "git-cz": "^4.9.0",
         "husky": "^8.0.1",
         "lint-staged": "^13.0.3",
-        "prettier": "^2.7.1",
-        "release-it": "^15.1.1",
-        "unbuild": "^0.8.11",
-        "vitest": "^0.23.4"
+        "prettier": "^2.7.1"
     },
     "husky": {
         "hooks": {
@@ -80,8 +74,5 @@
     "lint-staged": {
         "*.{js, ts}": "eslint --cache --fix",
         "*.{js, ts, json}": "prettier --write"
-    },
-    "dependencies": {
-        "execa": "^6.1.0"
     }
 }
