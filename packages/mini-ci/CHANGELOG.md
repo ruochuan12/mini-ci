@@ -1,5 +1,23 @@
 
 
+# [0.12.0](https://github.com/lxchuan12/mini-ci/compare/0.11.4...0.12.0) (2022-10-07)
+
+
+### Bug Fixes
+
+* 🐛 修复优化 configPath miniConfig 路径问题等 ([3ad07e5](https://github.com/lxchuan12/mini-ci/commit/3ad07e5c3664f138214e50d6f029abcd71367ec2))
+
+
+### Features
+
+* 🎸 添加 -c --config 指定配置文件功能 ([fa1e5a7](https://github.com/lxchuan12/mini-ci/commit/fa1e5a7aa05eef1251f0af1cc68a2a46fcd97cf3))
+* 🎸 添加解析 .env.[mode] 的功能 ([a8af90c](https://github.com/lxchuan12/mini-ci/commit/a8af90c674d4f4a09182aeddd1884f42b602af2b))
+
+
+### Reverts
+
+* Revert "chore: release v0.11.5" ([6cfbb8d](https://github.com/lxchuan12/mini-ci/commit/6cfbb8d0f42119288ee2669d8672b5f509ec69af))
+
 ## [0.11.4](https://github.com/lxchuan12/mini-ci/compare/0.11.3...0.11.4) (2022-10-04)
 
 ## [0.11.3](https://github.com/lxchuan12/mini-ci/compare/0.11.2...0.11.3) (2022-10-04)
