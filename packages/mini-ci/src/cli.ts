@@ -18,6 +18,7 @@ cli.command('init [root]', '初始化配置项')
 const cliCommonOption = (intance: any) => {
 	return intance
 		.option('-r, --robot <robot>', '指定机器人，默认 1')
+		.option('-c, --config <file>', '指定一个文件为配置文件')
 		.option('-s, --useSelect', '需配置 configPath 选择一个配置操作')
 		.option('-m, --useMultiSelect', '需配置 configPath 选择多个配置操作')
 		.option('-a, --useAllConfig', '需配置 configPath，所有配置批量操作');

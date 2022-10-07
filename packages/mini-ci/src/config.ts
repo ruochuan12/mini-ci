@@ -204,10 +204,19 @@ export const resolveConfig = async (config: InlineConfig) => {
 	// resolve root
 	const resolvedRoot = getResolvedRoot(config);
 
-	let loadResult = await loadConfigFromFile(resolvedRoot);
+	let loadResult;
+	// 如果指定了配置的文件
+	if (config.config) {
+		loadResult = await resolveFileConfig(
+			path.resolve(resolvedRoot, config.config),
+		);
+	} else {
+		loadResult = await loadConfigFromFile(resolvedRoot);
+	}
+
 	if (!isObject(loadResult)) {
 		logger.log(
-			'加载 mini.config.(js|json) 失败，将使用 .env 中的配置',
+			'加载 mini.config.(js|json) 失败，或未指定可用的配置文件，将使用 .env 中的配置',
 			loadResult,
 		);
 		// @ts-ignore
