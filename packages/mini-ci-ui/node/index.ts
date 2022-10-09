@@ -18,6 +18,26 @@ router.get('/', (ctx, next) => {
 	ctx.body = '这里是主页';
 });
 
+router.get('/list', async (ctx, next) => {
+	try {
+		const configList = await resolveConfig({
+			root: '../mini-ci/',
+			useAllConfig: true,
+		});
+		ctx.body = {
+			code: 200,
+			data: configList,
+			msg: '获取成功',
+		};
+	} catch (e) {
+		ctx.body = {
+			code: 500,
+			data: e,
+			msg: '获取失败',
+		};
+	}
+});
+
 router.get('/upload', async (ctx, next) => {
 	const {
 		body: { basename },
@@ -37,24 +57,20 @@ router.get('/upload', async (ctx, next) => {
 	// await next();
 });
 
-router.get('/list', async (ctx, next) => {
-	try {
-		const configList = await resolveConfig({
-			root: '../mini-ci/',
-			useAllConfig: true,
-		});
-		ctx.body = {
-			code: 200,
-			data: configList,
-			msg: '获取成功',
-		};
-	} catch (e) {
-		ctx.body = {
-			code: 500,
-			data: e,
-			msg: '获取失败',
-		};
-	}
+router.get('/preview', async (ctx, next) => {
+	const {
+		body: { basename },
+	} = ctx.request;
+	// ctx.router available
+	console.log('project', ctx.request, basename);
+	const res = await preview('../mini-ci/', { dry: false });
+	ctx.body = {
+		code: 200,
+		data: res,
+		// data: result2.toString(),
+		msg: '小程序预览成功',
+	};
+	// await next();
 });
 
 app.use(router.routes()).use(router.allowedMethods());

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Space, Table } from 'antd';
+import { message, Space, Table } from 'antd';
 import './App.css';
 import axios2 from 'axios';
 import 'antd/dist/antd.css';
@@ -13,14 +13,42 @@ function App() {
 	const handleUpload = (record) => {
 		console.log('handleUpload', record);
 		axios('/upload')
-			.then((res) => {})
-			.catch((err) => {});
+			.then((res) => {
+				if (res.status === 200) {
+					if (res.data.code === 200) {
+						message.success(res.data.msg);
+					} else {
+						message.error(res.data.msg);
+					}
+				}
+			})
+			.catch((err) => {
+				message.error(err.data.msg);
+			});
 	};
 	const handlePreview = (record) => {
 		console.log('handlePreview', record);
+		axios('/preview')
+			.then((res) => {
+				if (res.status === 200) {
+					if (res.data.code === 200) {
+						message.success(res.data.msg);
+					} else {
+						message.error(res.data.msg);
+					}
+				}
+			})
+			.catch((err) => {
+				message.error(err.data.msg);
+			});
 	};
 
 	const columns = [
+		{
+			title: 'id',
+			dataIndex: 'id',
+			key: 'id',
+		},
 		{
 			title: '小程序名称',
 			dataIndex: 'name',

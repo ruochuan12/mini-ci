@@ -6,21 +6,43 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --exec esno node/index.ts"
+    "dev:node": "nodemon --exec tsx node/index.ts",
+    "dev:ui": "vite",
+    "dev": "pnpm run dev:node & pnpm run dev:ui",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "author": "lxchuan12@163.com",
   "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.3.0",
     "@koa/router": "^11.0.1",
+    "antd": "^4.23.4",
+    "axios": "^1.0.0",
     "koa": "^2.13.4",
-    "koa-bodyparser": "^4.3.0"
+    "koa-bodyparser": "^4.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/koa": "^2.13.5",
     "@types/koa-bodyparser": "^4.3.8",
     "@types/koa__cors": "^3.3.0",
     "@types/koa__router": "^12.0.0",
-    "nodemon": "^2.0.20"
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.39.0",
+    "@typescript-eslint/parser": "^5.39.0",
+    "@vitejs/plugin-react": "^2.1.0",
+    "eslint": "^8.24.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "nodemon": "^2.0.20",
+    "prettier": "^2.7.1",
+    "tsx": "^3.10.0",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "vite-plugin-eslint": "^1.8.1"
   }
 }
