@@ -160,7 +160,7 @@ git checkout feature/release-it
 
 如果使用 `Taro` 开发的小程序，可以直接使用。
 
-具体如何使用参考文档，我在本文中就不赘述了。
+具体如何使用参考文档，在这里就不赘述了。
 
 [小程序持续集成 @tarojs/plugin-mini-ci](https://taro-docs.jd.com/taro/docs/plugin-mini-ci/)
 
