@@ -1,6 +1,5 @@
 {
     "name": "@ruochuan/monorepo",
-    "version": "0.11.4",
     "private": true,
     "type": "module",
     "keywords": [
@@ -55,7 +54,7 @@
         "ci:coverage": "pnpm -C packages/mini-ci run coverage"
     },
     "devDependencies": {
-        "@ruochuan/mini-ci": "workspace:0.11.4",
+        "@ruochuan/mini-ci": "workspace:*",
         "@types/eslint": "^8.4.5",
         "@types/eslint-config-prettier": "^6.11.0",
         "@types/prettier": "^2.6.3",
