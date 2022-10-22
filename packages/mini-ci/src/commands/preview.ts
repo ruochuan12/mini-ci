@@ -1,4 +1,4 @@
-import { InlineConfig } from 'vitest';
+import { InlineConfig } from '../types';
 import { generatorActions } from '.';
 
 // 预览
