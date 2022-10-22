@@ -53,12 +53,12 @@
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "^5.0.0",
-    "@vitest/coverage-c8": "^0.23.4",
+    "@vitest/coverage-c8": "^0.24.3",
     "dotenv-expand": "^9.0.0",
     "release-it": "^15.4.2",
     "tsx": "^3.10.0",
     "unbuild": "^0.8.11",
-    "vitest": "^0.23.4"
+    "vitest": "^0.24.3"
   },
   "husky": {
     "hooks": {
