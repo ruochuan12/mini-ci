@@ -2,6 +2,7 @@ import os from 'node:os';
 import path from 'node:path';
 import fs from 'node:fs';
 import { InlineConfig } from '../types';
+export { default as uniqueId } from './uniqueId';
 export { default as copy } from './copy';
 
 export const isObject = (val: any) => typeof val === 'object' && val !== null;
