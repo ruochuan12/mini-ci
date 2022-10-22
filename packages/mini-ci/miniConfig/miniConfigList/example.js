@@ -1,7 +1,7 @@
 export default {
-	name: '若川视野-小程序1-mini.config.js',
-	projectPath: './dist/build/mp-weixin',
-	packageJsonPath: './package.json',
+	name: '若川视野-小程序-example.js',
+	projectPath: '../../../tdesign-miniprogram-starter-retail',
+	packageJsonPath: '../../../tdesign-miniprogram-starter-retail/package.json',
 	appid: 'wxdd3948dc1c7f95c2',
 	privateKeyPath: './key/private.wxdd3948dc1c7f95c2.key',
 	// # 多个小程序配置的路径
