@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { execaCommandSync } from 'execa';
 import { pathToFileURL } from 'node:url';
 
-import { getResolvedRoot, isObject, readJSON } from './utils/index';
+import { getResolvedRoot, isObject, readJSON, uniqueId } from './utils/index';
 import { DEFAULT_CONFIG_FILES } from './const';
 import { loadEnv } from './env';
 import logger from './logger';
@@ -173,6 +173,7 @@ export const mergeConfig = (
 		plugins: config.plugins,
 		replaceRules: config.replaceRules,
 		name: config.name,
+		// id: uniqueId(),
 	};
 };
 
