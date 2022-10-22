@@ -1,12 +1,12 @@
-vi.mock('../src/commands/index');
+vi.mock('../../src/commands/index');
 import { expect, test, vi } from 'vitest';
 import { generatorActions, preview, upload, init } from '../../src/commands';
 
 test('commands', () => {
-	init({});
 	generatorActions({ text: '上传', action: 'upload' });
 
 	generatorActions({ text: '预览', action: 'preview' });
+	init({});
 	upload('', {});
 	preview('', {});
 	expect(init).toHaveBeenCalledWith({});

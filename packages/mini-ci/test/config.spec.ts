@@ -19,14 +19,14 @@ test('resolveConfig toMatchSnapshot', async () => {
 	expect(configList).toMatchSnapshot();
 });
 
-test('resolveConfig -c --config miniConfigList/example.js', async () => {
+test('resolveConfig --config miniConfigList/example.js', async () => {
 	const configList = await resolveConfig({
 		config: 'miniConfigList/example.js',
 	});
 	expect(configList).toMatchSnapshot();
 });
 
-test('resolveConfig -c --config miniConfigList/example.json', async () => {
+test('resolveConfig --config miniConfigList/example.json', async () => {
 	const configList = await resolveConfig({
 		config: 'miniConfigList/example.json',
 	});

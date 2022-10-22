@@ -1,5 +1,95 @@
 // Vitest Snapshot v1
 
+exports[`resolveConfig --config miniConfigList/example.js 1`] = `
+[
+  {
+    "name": "若川视野-小程序-example.js",
+    "plugins": [],
+    "previewOptions": {
+      "robot": undefined,
+      "setting": {
+        "es6": true,
+        "es7": true,
+        "ignoreUploadUnusedFiles": true,
+        "minify": true,
+      },
+      "version": "1.1.0",
+    },
+    "projectOptions": {
+      "appid": "wxdd3948dc1c7f95c2",
+      "ignores": [
+        "node_modules/**/*",
+        "CHANGELOG.md",
+        "README.md",
+        "yarn.lock",
+        "package-lock.json",
+        "pnpm-lock.yaml",
+      ],
+      "privateKeyPath": "./key/private.wxdd3948dc1c7f95c2.key",
+      "projectPath": "../../../tdesign-miniprogram-starter-retail",
+      "type": "miniProgram",
+    },
+    "replaceRules": [],
+    "uploadOptions": {
+      "desc": "v1.1.0 - ccb6cbe - by@若川",
+      "robot": undefined,
+      "setting": {
+        "es6": true,
+        "es7": true,
+        "ignoreUploadUnusedFiles": true,
+        "minify": true,
+      },
+      "version": "1.1.0",
+    },
+  },
+]
+`;
+
+exports[`resolveConfig --config miniConfigList/example.json 1`] = `
+[
+  {
+    "name": "若川视野的小程序-默认json",
+    "plugins": undefined,
+    "previewOptions": {
+      "robot": undefined,
+      "setting": {
+        "es6": true,
+        "es7": true,
+        "ignoreUploadUnusedFiles": true,
+        "minify": true,
+      },
+      "version": "1.1.0",
+    },
+    "projectOptions": {
+      "appid": "wxdd3948dc1c7f95c2",
+      "ignores": [
+        "node_modules/**/*",
+        "CHANGELOG.md",
+        "README.md",
+        "yarn.lock",
+        "package-lock.json",
+        "pnpm-lock.yaml",
+      ],
+      "privateKeyPath": "./key/private.wxdd3948dc1c7f95c2.key",
+      "projectPath": "../../../tdesign-miniprogram-starter-retail",
+      "type": "miniProgram",
+    },
+    "replaceRules": undefined,
+    "uploadOptions": {
+      "desc": "v1.1.0 - ccb6cbe - by@若川",
+      "robot": undefined,
+      "setting": {
+        "es6": true,
+        "es7": true,
+        "ignoreUploadUnusedFiles": true,
+        "minify": true,
+      },
+      "version": "1.1.0",
+    },
+  },
+]
+`;
+
 exports[`resolveConfig -c --config miniConfigList/example.js 1`] = `
 [
   {
