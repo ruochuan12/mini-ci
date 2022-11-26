@@ -7,13 +7,22 @@ theme: smartblue
 
 ## 1. 前言
 
-> 大家好，我是[若川](https://lxchuan12.gitee.io)。**为了能帮助到更多对源码感兴趣、想学会看源码、提升自己前端技术能力的同学**。我倾力持续组织了一年[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以点此扫码加我微信 [ruochuan12](https://juejin.cn/pin/7005372623400435725) 参与。
-
-想学源码，极力推荐关注我写的专栏（目前 3K+人关注）[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093) 包含`jQuery`、`underscore`、`lodash`、`vuex`、`sentry`、`axios`、`redux`、`koa`、`vue-devtools`、`vuex4`、`koa-compose`、`vue 3.2 发布`、`vue-this`、`create-vue`、`玩具vite`等 20 余篇源码文章。
+大家好，我是[若川](https://lxchuan12.gitee.io)。我倾力持续组织了一年[每周大家一起学习200行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以[点此扫码加我微信 `ruochuan12` 参与](https://juejin.cn/pin/7005372623400435725)。另外，想学源码，极力推荐关注我写的专栏[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093)，目前是掘金关注人数（4.3k+人）第一的专栏，写有20余篇源码文章。
 
 ## 2. 前情回顾
 
-[本文提到的工具已开源，可以直接克隆拿去用，也可以自行修改使用，https://github.com/lxchuan12/mp-cli.git，求个 star^\_^](https://github.com/lxchuan12/mp-cli.git)
+**注意：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mini-ci/tree/0.7.0) 撰写。目前工具是 `0.12.0` 版本，后续 `mini-ci` 会持续更新，文章应该暂时不会更新**。
+
+[本文提到的工具 mini-ci 已开源，求个 star^\_^](https://github.com/lxchuan12/mini-ci.git)
+
+```bash
+# 可全局安装
+npm i @ruochuan/mini-ci -g
+mini-ci -h
+# 也可以不全局安装
+npx @ruochuan/mini-ci -h
+# 查看帮助信息，或者查看文档：https://github.com/lxchuan12/mini-ci.git，
+```
 
 估计有很多开发小程序的同学，还在使用微信开发者工具上传小程序。如果你是，那么这篇文章非常适合你。如果不是，同样也很适合你。
 
@@ -31,24 +40,24 @@ theme: smartblue
 1. 如何利用 release-it 提升版本号，自动打 tag，生成 changelog 等
 2. npm init 原理
 3. 如何写一个脚手架工具
-	- 如何解析 Nodejs 命令行参数 minimist
-	- 如何选择单选、多选 enquirer(prompt, MultiSelect)
-	- 等等
+ - 如何解析 Nodejs 命令行参数 minimist
+ - 如何选择单选、多选 enquirer(prompt, MultiSelect)
+ - 等等
 ```
 
 先看看最终开发的效果。
 
 支持的功能
 
-![支持的功能](./images/xmind.png)
+![支持的功能](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/600f4161b25c4d62b47c2fffb8f267fd~tplv-k3u1fbpfcp-watermark.image?)
 
 显示帮助信息
 
-![显示帮助信息](./images/version-and-help.png)
+![显示帮助信息](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8bb61b337b4a4065ae669ba3738c8d53~tplv-k3u1fbpfcp-watermark.image?)
 
 上传效果
 
-![上传效果](./images/upload.png)
+![上传效果](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3fdedad23161405b9381daf272443f1f~tplv-k3u1fbpfcp-watermark.image?)
 
 ## 3. 关于为啥要开发这样的工具
 
@@ -69,23 +78,23 @@ theme: smartblue
 ```js
 const ci = require('miniprogram-ci');
 (async () => {
-	const project = new ci.Project({
-		appid: 'wxsomeappid',
-		type: 'miniProgram',
-		projectPath: 'the/project/path',
-		privateKeyPath: 'the/path/to/privatekey',
-		ignores: ['node_modules/**/*'],
-	});
-	const uploadResult = await ci.upload({
-		project,
-		version: '1.1.1',
-		desc: 'hello',
-		setting: {
-			es6: true,
-		},
-		onProgressUpdate: console.log,
-	});
-	console.log(uploadResult);
+ const project = new ci.Project({
+  appid: 'wxsomeappid',
+  type: 'miniProgram',
+  projectPath: 'the/project/path',
+  privateKeyPath: 'the/path/to/privatekey',
+  ignores: ['node_modules/**/*'],
+ });
+ const uploadResult = await ci.upload({
+  project,
+  version: '1.1.1',
+  desc: 'hello',
+  setting: {
+   es6: true,
+  },
+  onProgressUpdate: console.log,
+ });
+ console.log(uploadResult);
 })();
 ```
 
@@ -94,26 +103,26 @@ const ci = require('miniprogram-ci');
 ```js
 const ci = require('miniprogram-ci');
 (async () => {
-	const project = new ci.Project({
-		appid: 'wxsomeappid',
-		type: 'miniProgram',
-		projectPath: 'the/project/path',
-		privateKeyPath: 'the/path/to/privatekey',
-		ignores: ['node_modules/**/*'],
-	});
-	const previewResult = await ci.preview({
-		project,
-		desc: 'hello', // 此备注将显示在“小程序助手”开发版列表中
-		setting: {
-			es6: true,
-		},
-		qrcodeFormat: 'image',
-		qrcodeOutputDest: '/path/to/qrcode/file/destination.jpg',
-		onProgressUpdate: console.log,
-		// pagePath: 'pages/index/index', // 预览页面
-		// searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
-	});
-	console.log(previewResult);
+ const project = new ci.Project({
+  appid: 'wxsomeappid',
+  type: 'miniProgram',
+  projectPath: 'the/project/path',
+  privateKeyPath: 'the/path/to/privatekey',
+  ignores: ['node_modules/**/*'],
+ });
+ const previewResult = await ci.preview({
+  project,
+  desc: 'hello', // 此备注将显示在“小程序助手”开发版列表中
+  setting: {
+   es6: true,
+  },
+  qrcodeFormat: 'image',
+  qrcodeOutputDest: '/path/to/qrcode/file/destination.jpg',
+  onProgressUpdate: console.log,
+  // pagePath: 'pages/index/index', // 预览页面
+  // searchQuery: 'a=1&b=2',  // 预览参数 [注意!]这里的`&`字符在命令行中应写成转义字符`\&`
+ });
+ console.log(previewResult);
 })();
 ```
 
@@ -129,10 +138,10 @@ const ci = require('miniprogram-ci');
 
 我体验下来的感觉有以下几点可以优化。
 
--   不支持指定机器人
--   不支持不打包时上传
--   不支持官方提供的更多配置
--   不支持选择多个小程序批量上传等等
+- 不支持指定机器人
+- 不支持不打包时上传
+- 不支持官方提供的更多配置
+- 不支持选择多个小程序批量上传等等
 
 如果有时间我可能给 `Taro` 提 `PR`，当然不一定会被合并。
 
@@ -153,9 +162,9 @@ uni-app 好像没有提供类似的插件。需要自己动手，丰衣足食。
 
 ```json
 {
-	"scripts": {
-		"commit": "git-cz"
-	}
+ "scripts": {
+  "commit": "git-cz"
+ }
 }
 ```
 
@@ -174,24 +183,24 @@ npm i @release-it/conventional-changelog -D
 
 ```json
 {
-	"github": {
-		"release": false
-	},
-	"git": {
-		"commitMessage": "release: v${version}"
-	},
-	"npm": {
-		"publish": false
-	},
-	"hooks": {
-		"after:bump": "echo 更新版本成功"
-	},
-	"plugins": {
-		"@release-it/conventional-changelog": {
-			"preset": "angular",
-			"infile": "CHANGELOG.md"
-		}
-	}
+ "github": {
+  "release": false
+ },
+ "git": {
+  "commitMessage": "release: v${version}"
+ },
+ "npm": {
+  "publish": false
+ },
+ "hooks": {
+  "after:bump": "echo 更新版本成功"
+ },
+ "plugins": {
+  "@release-it/conventional-changelog": {
+   "preset": "angular",
+   "infile": "CHANGELOG.md"
+  }
+ }
 }
 ```
 
@@ -233,9 +242,9 @@ npm init @usr -> npx @usr/create
 
 ```json
 {
-	"scripts": {
-		"release": "release-it"
-	}
+ "scripts": {
+  "release": "release-it"
+ }
 }
 ```
 
@@ -249,15 +258,15 @@ npm init @usr -> npx @usr/create
 需要支持多选，那肯定得遍历数组。
 
 ```js
-// 代码只是关键代码，完整的可以查看 https://github.com/lxchuan12/mp-cli/blob/main/src/index.js
+// 代码只是关键代码，完整的可以查看 https://github.com/lxchuan12/mini-ci/blob/0.7.0/src/index.js
 (async () => {
-	for (const mpConfigItem of mpConfigList) {
-		try {
-			const res = await main({});
-		} catch (err) {
-			console.log('执行失败', err);
-		}
-	}
+ for (const mpConfigItem of mpConfigList) {
+  try {
+   const res = await main({});
+  } catch (err) {
+   console.log('执行失败', err);
+  }
+ }
 })();
 ```
 
@@ -267,56 +276,56 @@ npm init @usr -> npx @usr/create
 const { green, bold } = require('kolorist');
 const step = (msg) => console.log(bold(green(`[step] ${msg}`)));
 async function main(options = {}) {
-	const project = new ci.Project(lastProjectOptions);
-	if (upload) {
-		step('开始上传小程序...');
-		const uploadResult = await ci.upload(lastUploadOptions);
-		console.log('uploadResult', uploadResult);
-	}
-	if (preview) {
-		step('开始生成预览二维码...');
-		const previewResult = await ci.preview(lastPreviewOptions);
-		console.log('previewResult', previewResult);
-	}
+ const project = new ci.Project(lastProjectOptions);
+ if (upload) {
+  step('开始上传小程序...');
+  const uploadResult = await ci.upload(lastUploadOptions);
+  console.log('uploadResult', uploadResult);
+ }
+ if (preview) {
+  step('开始生成预览二维码...');
+  const previewResult = await ci.preview(lastPreviewOptions);
+  console.log('previewResult', previewResult);
+ }
 }
 ```
 
 ### 8.1 添加功能支持指定参数
 
-使用 [minimist](https://github.com/substack/minimist) 解析命令行参数。
+使用 [minimist](https://github.com/minimist/minimist) 解析命令行参数。
 
 ```js
 const getParams = () => {
-	const params = process.argv.slice(2);
-	const paramsDefault = {
-		default: {
-			robot: 1,
-			preview: false,
-			upload: false,
-			// 空跑，不执行
-			dry: false,
-			// 根据配置，单选还是多选来上传小程序
-			useSelect: false,
-			useMultiSelect: false,
-			help: false,
-			version: false,
-		},
-		alias: {
-			u: 'upload',
-			r: 'robot',
-			v: 'version',
-			d: 'dry',
-			s: 'useSelect',
-			m: 'useMultiSelect',
-			p: 'preview',
-			h: 'help',
-		},
-	};
-	return require('minimist')(params, paramsDefault);
+ const params = process.argv.slice(2);
+ const paramsDefault = {
+  default: {
+   robot: 1,
+   preview: false,
+   upload: false,
+   // 空跑，不执行
+   dry: false,
+   // 根据配置，单选还是多选来上传小程序
+   useSelect: false,
+   useMultiSelect: false,
+   help: false,
+   version: false,
+  },
+  alias: {
+   u: 'upload',
+   r: 'robot',
+   v: 'version',
+   d: 'dry',
+   s: 'useSelect',
+   m: 'useMultiSelect',
+   p: 'preview',
+   h: 'help',
+  },
+ };
+ return require('minimist')(params, paramsDefault);
 };
 
 module.exports = {
-	getParams,
+ getParams,
 };
 ```
 
@@ -327,24 +336,24 @@ module.exports = {
 ```js
 const { red, bold } = require('kolorist');
 const getVersion = () => {
-	let version;
-	try {
-		version = require(`${packageJsonPath}/package.json`).version;
-	} catch (e) {
-		console.log(e);
-		console.log(
-			red(
-				bold(
-					'未设置 version , 并且未设置 package.json 路径，无法读取 version',
-				),
-			),
-		);
-	}
-	return version;
+ let version;
+ try {
+  version = require(`${packageJsonPath}/package.json`).version;
+ } catch (e) {
+  console.log(e);
+  console.log(
+   red(
+    bold(
+     '未设置 version , 并且未设置 package.json 路径，无法读取 version',
+    ),
+   ),
+  );
+ }
+ return version;
 };
 
 module.exports = {
-	getVersion,
+ getVersion,
 };
 ```
 
@@ -359,36 +368,36 @@ module.exports = {
 const { execSync } = require('child_process');
 const parseGitConfig = require('parse-git-config');
 const getDesc = (projectPath, version) => {
-	// 获取最新 git 记录 7位的 commit hash
-	let gitCommitHash = 'git commit hash 为空';
-	try {
-		gitCommitHash = execSync('git rev-parse --short HEAD', {
-			cwd: projectPath,
-		})
-			.toString()
-			.trim();
-	} catch (e) {
-		console.warn('获取 git commit hash 失败');
-		console.warn(e);
-	}
+ // 获取最新 git 记录 7位的 commit hash
+ let gitCommitHash = 'git commit hash 为空';
+ try {
+  gitCommitHash = execSync('git rev-parse --short HEAD', {
+   cwd: projectPath,
+  })
+   .toString()
+   .trim();
+ } catch (e) {
+  console.warn('获取 git commit hash 失败');
+  console.warn(e);
+ }
 
-	// 获取项目的git仓库的 user.name
-	let userName = '默认';
-	try {
-		const {
-			user: { name = '默认' },
-		} = parseGitConfig.sync({
-			cwd: projectPath,
-			path: '.git/config',
-		});
-		userName = name;
-	} catch (e) {
-		console.warn('获取 .git/config user.name 失败');
-		console.warn(e);
-	}
+ // 获取项目的git仓库的 user.name
+ let userName = '默认';
+ try {
+  const {
+   user: { name = '默认' },
+  } = parseGitConfig.sync({
+   cwd: projectPath,
+   path: '.git/config',
+  });
+  userName = name;
+ } catch (e) {
+  console.warn('获取 .git/config user.name 失败');
+  console.warn(e);
+ }
 
-	const desc = `v${version} - ${gitCommitHash} - by@${userName}`;
-	return desc;
+ const desc = `v${version} - ${gitCommitHash} - by@${userName}`;
+ return desc;
 };
 
 module.exports = getDesc;
@@ -405,53 +414,53 @@ module.exports = getDesc;
 ```js
 // 读取 wx.config.js 配置
 const loadWxconfig = (cwd) => {
-	try {
-		return require(path.join(cwd, 'wx.config.js'));
-	} catch (e) {
-		return {
-			error: '未配置 wx.config.js 文件',
-		};
-	}
+ try {
+  return require(path.join(cwd, 'wx.config.js'));
+ } catch (e) {
+  return {
+   error: '未配置 wx.config.js 文件',
+  };
+ }
 };
 
 const parseEnv = () => {
-	const cwd = process.cwd();
+ const cwd = process.cwd();
 
-	let parsed = {};
-	let wxconfig = loadWxconfig(cwd);
-	if (wxconfig.error) {
-		let dotenvResult = require('dotenv').config({
-			path: path.join(cwd, './.env'),
-		});
+ let parsed = {};
+ let wxconfig = loadWxconfig(cwd);
+ if (wxconfig.error) {
+  let dotenvResult = require('dotenv').config({
+   path: path.join(cwd, './.env'),
+  });
 
-		parsed = dotenvResult.parsed;
-		if (dotenvResult.error) {
-			throw error;
-		}
-	} else {
-		parsed = wxconfig;
-	}
-	// 代码有省略
+  parsed = dotenvResult.parsed;
+  if (dotenvResult.error) {
+   throw error;
+  }
+ } else {
+  parsed = wxconfig;
+ }
+ // 代码有省略
 };
 ```
 
 ### 8.5 支持选择多个小程序
 
 我们可以用 [enquirer](https://github.com/enquirer/enquirer) 来实现单选或者多选的功能。以下只是关键代码。
-完整代码可以查看 [mp-cli/src/utils/getConfig.js 文件](https://github.com/lxchuan12/mp-cli/blob/main/src/utils/getConfig.js)。
+完整代码可以查看 [mini-ci/src/utils/getConfig.js 文件](https://github.com/lxchuan12/mini-ci/blob/0.7.0/src/utils/getConfig.js)。
 
 ```js
 // 只是关键代码
 const { prompt, MultiSelect } = require('enquirer');
 const configPathList = fs.readdirSync(configPath);
 const configPathListJson = configPathList.map((el) => {
-	return require(`${configPath}/${el}`);
+ return require(`${configPath}/${el}`);
 });
 const { name } = await prompt({
-	type: 'select',
-	name: 'name',
-	message: '请选择一个小程序配置',
-	choices: configPathListJson,
+ type: 'select',
+ name: 'name',
+ message: '请选择一个小程序配置',
+ choices: configPathListJson,
 });
 result = configPathListJson.filter((el) => el.name === name);
 return result;
@@ -464,24 +473,24 @@ return result;
 const { prompt, MultiSelect } = require('enquirer');
 const configPathList = fs.readdirSync(configPath);
 const configPathListJson = configPathList.map((el) => {
-	return require(`${configPath}/${el}`);
+ return require(`${configPath}/${el}`);
 });
 const multiSelectPrompt = new MultiSelect({
-	name: 'value',
-	message: '可选择多个小程序配置',
-	limit: 7,
-	choices: configPathListJson,
+ name: 'value',
+ message: '可选择多个小程序配置',
+ limit: 7,
+ choices: configPathListJson,
 });
 
 try {
-	const answer = await multiSelectPrompt.run();
-	console.log('Answer:', answer);
-	result = configPathListJson.filter((el) => answer.includes(el.name));
-	return result;
+ const answer = await multiSelectPrompt.run();
+ console.log('Answer:', answer);
+ result = configPathListJson.filter((el) => answer.includes(el.name));
+ return result;
 } catch (err) {
-	console.log('您已经取消');
-	console.log(err);
-	process.exit(1);
+ console.log('您已经取消');
+ console.log(err);
+ process.exit(1);
 }
 ```
 
@@ -490,17 +499,16 @@ try {
 ### 8.7 更多如何使用可以参考文档
 
 ```bash
-# 克隆我写的 mp-cli 工具
-git clone https://github.com/lxchuan12/mp-cli.git
+# 全局安装 mini-ci 工具，也可以不全局安装
+npm i mini-ci -g
+# 文档：https://github.com/lxchuan12/mini-ci.git
 # 克隆腾讯开源的电商小程序
 git clone https://github.com/lxchuan12/tdesign-miniprogram-starter-retail.git
 # 切到分支 feature/release-it
 git checkout feature/release-it
 ```
 
-可以克隆我的项目，到一个目录中，比如 `projects` 中。
-
-再克隆我的另外一个小程序（腾讯开源的电商小程序），到同一个目录中。比如 `projects` 中。
+可以克隆我的另外一个小程序（腾讯开源的电商小程序）。比如 `projects` 中。
 
 按照[微信小程序文档](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)配置小程序密钥等，这样就能上传和预览了。如果没有微信小程序，可以自行免费开通个人的[微信小程序](https://mp.weixin.qq.com/)。
 
@@ -512,13 +520,28 @@ git checkout feature/release-it
 1. 如何利用 release-it 提升版本号，自动打 tag，生成 changelog 等
 2. npm init 原理
 3. 如何写一个脚手架工具
-	- 如何解析 Nodejs 命令行参数 minimist
-	- 如何选择单选、多选 enquirer(prompt, MultiSelect)
-	- 等等
+ - 如何解析 Nodejs 命令行参数 minimist
+ - 如何选择单选、多选 enquirer(prompt, MultiSelect)
+ - 等等
 ```
 
 我相信大家也能够自己动手实现公司类似要求的脚手架工具，减少发版时间，降本提效。
 
+[本文提到的工具 mini-ci 已开源，求个 star^\_^](https://github.com/lxchuan12/mini-ci.git)
+
+```bash
+# 可全局安装
+npm i @ruochuan/mini-ci -g
+mini-ci -h
+# 也可以不全局安装
+npx @ruochuan/mini-ci -h
+# 查看帮助信息，或者查看文档：https://github.com/lxchuan12/mini-ci.git，
+```
+
+**注意：文章是基于 [`tag v0.7.0`](https://github.com/lxchuan12/mini-ci/tree/0.7.0) 撰写。目前工具是 `0.12.0` 版本，后续 `mini-ci` 会持续更新，文章应该暂时不会更新**。
+
 ---
 
-最后可以持续关注我@若川。欢迎点此扫码加我微信 [ruochuan12](https://juejin.cn/pin/7005372623400435725) 交流，参加[每周大家一起学习 200 行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，共同进步。
+最后可以持续关注我[@若川](https://juejin.cn/user/1415826704971918)。我倾力持续组织了一年[每周大家一起学习200行左右的源码共读活动](https://juejin.cn/post/7079706017579139102)，感兴趣的可以[点此扫码加我微信 `ruochuan12` 参与](https://juejin.cn/pin/7005372623400435725)。
+
+另外，想学源码，极力推荐关注我写的专栏[《学习源码整体架构系列》](https://juejin.cn/column/6960551178908205093)，目前是掘金关注人数（4.2k+人）第一的专栏，写有20余篇源码文章。包含`jQuery`、`underscore`、`lodash`、`vuex`、`sentry`、`axios`、`redux`、`koa`、`vue-devtools`、`vuex4`、`koa-compose`、`vue 3.2 发布`、`vue-this`、`create-vue`、`玩具vite`、`create-vite` 等20余篇源码文章。
