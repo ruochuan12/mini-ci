@@ -500,7 +500,9 @@ try {
 
 ```bash
 # 全局安装 mini-ci 工具，也可以不全局安装
-npm i mini-ci -g
+npm i @ruochuan/mini-ci -g
+mini-ci -h
+npx @ruochuan/mini-ci -h
 # 文档：https://github.com/lxchuan12/mini-ci.git
 # 克隆腾讯开源的电商小程序
 git clone https://github.com/lxchuan12/tdesign-miniprogram-starter-retail.git
