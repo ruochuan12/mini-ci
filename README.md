@@ -57,22 +57,22 @@ ruochuan-mini-ci --help
 rmc --help
 ```
 
--   [x] 支持快速初始化配置 `mini-ci init`
--   [x] 支持上传 `mini-ci upload`
--   [x] 支持预览 `mini-ci preview`
--   [x] 支持空跑，不执行 `mini-ci upload --dry`
--   [x] 支持指定配置文件 `mini-ci --config (xxxx/xxx.js|json)`
--   [x] 支持指定参数 如 `robot` 默认是 1，命令：`mini-ci upload --robot 2`
--   [x] 支持指定模式读取 `.env` 文件（默认）`mini-ci --mode xxx` 若指定了则是 `.env.[mode]`
--   [x] 支持单选多个小程序 `mini-ci upload --useSelect`
--   [x] 支持选择多个批量上传 `mini-ci upload --useMultiSelect`
--   [x] 支持选择全部的批量上传 `mini-ci upload --useAllConfig`
--   [x] `js、json、.env` 配置文件
-    -   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件，也支持 `.env`，优先级 `.env` 最低
-    -   [x] 支持默认读取配置的 json 路径的版本
-    -   [x] 支持插件 plugins，支持上传、预览前后替换文件 replaceRules
-    -   [x] 支持默认的版本描述 `desc` 为 `v${version}` - git commit hash - by@${作者}`
-    -   [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/mini.config.js) 配置
+- [x] 支持快速初始化配置 `mini-ci init`
+- [x] 支持上传 `mini-ci upload`
+- [x] 支持预览 `mini-ci preview`
+- [x] 支持空跑，不执行 `mini-ci upload --dry`
+- [x] 支持指定配置文件 `mini-ci --config (xxxx/xxx.js|json)`
+- [x] 支持指定参数 如 `robot` 默认是 1，命令：`mini-ci upload --robot 2`
+- [x] 支持指定模式读取 `.env` 文件（默认）`mini-ci --mode xxx` 若指定了则是 `.env.[mode]`
+- [x] 支持单选多个小程序 `mini-ci upload --useSelect`
+- [x] 支持选择多个批量上传 `mini-ci upload --useMultiSelect`
+- [x] 支持选择全部的批量上传 `mini-ci upload --useAllConfig`
+- [x] `js、json、.env` 配置文件
+  - [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件，也支持 `.env`，优先级 `.env` 最低
+  - [x] 支持默认读取配置的 json 路径的版本
+  - [x] 支持插件 plugins，支持上传、预览前后替换文件 replaceRules
+  - [x] 支持默认的版本描述 `desc` 为 `v${version}` - git commit hash - by@${作者}`
+  - [x] 支持自定义的 `projectOptions`、`uploadOptions`、`previewOptions` 配置，参考 [`mini.config.js`](https://github.com/lxchuan12/mini-ci/blob/main/packages/mini-ci/mini.config.js) 配置
 
 ```bash
 参数可以相互结合。
@@ -117,7 +117,7 @@ rmc --help
 
 ## 可自行开发
 
-一般不需要自行开发，欢迎 `fork` 提 `PR`，或者加我微信 `ruochuan12` 交流反馈。
+一般不需要自行开发，欢迎 `fork` 提 `PR`，或者加我微信 `ruochuan02` 交流反馈。
 
 ```bash
 # 克隆我写的 mini-ci 工具
@@ -136,15 +136,15 @@ git checkout feature/release-it
 
 ## TODOs
 
--   [x] 使用 `ES Module` 开发
--   [x] 初步引入 `TS`
--   [x] 支持 init 快速初始化配置
--   [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件
--   [x] 支持替换功能，比如替换 url 等
--   [x] 支持插件 plugin
--   [x] 初步加入测试
--   [ ] 校验 nodejs 版本
--   [ ] 支持可视化操作
+- [x] 使用 `ES Module` 开发
+- [x] 初步引入 `TS`
+- [x] 支持 init 快速初始化配置
+- [x] 配置文件支持 js （更灵活更推荐），也支持 json 文件
+- [x] 支持替换功能，比如替换 url 等
+- [x] 支持插件 plugin
+- [x] 初步加入测试
+- [ ] 校验 nodejs 版本
+- [ ] 支持可视化操作
 
 ## 原理文章
 
@@ -166,10 +166,10 @@ git checkout feature/release-it
 
 我体验下来的感觉有以下几点可以优化。
 
--   不支持指定机器人
--   不支持不打包时上传
--   不支持官方提供的更多配置
--   不支持选择多个小程序批量上传等等
+- 不支持指定机器人
+- 不支持不打包时上传
+- 不支持官方提供的更多配置
+- 不支持选择多个小程序批量上传等等
 
 ### uni-app 好像没有提供类似的插件
 
