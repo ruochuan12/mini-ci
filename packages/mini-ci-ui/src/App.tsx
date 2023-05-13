@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { message, Space, Table } from 'antd';
 import './App.css';
 import axios2 from 'axios';
-import 'antd/dist/antd.css';
+// import 'antd/dist/antd.css';
 
 const axios = axios2.create({
 	baseURL: 'http://localhost:3002',
