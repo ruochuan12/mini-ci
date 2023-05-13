@@ -40,16 +40,20 @@ export const getDesc = (
 		logger.warn('获取 git commit hash 失败', e);
 	}
 
-	// 获取项目的git仓库的 user.name
+	// 获取项目的 git 仓库、获取不到获取全局的 user.name
 	let userName = '默认';
-	try {
-		userName = execaCommandSync('git config user.name', {
-			stdio: 'pipe',
-			cwd: projectPath,
-		}).stdout;
-	} catch (e) {
-		logger.warn('git config user.name 获取失败', e);
-	}
+	const getUserName = (gitConfig = 'git config user.name') => {
+		try {
+			userName = execaCommandSync(gitConfig, {
+				stdio: 'pipe',
+				cwd: projectPath,
+			}).stdout;
+		} catch (e) {
+			logger.warn(`${gitConfig} 获取失败`, e);
+			getUserName('git config --global user.name');
+		}
+	};
+	getUserName();
 
 	const desc = `v${version} - ${gitCommitHash} - by@${userName}`;
 	return desc;
