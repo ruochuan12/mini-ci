@@ -52,13 +52,16 @@
     "coverage": "vitest run --coverage"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^5.0.0",
-    "@vitest/coverage-c8": "^0.24.3",
-    "dotenv-expand": "^9.0.0",
-    "release-it": "^15.4.2",
-    "tsx": "^3.10.0",
-    "unbuild": "^0.8.11",
-    "vitest": "^0.24.3"
+    "@release-it/conventional-changelog": "^5.1.1",
+    "@types/qrcode": "^1.5.0",
+    "@vitest/coverage-c8": "^0.31.0",
+    "dotenv-expand": "^10.0.0",
+    "execa": "^7.1.1",
+    "qrcode": "^1.5.3",
+    "release-it": "^15.10.3",
+    "tsx": "^3.12.7",
+    "unbuild": "^1.2.1",
+    "vitest": "^0.31.0"
   },
   "husky": {
     "hooks": {
@@ -71,11 +74,10 @@
   },
   "dependencies": {
     "cac": "^6.7.14",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.3",
     "enquirer": "^2.3.6",
-    "execa": "^6.1.0",
-    "kolorist": "^1.5.1",
-    "miniprogram-ci": "^1.8.25"
+    "kolorist": "^1.8.0",
+    "miniprogram-ci": "^1.9.5"
   },
   "publishConfig": {
     "access": "public"

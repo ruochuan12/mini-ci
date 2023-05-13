@@ -1,5 +1,6 @@
 import { Plugin, UserConfig } from '../types';
 import { arrify } from '../utils';
+import { printQrcode } from './preview';
 import { replaceModify, replaceRenew } from './repleaceFile';
 
 interface SortedPluginsOb {
@@ -22,6 +23,13 @@ const innerPlugins: Plugin[] = [
 		enforce: 'post',
 		handler: (config: UserConfig) => {
 			replaceRenew(config.replaceRules!);
+		},
+	},
+	{
+		name: 'preview',
+		enforce: 'post',
+		handler: (config: UserConfig) => {
+			printQrcode(config);
 		},
 	},
 ];
