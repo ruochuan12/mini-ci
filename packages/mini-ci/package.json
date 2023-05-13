@@ -42,7 +42,7 @@
     "dev": "tsx src/cli.ts",
     "upload": "pnpm run dev -- upload",
     "preview": "pnpm run dev -- preview",
-    "release": "cp ../../README.md ../../README-2.md ./ &&release-it",
+    "release": "cp ../../README.md ../../README-2.md ./ && release-it",
     "mini-ci": "node ./bin/mini-ci.mjs",
     "//preinstall": "npx only-allow pnpm",
     "build": "unbuild",
