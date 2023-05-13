@@ -20,7 +20,7 @@
 
 显示帮助信息
 
-![显示帮助信息](./packages/mini-ci/images/help-v0.11.1.png)
+![显示帮助信息](./packages/mini-ci/images/help-v12.0.0.png)
 
 上传效果
 
