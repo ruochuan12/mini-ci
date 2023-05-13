@@ -1,5 +1,12 @@
 
 
+## [0.12.1](https://github.com/lxchuan12/mini-ci/compare/0.12.0...0.12.1) (2023-05-13)
+
+
+### Features
+
+* 🎸 添加获取当前仓库用户名失败时使用 git config --global user.name 获取全局用户名 ([e42926e](https://github.com/lxchuan12/mini-ci/commit/e42926ea69c40184e44d1aaf9ede333e15068e68))
+
 # [0.12.0](https://github.com/lxchuan12/mini-ci/compare/0.11.4...0.12.0) (2022-10-07)
 
 
