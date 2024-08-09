@@ -1,5 +1,12 @@
 
 
+## [0.12.2](https://github.com/lxchuan12/mini-ci/compare/0.12.1...0.12.2) (2024-08-09)
+
+
+### Bug Fixes
+
+* 🐛 修复获取 git config 用户名失败时重复获取问题 ([7a07c04](https://github.com/lxchuan12/mini-ci/commit/7a07c046a93ee55cae2f2c39daf2e0dbe4502680))
+
 ## [0.12.1](https://github.com/lxchuan12/mini-ci/compare/0.12.0...0.12.1) (2023-05-13)
 
 

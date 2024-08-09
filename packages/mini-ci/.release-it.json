@@ -4,10 +4,12 @@
     "tokenRef": "GITHUB_TOKEN"
   },
   "git": {
-    "commitMessage": "release: v${version}"
+    "commitMessage": "release: v${version}",
+    "requireCleanWorkingDir": false
   },
   "npm": {
-    "publish": true
+    "publish": true,
+    "timeout": 10
   },
   "hooks": {
     "after:bump": "echo 更新版本成功 && cd ../../ && pnpm run ci:build"
