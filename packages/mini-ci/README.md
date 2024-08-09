@@ -1,6 +1,6 @@
 # mini-ci
 
-基于微信小程序 [`miniprogram-ci`](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html) 开发的**更快速、更方便且支持多选等功能**的小程序上传、预览自动化工具
+基于微信小程序 [`miniprogram-ci`](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html) 开发的**更快速、更方便（仅需少量配置）且支持多个小程序批量上传等功能**的小程序上传、预览自动化工具
 
 > [npm @ruochuan/mini-ci](https://www.npmjs.com/package/@ruochuan/mini-ci)
 
@@ -20,11 +20,24 @@
 
 显示帮助信息
 
-![显示帮助信息](./packages/mini-ci/images/help-v12.0.0.png)
+```bash
+npx @ruochuan/mini-ci -h
+```
+
+![显示帮助信息](./images/help-v12.0.0.png)
+
+支持多个批量上传 -m
+
+```bash
+npx @ruochuan/mini-ci upload -m
+# 按空格选择多个小程序
+```
+
+![支持多个批量上传](./images/multi-select.png)
 
 上传效果
 
-![上传效果](./packages/mini-ci/images/upload.png)
+![上传效果](./images/upload.png)
 
 预览效果就是在控制台显示二维码。
 
