@@ -42,7 +42,10 @@ export const getDesc = (
 
 	// 获取项目的 git 仓库、获取不到获取全局的 user.name
 	let userName = '默认';
-	const getUserName = (gitConfig = 'git config user.name') => {
+	const getUserName = (
+		gitConfig = 'git config user.name',
+		errorRetry = true,
+	) => {
 		try {
 			userName = execaCommandSync(gitConfig, {
 				stdio: 'pipe',
@@ -50,7 +53,9 @@ export const getDesc = (
 			}).stdout;
 		} catch (e) {
 			logger.warn(`${gitConfig} 获取失败`, e);
-			getUserName('git config --global user.name');
+			if (errorRetry) {
+				getUserName('git config --global user.name', false);
+			}
 		}
 	};
 	getUserName();
